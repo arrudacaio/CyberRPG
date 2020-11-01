@@ -4,7 +4,7 @@ A ideia é termos um jogo com um estilo RPG (Rolle-Playing Game) totalmente via 
 
 ### Como contribuir (Para os devs do projeto)
 
-1. git clone <link do repositorio>
+1. git clone (link do repositorio)
 2. faça suas alterações
 3. git add . (vai adicionar todos os arquivos q vc colocou no repositorio)
 4. git commit -m "mensagem de commit"
