@@ -1,3 +1,6 @@
+import System.Directory
+import System.IO
+
 optionMenu :: Int -> String -> IO()
 optionMenu 1 evento = mensagens evento
 optionMenu 2 _ = perfil
@@ -9,6 +12,71 @@ optionMenu _ evento = do
   menu evento
 
 {-FUNÇÕES DE RETORNO DE TEXTO-}
+
+main = do
+  login
+
+login :: IO()
+login = do
+  putStrLn "««««««««ABYSS»»»»»»»»"
+  putStrLn "O ambiente de trabalho para aqueles que seguem suas próprias leis."
+  putStrLn ""
+  putStrLn ":::::::::::::LOGIN:::::::::::::"
+  putStrLn "Já possui uma conta? (S/N) ou Q para sair!"
+  possuiConta <- getLine
+  case possuiConta of
+   "S" -> signIn
+   "N" -> signUp
+   "Q" -> putStrLn "\nADEUS!!"
+   _ -> do 
+    putStrLn "Opção Inválida!"
+    login
+
+signIn :: IO()
+signIn = do
+ putStrLn "LOGIN: "
+ log <- getLine
+ fileExists <- doesFileExist (log ++ ".txt")
+ if fileExists
+  then do 
+  arq <- openFile (log ++ ".txt") ReadMode
+  user <- hGetContents arq
+  putStrLn "SENHA: "
+  senha <- getLine
+  if senha == user
+   then do
+   hClose arq
+   arq <- openFile "atualUser.txt" WriteMode
+   hPutStr arq log
+   hFlush arq
+   hClose arq
+   menu "evento 0"
+   else do
+   putStrLn "SENHA INCORRETA!!!\n\n\n\n"
+   hClose arq
+   signIn
+  else do
+  putStrLn "Usuário não encontrado!\n\n\n\n"
+  login
+
+signUp :: IO()
+signUp = do
+ putStrLn "LOGIN DESEJADO: "
+ log <- getLine
+ fileExists <- doesFileExist (log ++ ".txt")
+ if fileExists
+  then do
+  putStrLn "LOGIN JÁ EXISTE!!\nEscolha Outro!\n\n"
+  signUp
+  else do
+  arq <- openFile (log ++ ".txt") WriteMode
+  putStrLn "SENHA: "
+  senha <- getLine
+  hPutStr arq senha
+  putStrLn "Usuário criado com sucesso!!\n\n\n\n"
+  hFlush arq
+  hClose arq
+  login
 
 operacaoInvalida :: String
 operacaoInvalida = "Operação inválida! Tente novamente."
@@ -55,9 +123,6 @@ noticia2 =
   \\nQuando questionado sobre o plano de ação contra esta nova ameaça virtual, um dos cyberpoliciais que escolheu não se\
   \\nidentificar respondeu: \"Estamos trabalhando nisso.\".\
   \\n"
-
-main = do
-  menu "evento 0"
 
 menu :: String -> IO()
 menu "evento 0" = do
