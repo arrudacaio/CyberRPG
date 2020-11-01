@@ -1,16 +1,12 @@
 optionMenu :: Int -> String -> IO()
-optionMenu 1 evento = mensage evento
+optionMenu 1 evento = mensagens evento
 optionMenu 2 _ = perfil
 optionMenu 3 evento = contratos evento
 optionMenu 4 evento = noticia evento
 optionMenu 5 _ = desenvolvedores
-optionMenu _ _ = putStrLn operacaoInvalida
-
-{-optionNoticias :: Int -> IO()
-optionNoticias 1 = noticia1
-optionNoticias 2 = noticia2
-optionNoticias 3 = noticia3
-optionNoticias _ = putStrLn operacaoInvalida-}
+optionMenu _ evento = do
+  putStrLn operacaoInvalida
+  menu evento
 
 {-FUNÇÕES DE RETORNO DE TEXTO-}
 
@@ -165,8 +161,8 @@ menu _ = do
   operacao <- getLine
   optionMenu (read operacao :: Int) "outro evento"
 
-mensage :: String -> IO()
-mensage _ = do
+mensagens :: String -> IO()
+mensagens _ = do
   putStrLn ""
   putStrLn ""
   putStrLn ""
