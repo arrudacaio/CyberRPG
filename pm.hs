@@ -1,5 +1,6 @@
 import System.Directory
 import System.IO
+import System.Random
 
 optionMenu :: Int -> String -> IO()
 optionMenu 1 evento = mensagens evento
@@ -54,6 +55,7 @@ operacaoInvalida :: String
 operacaoInvalida = "Operação inválida! Tente novamente."
 
 
+-- Abaixo fica todos os principais textos do jogo, como noticias e mensagens
 noticia1 :: String
 noticia1 =
   "------------------------------------------------------------------------------------------------------------------------\
@@ -142,10 +144,17 @@ mensagem5 =
   "M3lch10r: Fico no aguardo."
 
 
+--Gera um numero aleatório entre X e Y
+--Numero gerado retorna como IO Int
+randomInt :: Int -> Int -> IO Int
+randomInt x y = randomRIO (x, y)
+
+
 main = do
   login
 
-
+-- Primeira tela de interação com o usuário. Nela, o usuário escolhe entra cadastrar uma
+-- nova conta, acessar uma conta já existente ou sair da aplicação.
 login :: IO()
 login = do
   putStrLn "««««««««ABYSS»»»»»»»»"
@@ -162,7 +171,9 @@ login = do
     putStrLn "Opção Inválida!"
     login
 
-
+-- Menu de login: Procura um arquivo com o nome do login do usuário
+-- Se não existir, retorna erro, caso contrário, acessa o arquivo
+-- E compara as senhas. Se as senhas forem diferentes, retorna erro.
 signIn :: IO()
 signIn = do
  putStrLn "LOGIN: "
@@ -190,7 +201,9 @@ signIn = do
   putStrLn "Usuário não encontrado!\n\n\n\n"
   login
 
-
+--Menu de Cadastro: Cadastra um novo usuário. O login é usado como nome do arquivo, onde serao
+--guardadas informações como senha, e os dados de permanencia. A senha é usada para acessar o arquivo dentro
+--da aplicação.
 signUp :: IO()
 signUp = do
  putStrLn "LOGIN DESEJADO: "
@@ -211,6 +224,9 @@ signUp = do
   login
 
 
+--Menu interno depois de fazer login.
+--Nele é possivel acessar outros menus. Parâmetro serve como um marcador
+--Para indicar o progresso do jogador na aplicação.
 menu :: String -> IO()
 menu "evento 0" = do
   putStrLn ""
@@ -338,7 +354,9 @@ menu evento = do
   operacao <- getLine
   optionMenu (read operacao :: Int) evento
 
-
+--Tela de mensagens. Onde fica armazenado as mensagens recebidas por
+--NPCs do jogo, para contatos e contratos.
+-- Assim como no menu, o parâmetro serve como um marcador do progresso do usuário
 mensagens :: String -> IO()
 mensagens "evento 0" = do
   putStrLn cabecalhoMensagens
@@ -403,6 +421,8 @@ verificaMsgs msg msgsAnteriores
   | otherwise = putStr ""
 
 
+-- Chat interagível com NPC
+-- Nele é possível ter várias opções de conversa
 chatPrivado :: [String] -> IO()
 chatPrivado msgsEnviadas@(ultimaMsg:msgsAnteriores) = do
   putStrLn ""
@@ -508,7 +528,8 @@ chatPrivado msgsEnviadas@(ultimaMsg:msgsAnteriores) = do
   
   else (chatPrivado msgsEnviadas)
 
-
+--Tela de perfil do usuário
+--Será mostrado detalhes do perfil do usuário
 perfil :: String -> IO()
 perfil evento = do
   putStrLn ""
@@ -523,7 +544,8 @@ perfil evento = do
   cm <- getLine
   menu evento
 
-
+--Tela de contratos do usuário
+--Será mostrado detalhes das missões do usuário(objetivo, recompensas etc)
 contratos :: String -> IO()
 contratos evento = do
   putStrLn ""
@@ -538,7 +560,9 @@ contratos evento = do
   cm <- getLine
   menu evento
 
-
+--Tela de notícia
+--Onde o usuário recebe informações sobre o universo do jogo, e atualizações sobre 
+--suas próprias ações
 noticia :: String -> IO ()
 noticia "evento 0" = do
   putStrLn cabecalhoNoticias
@@ -666,7 +690,7 @@ noticia evento = do
     putStrLn operacaoInvalida
     noticia evento
 
-
+--Tela de desenvolvedores que criaram esse jogo incrível e de muito bom gosto
 desenvolvedores :: String -> IO()
 desenvolvedores evento = do
   putStrLn ""
@@ -679,7 +703,6 @@ desenvolvedores evento = do
   putStrLn "2. Enock"
   putStrLn "3. Joao"
   putStrLn "4. Jonatha"
-  putStrLn "5. Thiago, senhor supremo do universo, e do conhecimento em Haskell..."
-  putStrLn "... Curvem-se perante sua infinita sabedoria, mortais"
+  putStrLn "5. Thiago"
   cm <- getLine
   menu evento
