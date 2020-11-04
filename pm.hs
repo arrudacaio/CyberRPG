@@ -153,6 +153,12 @@ randomInt x y = randomRIO (x, y)
 main = do
   login
 
+lerUserAtual :: IO String
+lerUserAtual = do
+ arq <- openFile "atualUser.txt" ReadMode
+ user <- hGetContents arq
+ return user
+
 -- Primeira tela de interação com o usuário. Nela, o usuário escolhe entra cadastrar uma
 -- nova conta, acessar uma conta já existente ou sair da aplicação.
 login :: IO()
@@ -229,6 +235,7 @@ signUp = do
 --Para indicar o progresso do jogador na aplicação.
 menu :: String -> IO()
 menu "evento 0" = do
+  userAtual <- lerUserAtual
   putStrLn ""
   putStrLn ""
   putStrLn ""
@@ -237,6 +244,7 @@ menu "evento 0" = do
   putStrLn ""
   putStrLn "««««««««ABYSS»»»»»»»»"
   putStrLn "O ambiente de trabalho para aqueles que seguem suas próprias leis."
+  putStrLn ("Olá " ++ (userAtual) ++ ", seja bem-vindo!")
   putStrLn ""
   putStrLn ":::::::::::::MENU:::::::::::::"
   putStrLn "1. Mensagens"
