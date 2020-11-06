@@ -147,7 +147,7 @@ mensagem5 =
 main = do
   login
 
-
+-- Retorna nome de usuario logado
 lerUserAtual :: IO String
 lerUserAtual = do
  arq <- openFile "atualUser.txt" ReadMode
@@ -533,19 +533,42 @@ chatPrivado msgsEnviadas@(ultimaMsg:msgsAnteriores) = do
 
 --Tela de perfil do usuário
 --Será mostrado detalhes do perfil do usuário
+
 perfil :: String -> IO()
 perfil evento = do
+  userAtual <- lerUserAtual
   putStrLn ""
   putStrLn ""
   putStrLn ""
   putStrLn ""
   putStrLn ""
   putStrLn ""
-  putStrLn "««««««««ABYSS»»»»»»»»"
-  putStrLn "Imagina a tela de perfil aqui"
-  putStrLn "Pressione ENTER para sair"
-  cm <- getLine
-  menu evento
+  putStrLn ":::::::::::::PERFIL:::::::::::::"
+  putStrLn ""
+  putStrLn "***********ID***********"
+  putStrLn ("Nickname:" ++ (userAtual))
+  putStr ""
+  putStrLn "Senha: <senha>"
+  putStrLn ""
+  putStrLn "*****HABILIDADES*****"
+  putStrLn ""
+  putStrLn "AQUI VAI A LISTA DE HABILIDADES"
+  putStrLn ""
+  putStrLn "*****EXPERIÊNCIA*****"
+  putStrLn "Pontos: <quantidade de pontos>"
+  putStrLn "Fama: Stalker Amador"
+  putStrLn ""
+  putStrLn "1.Melhoria de Habilidade"
+  putStrLn "2.Voltar ao Menu"
+  putStrLn ""
+  putStrLn "Digite o número da operação desejada:"
+  operacao <- getLine
+  if operacao == "1" then perfil evento{-MAIS UM PARÂMETRO ADC-}
+  else if operacao == "2" then menu evento{-TEMPORARIO-}
+  else do
+    putStrLn operacaoInvalida
+    perfil evento
+
 
 --Tela de contratos do usuário
 --Será mostrado detalhes das missões do usuário(objetivo, recompensas etc)
