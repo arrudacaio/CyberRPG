@@ -14,7 +14,7 @@ optionMenu _ evento = do
 
 
 {-FUNÇÕES DE RETORNO DE TEXTO-}
-
+--Retorna o cabeçalho que antecede a tela de notícias
 cabecalhoNoticias :: String
 cabecalhoNoticias =
   "-----------------------------------------------\
@@ -28,7 +28,7 @@ cabecalhoNoticias =
   \\n\
   \\n"
 
-
+--Retorna o cabeçalho que antecede a tela de mensagens
 cabecalhoMensagens :: String
 cabecalhoMensagens =
   "-----------------------------------------------\
@@ -42,7 +42,7 @@ cabecalhoMensagens =
   \\n\
   \\n"
 
-
+--Retorna o cabeçalho que antecede a tela de chat com M3lch10r
 cabecalhoChat :: String
 cabecalhoChat =
   "\
@@ -50,7 +50,7 @@ cabecalhoChat =
   \\n\
   \\n"
 
-
+--Retorna texto de operação inválida.
 operacaoInvalida :: String
 operacaoInvalida = "Operação inválida! Tente novamente."
 
@@ -143,15 +143,10 @@ mensagem5 :: String
 mensagem5 =
   "M3lch10r: Fico no aguardo."
 
-
---Gera um numero aleatório entre X e Y
---Numero gerado retorna como IO Int
-randomInt :: Int -> Int -> IO Int
-randomInt x y = randomRIO (x, y)
-
-
+-- Main, inicia o jogo na tela de login
 main = do
   login
+
 
 lerUserAtual :: IO String
 lerUserAtual = do
@@ -699,6 +694,7 @@ noticia evento = do
     noticia evento
 
 --Tela de desenvolvedores que criaram esse jogo incrível e de muito bom gosto
+--Ordenado em ordem alfabética
 desenvolvedores :: String -> IO()
 desenvolvedores evento = do
   putStrLn ""
@@ -707,10 +703,10 @@ desenvolvedores evento = do
   putStrLn ""
   putStrLn ""
   putStrLn ""
-  putStrLn "1. Caio"
-  putStrLn "2. Enock"
-  putStrLn "3. Joao"
-  putStrLn "4. Jonatha"
-  putStrLn "5. Thiago"
+  putStrLn "1. Caio José dos Santos Arruda"
+  putStrLn "2. Enock Bezerra Ferreira de Souza"
+  putStrLn "3. João Vitor Patrício Romão"
+  putStrLn "4. Jonatha Kennedy Monteiro da Costa"
+  putStrLn "5. Thiago Farias de Almeida"
   cm <- getLine
   menu evento
