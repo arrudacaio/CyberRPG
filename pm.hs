@@ -662,6 +662,24 @@ contratos :: String -> IO()
 contratos "evento 0" = do
   putStrLn cabecalhoContratos
   putStrLn "*********ATIVOS**********"
+  putStrLn "Você possui 0 contrato(s) ativo(s)."
+  putStrLn ""
+  putStrLn "******FINALIZADOS*******"
+  putStrLn "Você possui 0 contrato(s) finalizado(s)."
+  putStrLn ""
+  putStrLn "1. Voltar ao Menu"
+  putStrLn ""
+  putStrLn "Digite o número da operação desejada: "
+  operacao <- getLine
+  if operacao == "1" 
+    then do
+      menu "evento 0"
+  else do
+    putStrLn operacaoInvalida
+    contratos "evento 0"
+contratos "inicio do contrato" = do
+  putStrLn cabecalhoContratos
+  putStrLn "*********ATIVOS**********"
   putStrLn "Você possui 1 contrato(s) ativo(s)."
   putStrLn ""
   putStrLn "1. (!) O Ninho da Aranha"
@@ -676,14 +694,31 @@ contratos "evento 0" = do
   if operacao == "1" 
     then do
       contratoNinhoDaAranha
-      contratos "evento 0"
+      contratos "inicio do contrato"
   else if operacao == "2"
     then do
-      menu "evento 0"
+      menu "inicio do contrato"
   else do
     putStrLn operacaoInvalida
-    contratos "evento 0"
-
+    contratos "inicio do contrato"
+contratos evento = do
+  putStrLn cabecalhoContratos
+  putStrLn "*********ATIVOS**********"
+  putStrLn "Você possui 0 contrato(s) ativo(s)."
+  putStrLn ""
+  putStrLn "******FINALIZADOS*******"
+  putStrLn "Você possui 0 contrato(s) finalizado(s)."
+  putStrLn ""
+  putStrLn "1. Voltar ao Menu"
+  putStrLn ""
+  putStrLn "Digite o número da operação desejada: "
+  operacao <- getLine
+  if operacao == "1" 
+    then do
+      menu evento
+  else do
+    putStrLn operacaoInvalida
+    contratos evento
 
 -- FUNÇÕES PARA INVASÃO:
 
