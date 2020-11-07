@@ -28,6 +28,19 @@ cabecalhoNoticias =
   \\n\
   \\n"
 
+cabecalhoContratos :: String
+cabecalhoContratos =
+  "-----------------------------------------------\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n:::::::::::::CONTRATOS:::::::::::::\
+  \\n\
+  \\n"
+
 --Retorna o cabeçalho que antecede a tela de mensagens
 cabecalhoMensagens :: String
 cabecalhoMensagens =
