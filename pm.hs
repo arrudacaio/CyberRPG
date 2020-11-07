@@ -537,6 +537,8 @@ chatPrivado msgsEnviadas@(ultimaMsg:msgsAnteriores) = do
 perfil :: String -> IO()
 perfil evento = do
   userAtual <- lerUserAtual
+  arq <- openFile (userAtual ++ ".txt") ReadMode
+  senha <- hGetContents arq
   putStrLn ""
   putStrLn ""
   putStrLn ""
@@ -548,7 +550,7 @@ perfil evento = do
   putStrLn "***********ID***********"
   putStrLn ("Nickname:" ++ (userAtual))
   putStr ""
-  putStrLn "Senha: <senha>"
+  putStrLn ("Senha: " ++ (senha))
   putStrLn ""
   putStrLn "*****HABILIDADES*****"
   putStrLn ""
