@@ -200,7 +200,11 @@ ninhoDaAranhaMenu = do
   op <- getLine
   if op == "1"
     then do
-      putStrLn "FUNCAO INICIAR INVASAO"
+      putStrLn "Iniciando invasão..."
+      putStrLn ""
+      putStrLn "Atravessando firewall..."
+      putStrLn ""
+      invasao "extremamente alta"
   else if op == "2"
     then do 
       derrubaFuncs
@@ -235,7 +239,11 @@ ninhoDaAranhaMenu2 funcsRestantes = do
   op <- getLine
   if op == "1"
     then do
-      putStrLn "FUNCAO INICIAR INVASAO"
+      putStrLn "Iniciando invasão..."
+      putStrLn ""
+      putStrLn "Atravessando firewall..."
+      putStrLn ""
+      invasao "baixa"
   else if op == "2"
     then do 
       putStrLn "FUNCAO hackear drone"
@@ -244,7 +252,7 @@ ninhoDaAranhaMenu2 funcsRestantes = do
     ninhoDaAranhaMenu2 funcsRestantes
 
 
--- Contrato 1 : Ninho da Aranha. 
+-- Contrato 1 : Ninho da Aranha.
 contratoNinhoDaAranha :: IO()
 contratoNinhoDaAranha = do
   putStrLn cabecalhoContrato1
