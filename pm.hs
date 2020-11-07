@@ -383,8 +383,8 @@ mensagens "noticias 1 e 2 lidas" = do
   putStrLn ""
   putStrLn "Digite o número da operação desejada: "
   operacao <- getLine
-  if operacao == "1" then chatPrivado [""] {-MAIS UM PARÂMETRO ADC-}
-  else if operacao == "2" then menu "noticias 1 e 2 lidas" {-TEMPORARIO-}
+  if operacao == "1" then chatPrivado [""]
+  else if operacao == "2" then menu "noticias 1 e 2 lidas"
   else do
     putStrLn operacaoInvalida
     mensagens "noticias 1 e 2 lidas"
@@ -572,6 +572,7 @@ perfil evento = do
     perfil evento
 
 
+
 --Tela de contratos do usuário
 --Será mostrado detalhes das missões do usuário(objetivo, recompensas etc)
 contratos :: String -> IO()
@@ -587,6 +588,344 @@ contratos evento = do
   putStrLn "Pressione ENTER para sair"
   cm <- getLine
   menu evento
+
+
+-- FUNÇÕES PARA INVASÃO:
+
+
+gameOver :: IO()
+gameOver = do
+  putStrLn "GAME OVER" -- < TEMPORÁRIO! Será substituido pela mensagem de fim de jogo.
+  menu "inicio do contrato"
+  
+
+invasao :: String -> IO() -- TEMPORARIO! Deve retornar um IO()
+invasao "extremamente alta" = do
+  dado1 <- getStdRandom $ randomR (1, 6 :: Int)
+  dado2 <- getStdRandom $ randomR (1, 6 :: Int)
+  dado3 <- getStdRandom $ randomR (1, 6 :: Int)
+  if (dado1 > 4 && dado2 > 4 && dado3 > 4) then do
+    putStrLn "Rede interna Digital Spider invadida com sucesso!"
+    roubarArquivos [""]
+  else do
+    putStrLn "Acesso bloqueado. Invasão mal sucedida."
+    putStrLn ""
+    putStrLn "Você está sofrendo uma tentativa de rastreio. Bloqueando rastreador..."
+    putStrLn ""
+    putStrLn "Falha no bloqueio. Você foi rastreado! Sua identidade e localização foram comprometidos!"
+    putStrLn ""
+    gameOver
+invasao "baixa" = do
+  dado1 <- getStdRandom $ randomR (1, 6 :: Int)
+  dado2 <- getStdRandom $ randomR (1, 6 :: Int)
+  dado3 <- getStdRandom $ randomR (1, 6 :: Int)
+  if (dado1 > 2 || dado2 > 2 || dado3 > 2) then do
+    putStrLn "Rede interna Digital Spider invadida com sucesso!"
+    roubarArquivos [""]
+  else do
+    putStrLn "Acesso bloqueado. Invasão mal sucedida."
+    putStrLn ""
+    putStrLn "Você está sofrendo uma tentativa de rastreio. Bloqueando rastreador..."
+    putStrLn ""
+    putStrLn "Falha no bloqueio. Você foi rastreado! Sua identidade e localização foram comprometidos!"
+    putStrLn ""
+    gameOver
+
+
+verificaPesquisa :: String -> [String] -> IO()
+verificaPesquisa pesquisa pesquisasAnteriores
+  | not (pesquisa `elem` pesquisasAnteriores) = putStrLn pesquisa
+  | otherwise = putStr ""
+
+
+roubarArquivos :: [String] -> IO()
+roubarArquivos pesquisasFeitas@(ultimaPesquisa:pesquisasAnteriores) = do
+  putStrLn "DIGITAL SPIDER - BANCO DE DADOS"
+  putStrLn ""
+  if ultimaPesquisa == "" then do
+    putStrLn ""
+    putStrLn ""
+    putStrLn ""
+    putStrLn ""
+    putStrLn "Informações a pesquisar:"
+    putStrLn ""
+    putStrLn "-> Connected World"
+    putStrLn "-> GhostWeb"
+    putStrLn "-> Pupp3t_M@st3r"
+    putStrLn ""
+    putStrLn "Pesquise por um arquivo digitando seu nome: "
+    resposta <- getLine
+    putStrLn ""
+    if resposta == "Connected World" then do
+      putStrLn "Pesquisando..."
+      putStrLn ""
+      putStrLn "1 resultado encontrado:"
+      putStrLn ""
+      putStrLn "Connected_World.zip"
+      putStrLn ""
+      putStrLn "Baixar arquivo?"
+      putStrLn ""
+      putStrLn "Digite sua resposta: "
+      baixar <- getLine
+      if baixar == "sim" || baixar == "Sim" then do
+        putStrLn "Baixando..."
+        putStrLn ""
+        putStrLn "Baixado!"
+      else do
+        putStrLn "-----------------------------------------------"
+        roubarArquivos pesquisasFeitas
+      putStrLn ""
+      roubarArquivos (["-> Connected World"] ++ pesquisasFeitas)
+    else if resposta == "GhostWeb" then do
+      putStrLn "Pesquisando..."
+      putStrLn ""
+      putStrLn "1 resultado encontrado:"
+      putStrLn ""
+      putStrLn "GhostWeb.zip"
+      putStrLn ""
+      putStrLn "Baixar arquivo?"
+      putStrLn ""
+      putStrLn "Digite sua resposta: "
+      baixar <- getLine
+      if baixar == "sim" || baixar == "Sim" then do
+        putStrLn "Baixando..."
+        putStrLn ""
+        putStrLn "Baixado!"
+      else do
+        putStrLn "-----------------------------------------------"
+        roubarArquivos pesquisasFeitas
+      putStrLn ""
+      roubarArquivos (["-> GhostWeb"] ++ pesquisasFeitas)
+    else if resposta == "Pupp3t_M@st3r" then do
+      putStrLn "Pesquisando..."
+      putStrLn ""
+      putStrLn "1 resultado encontrado:"
+      putStrLn ""
+      putStrLn "Pupp3t_M@ster.zip"
+      putStrLn ""
+      putStrLn "Baixar arquivo?"
+      putStrLn ""
+      putStrLn "Digite sua resposta: "
+      baixar <- getLine
+      if baixar == "sim" || baixar == "Sim" then do
+        putStrLn "Baixando..."
+        putStrLn ""
+        putStrLn "Baixado!"
+      else do
+        putStrLn "-----------------------------------------------"
+        roubarArquivos pesquisasFeitas
+      putStrLn ""
+      roubarArquivos (["-> Pupp3t_M@st3r"] ++ pesquisasFeitas)
+    else do
+      putStrLn operacaoInvalida
+      putStrLn "-----------------------------------------------"
+      roubarArquivos pesquisasFeitas
+  
+  else if ultimaPesquisa == "-> Connected World" then do
+    putStrLn ""
+    putStrLn ""
+    putStrLn ""
+    putStrLn ""
+    putStrLn "Informações a pesquisar:"
+    putStrLn ""
+    verificaPesquisa "-> GhostWeb" pesquisasFeitas
+    verificaPesquisa "-> Pupp3t_M@st3r" pesquisasFeitas
+    putStrLn ""
+    putStrLn "Pesquise por um arquivo digitando seu nome: "
+    resposta <- getLine
+    putStrLn ""
+    if resposta == "GhostWeb" then do
+      putStrLn "Pesquisando..."
+      putStrLn ""
+      putStrLn "1 resultado encontrado:"
+      putStrLn ""
+      putStrLn "GhostWeb.zip"
+      putStrLn ""
+      putStrLn "Baixar arquivo?"
+      putStrLn ""
+      putStrLn "Digite sua resposta: "
+      baixar <- getLine
+      if baixar == "sim" || baixar == "Sim" then do
+        putStrLn "Baixando..."
+        putStrLn ""
+        putStrLn "Baixado!"
+      else do
+        putStrLn "-----------------------------------------------"
+        roubarArquivos pesquisasFeitas
+      putStrLn ""
+      if ("-> Pupp3t_M@st3r" `elem` pesquisasFeitas) then
+        roubarArquivos ["finalizado"]
+      else roubarArquivos (["-> GhostWeb"] ++ pesquisasFeitas)
+    else if resposta == "Pupp3t_M@st3r" then do
+      putStrLn "Pesquisando..."
+      putStrLn ""
+      putStrLn "1 resultado encontrado:"
+      putStrLn ""
+      putStrLn "Pupp3t_M@ster.zip"
+      putStrLn ""
+      putStrLn "Baixar arquivo?"
+      putStrLn ""
+      putStrLn "Digite sua resposta: "
+      baixar <- getLine
+      if baixar == "sim" || baixar == "Sim" then do
+        putStrLn "Baixando..."
+        putStrLn ""
+        putStrLn "Baixado!"
+      else do
+        putStrLn "-----------------------------------------------"
+        roubarArquivos pesquisasFeitas
+      putStrLn ""
+      if ("-> GhostWeb" `elem` pesquisasFeitas) then
+        roubarArquivos ["finalizado"]
+      else roubarArquivos (["-> Pupp3t_M@st3r"] ++ pesquisasFeitas)
+    else do
+      putStrLn operacaoInvalida
+      putStrLn "-----------------------------------------------"
+      roubarArquivos pesquisasFeitas
+  
+  else if ultimaPesquisa == "-> GhostWeb" then do
+    putStrLn ""
+    putStrLn ""
+    putStrLn ""
+    putStrLn ""
+    putStrLn "Informações a pesquisar:"
+    putStrLn ""
+    verificaPesquisa "-> Connected World" pesquisasFeitas
+    verificaPesquisa "-> Pupp3t_M@st3r" pesquisasFeitas
+    putStrLn ""
+    putStrLn "Pesquise por um arquivo digitando seu nome: "
+    resposta <- getLine
+    putStrLn ""
+    if resposta == "Connected World" then do
+      putStrLn "Pesquisando..."
+      putStrLn ""
+      putStrLn "1 resultado encontrado:"
+      putStrLn ""
+      putStrLn "Connected_World.zip"
+      putStrLn ""
+      putStrLn "Baixar arquivo?"
+      putStrLn ""
+      putStrLn "Digite sua resposta: "
+      baixar <- getLine
+      if baixar == "sim" || baixar == "Sim" then do
+        putStrLn "Baixando..."
+        putStrLn ""
+        putStrLn "Baixado!"
+      else do
+        putStrLn "-----------------------------------------------"
+        roubarArquivos pesquisasFeitas
+      putStrLn ""
+      if ("-> Pupp3t_M@st3r" `elem` pesquisasFeitas) then
+        roubarArquivos ["finalizado"]
+      else roubarArquivos (["-> Connected World"] ++ pesquisasFeitas)
+    else if resposta == "Pupp3t_M@st3r" then do
+      putStrLn "Pesquisando..."
+      putStrLn ""
+      putStrLn "1 resultado encontrado:"
+      putStrLn ""
+      putStrLn "Pupp3t_M@ster.zip"
+      putStrLn ""
+      putStrLn "Baixar arquivo?"
+      putStrLn ""
+      putStrLn "Digite sua resposta: "
+      baixar <- getLine
+      if baixar == "sim" || baixar == "Sim" then do
+        putStrLn "Baixando..."
+        putStrLn ""
+        putStrLn "Baixado!"
+      else do
+        putStrLn "-----------------------------------------------"
+        roubarArquivos pesquisasFeitas
+      putStrLn ""
+      if ("-> Connected World" `elem` pesquisasFeitas) then
+        roubarArquivos ["finalizado"]
+      else roubarArquivos (["-> Pupp3t_M@st3r"] ++ pesquisasFeitas)
+    else do
+      putStrLn operacaoInvalida
+      putStrLn "-----------------------------------------------"
+      roubarArquivos pesquisasFeitas
+        
+  else if ultimaPesquisa == "-> Pupp3t_M@st3r" then do
+    putStrLn ""
+    putStrLn ""
+    putStrLn ""
+    putStrLn ""
+    putStrLn "Informações a pesquisar:"
+    putStrLn ""
+    verificaPesquisa "-> Connected World" pesquisasFeitas
+    verificaPesquisa "-> GhostWeb" pesquisasFeitas
+    putStrLn ""
+    putStrLn "Pesquise por um arquivo digitando seu nome: "
+    resposta <- getLine
+    putStrLn ""
+    if resposta == "Connected World" then do
+      putStrLn "Pesquisando..."
+      putStrLn ""
+      putStrLn "1 resultado encontrado:"
+      putStrLn ""
+      putStrLn "Connected_World.zip"
+      putStrLn ""
+      putStrLn "Baixar arquivo?"
+      putStrLn ""
+      putStrLn "Digite sua resposta: "
+      baixar <- getLine
+      if baixar == "sim" || baixar == "Sim" then do
+        putStrLn "Baixando..."
+        putStrLn ""
+        putStrLn "Baixado!"
+      else do
+        putStrLn "-----------------------------------------------"
+        roubarArquivos pesquisasFeitas
+      putStrLn ""
+      if ("-> GhostWeb" `elem` pesquisasFeitas) then
+        roubarArquivos ["finalizado"]
+      else roubarArquivos (["-> Connected World"] ++ pesquisasFeitas)
+    else if resposta == "GhostWeb" then do
+      putStrLn "Pesquisando..."
+      putStrLn ""
+      putStrLn "1 resultado encontrado:"
+      putStrLn ""
+      putStrLn "GhostWeb.zip"
+      putStrLn ""
+      putStrLn "Baixar arquivo?"
+      putStrLn ""
+      putStrLn "Digite sua resposta: "
+      baixar <- getLine
+      if baixar == "sim" || baixar == "Sim" then do
+        putStrLn "Baixando..."
+        putStrLn ""
+        putStrLn "Baixado!"
+      else do
+        putStrLn "-----------------------------------------------"
+        roubarArquivos pesquisasFeitas
+      putStrLn ""
+      if ("-> Connected World" `elem` pesquisasFeitas) then
+        roubarArquivos ["finalizado"]
+      else roubarArquivos (["-> GhostWeb"] ++ pesquisasFeitas)
+    else do
+      putStrLn operacaoInvalida
+      putStrLn "-----------------------------------------------"
+      roubarArquivos pesquisasFeitas
+
+  else if ultimaPesquisa == "finalizado" then do
+    putStrLn ""
+    putStrLn ""
+    putStrLn ""
+    putStrLn ""
+    putStrLn "Todas as informacoes necessarias foram baixadas."
+    putStrLn ""
+    putStrLn "1. Sair do banco de dados."
+    putStrLn ""
+    putStrLn "Digite o número da operação desejada: "
+    operacao <- getLine
+    putStrLn ""
+    if operacao == "1" then
+      menu "contrato finalizado" {-TEMPORARIO! Deve retornar para Contratos-}
+    else do
+      putStrLn operacaoInvalida
+      roubarArquivos ["contrato finalizado"]
+
+  else roubarArquivos pesquisasFeitas
 
 --Tela de notícia
 --Onde o usuário recebe informações sobre o universo do jogo, e atualizações sobre 
