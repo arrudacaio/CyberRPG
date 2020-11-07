@@ -167,6 +167,15 @@ mensagem5 :: String
 mensagem5 =
   "M3lch10r: Fico no aguardo."
 
+derrubaFuncs :: IO()
+derrubaFuncs = do
+ num <- randomRIO (10,25::Int)
+ putStrLn "Bloqueando o acesso dos funcionários online..."
+ putStrLn ""
+ let funcsRestantes = (37 - num)
+ putStrLn ((show num) ++ " funcionários bloqueados com sucesso. Restam " ++ (show funcsRestantes) ++ " online.")
+ if num > 18 then ninhoDaAranhaMenu2 funcsRestantes
+ else gameOver
 
 ninhoDaAranhaMenu :: IO()
 ninhoDaAranhaMenu = do
@@ -194,16 +203,45 @@ ninhoDaAranhaMenu = do
       putStrLn "FUNCAO INICIAR INVASAO"
   else if op == "2"
     then do 
-      putStrLn "FUNCAO DERRUBAR FUNC"
+      derrubaFuncs
   else if op == "3"
     then do 
       putStrLn "FUNCAO hackear drone"
   else if op == "4"
     then do 
-      contratos "evento 0"
+      contratos "inicio do contrato"
   else do
     putStrLn operacaoInvalida
     contratoNinhoDaAranha
+
+-- ninho da Aranha após derrubar funcionários
+ninhoDaAranhaMenu2 :: Int -> IO()
+ninhoDaAranhaMenu2 funcsRestantes = do
+  putStrLn cabecalhoContrato1
+  putStrLn ""
+  putStrLn ("Funcionários online: " ++ (show funcsRestantes))
+  putStrLn "Nível de proteção da rede: Baixo"
+  putStrLn ""
+  putStrLn ""
+  putStrLn "Chance do invasor ser rastreado ao invadir: Baixo."
+  putStrLn "Dificuldade atual de uma invasão direta: Baixo."
+  putStrLn "Melhor curso de ação: Instalar um vírus fisicamente na sala de controle."
+  putStrLn ""
+  putStrLn ""
+  putStrLn "1. Iniciar invasão"
+  putStrLn "2. Hackear drone"
+  putStrLn ""
+  putStrLn "Digite o número da operação desejada: "
+  op <- getLine
+  if op == "1"
+    then do
+      putStrLn "FUNCAO INICIAR INVASAO"
+  else if op == "2"
+    then do 
+      putStrLn "FUNCAO hackear drone"
+  else do
+    putStrLn operacaoInvalida
+    ninhoDaAranhaMenu2 funcsRestantes
 
 
 -- Contrato 1 : Ninho da Aranha. 
@@ -220,10 +258,10 @@ contratoNinhoDaAranha = do
     ninhoDaAranhaMenu
   else if operacao == "2"
     then do 
-      contratos "evento 0"
+      contratos "inicio do contrato"
   else do
     putStrLn operacaoInvalida
-    contratos "evento 0"
+    contratos "inicio do contrato"
 
 
 -- Main, inicia o jogo na tela de login
