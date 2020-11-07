@@ -20,5 +20,5 @@ choco install haskell-stack
 stack update
 stack install random
 Pronto agora você está apto para rodar o projeto! Faça: 
-stack ghci  .\pm.hs
+stack ghci  .\pm.hs (ou talvez tenha que fazer: stack exec .\pm.exe)
 ```
