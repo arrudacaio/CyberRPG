@@ -419,6 +419,27 @@ menu "inicio do contrato" = do
   operacao <- getLine
   optionMenu (read operacao :: Int) "inicio do contrato"
 
+menu "contrato finalizado" = do
+  putStrLn ""
+  putStrLn ""
+  putStrLn ""
+  putStrLn ""
+  putStrLn ""
+  putStrLn ""
+  putStrLn "««««««««ABYSS»»»»»»»»"
+  putStrLn "O ambiente de trabalho para aqueles que seguem suas próprias leis."
+  putStrLn ""
+  putStrLn ":::::::::::::MENU:::::::::::::"
+  putStrLn "1. Mensagens (1)"
+  putStrLn "2. Perfil"
+  putStrLn "3. Contratos"
+  putStrLn "4. Notícias"
+  putStrLn "5. Desenvolvedores"
+  putStrLn ""
+  putStrLn "Digite o número da operação desejada: "
+  operacao <- getLine
+  optionMenu (read operacao :: Int) "contrato finalizado" -- ATENÇÃO! TODAS AS FUNÇÕES PRECISAM SER APTAS A RECEBER ESSE EVENTO!
+
 menu evento = do
   putStrLn ""
   putStrLn ""
@@ -486,6 +507,22 @@ mensagens "inicio do contrato" = do
   else do
     putStrLn operacaoInvalida
     mensagens "inicio do contrato"
+
+mensagens "contrato finalizado" = do
+  putStrLn cabecalhoMensagens
+  putStrLn "Você possui 1 nova mensagem"
+  putStrLn ""
+  putStrLn "1. (!) M3lch10r: Você conseguiu!"
+  putStrLn ""
+  putStrLn "2. Voltar ao Menu"
+  putStrLn ""
+  putStrLn "Digite o número da operação desejada: "
+  operacao <- getLine
+  if operacao == "1" then chatPrivado2
+  else if operacao == "2" then menu "contrato finalizado"
+  else do
+    putStrLn operacaoInvalida
+    mensagens "contrato finalizado"
 
 mensagens evento = do
   putStrLn cabecalhoMensagens
@@ -613,6 +650,13 @@ chatPrivado msgsEnviadas@(ultimaMsg:msgsAnteriores) = do
       chatPrivado msgsEnviadas
   
   else (chatPrivado msgsEnviadas)
+
+
+chatPrivado2 :: IO()
+chatPrivado2 = do 
+  putStrLn "<Ainda nao implementado>"
+  mensagens "contrato finalizado"
+
 
 --Tela de perfil do usuário
 --Será mostrado detalhes do perfil do usuário
