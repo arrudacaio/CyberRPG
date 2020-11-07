@@ -28,6 +28,30 @@ cabecalhoNoticias =
   \\n\
   \\n"
 
+cabecalhoContratos :: String
+cabecalhoContratos =
+  "-----------------------------------------------\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n:::::::::::::CONTRATOS:::::::::::::\
+  \\n\
+  \\n"
+
+cabecalhoContrato1 :: String
+cabecalhoContrato1 =
+  "-----------------------------------------------\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n:::::::::::::O Ninho da Aranha:::::::::::::\
+  \\n\
+  \\n"
+
 --Retorna o cabeçalho que antecede a tela de mensagens
 cabecalhoMensagens :: String
 cabecalhoMensagens =
@@ -142,6 +166,65 @@ mensagem4 =
 mensagem5 :: String
 mensagem5 =
   "M3lch10r: Fico no aguardo."
+
+
+ninhoDaAranhaMenu :: IO()
+ninhoDaAranhaMenu = do
+  putStrLn cabecalhoContrato1
+  putStrLn ""
+  putStrLn "Funcionários online: 37"
+  putStrLn "Nível de proteção da rede: Muito Alto"
+  putStrLn ""
+  putStrLn ""
+  putStrLn "Chance do invasor ser rastreado ao invadir: Extremamente Alta."
+  putStrLn "Dificuldade atual de uma invasão direta: Extremamente Alta."
+  putStrLn "Melhor curso de ação: diminuir segurança antes de realizar a invasão."
+  putStrLn ""
+  putStrLn ""
+  putStrLn "1. Iniciar invasão"
+  putStrLn "2. Derrubar funcionários da rede"
+  putStrLn "3. Hackear drone"
+  putStrLn ""
+  putStrLn "4. Voltar a Contratos"
+  putStrLn ""
+  putStrLn "Digite o número da operação desejada: "
+  op <- getLine
+  if op == "1"
+    then do
+      putStrLn "FUNCAO INICIAR INVASAO"
+  else if op == "2"
+    then do 
+      putStrLn "FUNCAO DERRUBAR FUNC"
+  else if op == "3"
+    then do 
+      putStrLn "FUNCAO hackear drone"
+  else if op == "4"
+    then do 
+      contratos "evento 0"
+  else do
+    putStrLn operacaoInvalida
+    contratoNinhoDaAranha
+
+
+-- Contrato 1 : Ninho da Aranha. 
+contratoNinhoDaAranha :: IO()
+contratoNinhoDaAranha = do
+  putStrLn cabecalhoContrato1
+  putStrLn ""
+  putStrLn "1. Analisar a rede interna da Digital Spider"
+  putStrLn "2. Voltar a Contratos"
+  putStrLn ""
+  putStrLn "Digite o número da operação desejada: "
+  operacao <- getLine
+  if operacao == "1" then do
+    ninhoDaAranhaMenu
+  else if operacao == "2"
+    then do 
+      contratos "evento 0"
+  else do
+    putStrLn operacaoInvalida
+    contratos "evento 0"
+
 
 -- Main, inicia o jogo na tela de login
 main = do
@@ -576,18 +659,30 @@ perfil evento = do
 --Tela de contratos do usuário
 --Será mostrado detalhes das missões do usuário(objetivo, recompensas etc)
 contratos :: String -> IO()
-contratos evento = do
+contratos "evento 0" = do
+  putStrLn cabecalhoContratos
+  putStrLn "*********ATIVOS**********"
+  putStrLn "Você possui 1 contrato(s) ativo(s)."
   putStrLn ""
+  putStrLn "1. (!) O Ninho da Aranha"
   putStrLn ""
+  putStrLn "******FINALIZADOS*******"
+  putStrLn "Você possui 0 contrato(s) finalizado(s)."
   putStrLn ""
+  putStrLn "2. Voltar ao Menu"
   putStrLn ""
-  putStrLn ""
-  putStrLn ""
-  putStrLn "««««««««ABYSS»»»»»»»»"
-  putStrLn "Imagina a tela de contratos aqui"
-  putStrLn "Pressione ENTER para sair"
-  cm <- getLine
-  menu evento
+  putStrLn "Digite o número da operação desejada: "
+  operacao <- getLine
+  if operacao == "1" 
+    then do
+      contratoNinhoDaAranha
+      contratos "evento 0"
+  else if operacao == "2"
+    then do
+      menu "evento 0"
+  else do
+    putStrLn operacaoInvalida
+    contratos "evento 0"
 
 
 -- FUNÇÕES PARA INVASÃO:
