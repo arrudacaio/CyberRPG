@@ -2,6 +2,7 @@ import System.Directory
 import System.IO
 import System.Random
 
+--Opções do menu principal
 optionMenu :: Int -> String -> IO()
 optionMenu 1 evento = mensagens evento
 optionMenu 2 evento = perfil evento
@@ -28,6 +29,7 @@ cabecalhoNoticias =
   \\n\
   \\n"
 
+--Retorna o cabeçalho que antecede a tela de contratos
 cabecalhoContratos :: String
 cabecalhoContratos =
   "-----------------------------------------------\
@@ -41,6 +43,7 @@ cabecalhoContratos =
   \\n\
   \\n"
 
+--Retorna o cabeçalho que antecede a tela de contrados do Ninho da Aranha, primeira quest
 cabecalhoContrato1 :: String
 cabecalhoContrato1 =
   "-----------------------------------------------\
@@ -80,6 +83,7 @@ operacaoInvalida = "Operação inválida! Tente novamente."
 
 
 -- Abaixo fica todos os principais textos do jogo, como noticias e mensagens
+-- os textos ficam armazenados em funções.
 noticia1 :: String
 noticia1 =
   "------------------------------------------------------------------------------------------------------------------------\
@@ -245,7 +249,9 @@ gameOver = do
   putStrLn gameOverMsg
   menu "inicio do contrato"
 
-
+-- Uma das opções do primeiro contrato
+--Realiza um calculo, e tem 50% de chande de funcionar. Caso falhe, o jogo dará Game Over
+--Caso o user tenha sucesso, aumentará a chance de prosseguir na missão
 derrubaFuncs :: IO()
 derrubaFuncs = do
  num <- randomRIO (10,25::Int)
@@ -269,6 +275,7 @@ derrubaFuncs = do
   putStrLn "Falha no bloqueio. Você foi rastreado! Sua identidade e localização foram comprometidos!"
   gameOver
 
+-- Primeira tela do Ninho da Aranha
 ninhoDaAranhaMenu :: IO()
 ninhoDaAranhaMenu = do
   putStrLn cabecalhoContrato1
@@ -307,6 +314,7 @@ ninhoDaAranhaMenu = do
     contratoNinhoDaAranha
 
 -- ninho da Aranha após derrubar funcionários
+--A chance de sucesso de invasão é aumentada
 ninhoDaAranhaMenu2 :: Int -> IO()
 ninhoDaAranhaMenu2 funcsRestantes = do
   putStrLn cabecalhoContrato1
@@ -360,6 +368,7 @@ ninhoDaAranhaMenu3 = do
     putStrLn operacaoInvalida
     ninhoDaAranhaMenu3
 
+--Finaliza o contrato, e permite voltar ao menu principal
 ninhoDaAranhaMenu4 :: IO()
 ninhoDaAranhaMenu4 = do
   putStrLn cabecalhoContrato1
@@ -397,12 +406,11 @@ contratoNinhoDaAranha = do
     putStrLn operacaoInvalida
     contratos "inicio do contrato"
 
-
 -- Main, inicia o jogo na tela de login
 main = do
   login
 
--- Retorna nome de usuario logado
+-- Retorna nome do usuario logado
 lerUserAtual :: IO String
 lerUserAtual = do
  arq <- openFile "atualUser.txt" ReadMode
@@ -421,8 +429,11 @@ login = do
   possuiConta <- getLine
   case possuiConta of
    "S" -> signIn
+   "s" -> signIn
    "N" -> signUp
+   "n" -> signUp
    "Q" -> putStrLn "\nADEUS!!"
+   "q" -> putStrLn "\nADEUS!!"
    _ -> do 
     putStrLn "Opção Inválida!"
     login
@@ -460,6 +471,7 @@ signIn = do
 --Menu de Cadastro: Cadastra um novo usuário. O login é usado como nome do arquivo, onde serao
 --guardadas informações como senha, e os dados de permanencia. A senha é usada para acessar o arquivo dentro
 --da aplicação.
+-- Não é possível criar dois usuários com o mesmo nome
 signUp :: IO()
 signUp = do
  putStrLn "LOGIN DESEJADO: "
@@ -760,7 +772,7 @@ mensagens evento = do
     putStrLn operacaoInvalida
     mensagens evento
 
-
+--Atualiza as opções de mensagens depois da escolha de mensagens do user
 verificaMsgs :: String -> [String] -> IO()
 verificaMsgs msg msgsAnteriores
   | not (msg `elem` msgsAnteriores) = putStrLn msg
@@ -769,6 +781,7 @@ verificaMsgs msg msgsAnteriores
 
 -- Chat interagível com NPC
 -- Nele é possível ter várias opções de conversa
+
 chatPrivado :: [String] -> IO()
 chatPrivado msgsEnviadas@(ultimaMsg:msgsAnteriores) = do
   putStrLn ""
@@ -934,7 +947,6 @@ perfil evento = do
   putStrLn "AQUI VAI A LISTA DE HABILIDADES"
   putStrLn ""
   putStrLn "*****EXPERIÊNCIA*****"
-  putStrLn "Pontos: <quantidade de pontos>"
   putStrLn "Fama: Hacker Mediano"
   putStrLn ""
   putStrLn "1.Melhoria de Habilidade"
@@ -1118,7 +1130,8 @@ verificaPesquisa pesquisa pesquisasAnteriores
   | not (pesquisa `elem` pesquisasAnteriores) = putStrLn pesquisa
   | otherwise = putStr ""
 
-
+--Rouba os arquivos para prosseguir a quest
+--É necessário o user digitar a opção por extenso.
 roubarArquivos :: [String] -> IO()
 roubarArquivos pesquisasFeitas@(ultimaPesquisa:pesquisasAnteriores) = do
   putStrLn "DIGITAL SPIDER - BANCO DE DADOS"
@@ -1608,11 +1621,11 @@ noticia evento = do
 --Ordenado em ordem alfabética
 desenvolvedores :: String -> IO()
 desenvolvedores evento = do
+  putStrLn "" 
   putStrLn ""
   putStrLn ""
   putStrLn ""
-  putStrLn ""
-  putStrLn ""
+  putStrLn ":::::::::::::Desenvolvedores:::::::::::::"
   putStrLn ""
   putStrLn "1. Caio José dos Santos Arruda"
   putStrLn "2. Enock Bezerra Ferreira de Souza"
