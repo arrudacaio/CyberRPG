@@ -127,7 +127,38 @@ noticia2 =
   
 noticia3 :: String
 noticia3 =
-  "<AINDA NÃO IMPLEMENTADO>"
+  "------------------------------------------------------------------------------------------------------------------------\
+  \\n\
+  \\n****************************URGENTE: Projeto Connected World É Um Golpe de Nível Mundial!****************************\
+  \\n\
+  \\nO mundo está em caos desde que uma terrível verdade foi descoberta há poucos minutos. A Digital Spider arquitetou um\
+  \\ngolpe classificado como Crime contra a humanidade, o nível mais grave de ato criminoso.\
+  \\n\
+  \\nAtravés das ações de um agente da AGI (Agência Global de Inteligência) que preferiu se manter anônimo, e das\
+  \\nhabilidades de um misterioso hacker, a rede privada da Digital Spider foi invadida hoje. O que foi encontrado chocou o\
+  \\nmundo: detalhes sobre um projeto secreto chamado de \"Puppet_M@ster\".\
+  \\n\
+  \\nSegundo os arquivos extraídos da Digital Spider, o tão aclamado projeto Connected World nada mais era do que uma farsa\
+  \\npara o real objetivo da empresa. O que foi descoberto parece tema de ficção científica, mas a própria AGI divulgou\
+  \\npublicamente que esta é uma ameaça real, e que deve ser tratada com o máximo de urgência.\
+  \\n\
+  \\nO projeto Puppet_M@ster envolve nada mais nada menos do que controlar as mentes humanas de todas as partes do mundo\
+  \\natravés da tecnologia da GhostWeb. Pelo que foi dito pela AGI, a nova radiofrequência possui a estranha capacidade de\
+  \\nalterar as sinapses cerebrais, dessa forma se tornando um potencial controlador de mentes. Pelo que é dito nos\
+  \\narquivos, a Digital Spider faria uso de tal atrocidade para colocar a empresa permanentemente no topo de tudo e de\
+  \\ntodos. A Digital Spider seria bem-sucedida no que monstros históricos como Hitler apenas tentaram: ter o mundo inteiro\
+  \\nnas palmas das mãos. É bem provável que o mundo deva o direito do livre arbítrio ao trabalho conjunto entre um agente\
+  \\nda lei e um criminoso. \
+  \\n\
+  \\nAgora, a Digital Spider está sofrendo um imenso processo de queda, a medida que órgãos de todas as partes do mundo se\
+  \\nunem para derrubar a grande besta empresarial pedaço por pedaço.\
+  \\n\
+  \\nHá aqueles que dizem que tudo isso é apenas o começo de uma guerra para adquirir o controle dessa aterrorizante\
+  \\ntecnologia, e tal afirmação é difícil de ser negada atualmente.\
+  \\n\
+  \\nO que essa reviravolta assustadora trará para o futuro de nossa sociedade, só o tempo dirá. Mas uma coisa é certa: o\
+  \\nmundo jamais será o mesmo.\
+  \\n"
 
 
 mensagem1 :: String
@@ -160,53 +191,59 @@ mensagem4 =
   \\né mais uma lenda urbana do que qualquer outra coisa. Enfim, se olhar em sua conta bancária do Abyss,\
   \\nverá que o pagamento já foi enviado e só aguarda a confirmação de que nosso contrato foi concluído para\
   \\nque você de fato receba o dinheiro. Verá também que é uma quantia bem generosa. Posso contar com seus\
-  \\nserviços?"
+  \\nserviços?\
+  \\n"
 
 
 mensagem5 :: String
 mensagem5 =
   "M3lch10r: Fico no aguardo.\
-  \\n\
-  \\n\
-  \\n\
-  \\n\
-  \\n\
-  \\n\
-  \\n\
-  \\n\
-  \\n\
-  \\n\
-  \\n\
-  \\n\
-  \\n\
-  \\n\
-  \\n\
-  \\n\
-  \\n\
-  \\n\
-  \\n\
-  \\n\
-  \\n\
-  \\n\
-  \\n\
-  \\n\
-  \\n\
-  \\n\
-  \\n\
-  \\n\
-  \\n\
-  \\n\
-  \\n\
-  \\n\
-  \\n\
-  \\n\
-  \\n\
   \\n"
-
 
 mensagem6 :: String
 mensagem6 =
-  "M3lch10r: Fico no aguardo."
+  "M3lch10r: Você realmente conseguiu! Eu admito, por vários momentos duvidei de\
+  \\nvocê. Tenho que aprender a confiar mais na minha rede de contatos. Enfim, saiba\
+  \\nque você não apenas prestou a MIM um grande serviço, mas provavelmente ao\
+  \\nmundo inteiro. Te agradeço de verdade.\
+  \\n"
+
+mensagem7 :: String
+mensagem7 =
+  "M3lch10r: Sabe aquela \"lenda urbana\" que eu te falei? Aquilo sobre um tal de Puppet_M@ster? Acontece que\
+  \\nessa coisa é muito mais real do que eu gostaria. Acho que não preciso te explicar. Se quiser saber mais,\
+  \\napenas fique de olho nas notícias. Tenho certeza de que não vai demorar muito até aqueles desgraçados da\
+  \\nDigital Spider serem desmascarados globalmente. Ah, já ia esquecendo: eu faço parte da AGI (Agência Global\
+  \\nde Inteligência). Sim, sim, acontece que eu SOU um \"tira\", como vocês malandros dizem. Mas não se preocupe.\
+  \\nJá que você foi tão cooperativo, não tenho interesse em te prender... ainda. Mas saiba que você se daria\
+  \\nmuito bem por aqui na AGI. Sempre precisamos de pessoas com suas... habilidades. Pense no assunto. Você sabe\
+  \\nonde nos encontrar se estiver interessado. Agora eu pretendo desaparecer dessa rede. Acho que os chefões\
+  \\ndo Abyss vão me deletar daqui em breve de qualquer forma. Mais uma vez, em nome de toda a AGI e, pra ser\
+  \\nsincero, de todo o mundo: muito obrigado.\
+  \\n"
+
+gameOverMsg :: String
+gameOverMsg =
+  "::::::::::::NOTA OFICIAL DOS DESENVOLVEDORES::::::::::::\
+  \\n\
+  \\nNós do Abyss lamentamos seu miserável fracasso. Infelizmente, para você, não podemos deixar que sua\
+  \\nincompetência nos arraste junto com você para a fossa. Você está imediatamente desligado do nosso sistema.\
+  \\nA partir de agora, não temos ligação alguma com você, não o conhecemos, e, para prevenir que nenhuma de\
+  \\nnossas informações será vazada para ouvidos indesejáveis, garantiremos que você permaneça em completo e\
+  \\nabsoluto silêncio.\
+  \\n\
+  \\nObrigado por ter escolhido o Abyss!\
+  \\n\
+  \\nAh, e é melhor não pisar lá fora. Bem, na verdade não faz diferença. Eles já estão dentro :).\
+  \\n\
+  \\n#######GAME OVER#######\
+  \\n"
+
+
+gameOver :: IO()
+gameOver = do
+  putStrLn gameOverMsg
+  menu "inicio do contrato"
 
 
 derrubaFuncs :: IO()
@@ -575,6 +612,27 @@ menu "contrato finalizado" = do
   operacao <- getLine
   optionMenu (read operacao :: Int) "contrato finalizado" -- ATENÇÃO! TODAS AS FUNÇÕES PRECISAM SER APTAS A RECEBER ESSE EVENTO!
 
+menu "ultima mensagem" = do
+  putStrLn ""
+  putStrLn ""
+  putStrLn ""
+  putStrLn ""
+  putStrLn ""
+  putStrLn ""
+  putStrLn "««««««««ABYSS»»»»»»»»"
+  putStrLn "O ambiente de trabalho para aqueles que seguem suas próprias leis."
+  putStrLn ""
+  putStrLn ":::::::::::::MENU:::::::::::::"
+  putStrLn "1. Mensagens"
+  putStrLn "2. Perfil"
+  putStrLn "3. Contratos"
+  putStrLn "4. Notícias (1)"
+  putStrLn "5. Desenvolvedores"
+  putStrLn ""
+  putStrLn "Digite o número da operação desejada: "
+  operacao <- getLine
+  optionMenu (read operacao :: Int) "ultima mensagem"
+
 menu evento = do
   putStrLn ""
   putStrLn ""
@@ -647,17 +705,47 @@ mensagens "contrato finalizado" = do
   putStrLn cabecalhoMensagens
   putStrLn "Você possui 1 nova mensagem"
   putStrLn ""
-  putStrLn "1. (!) M3lch10r: Você conseguiu!"
+  putStrLn "1. (!) M3lch10r: Você realmente conseguiu!"
   putStrLn ""
   putStrLn "2. Voltar ao Menu"
   putStrLn ""
   putStrLn "Digite o número da operação desejada: "
   operacao <- getLine
-  if operacao == "1" then chatPrivado2
+  if operacao == "1" then chatPrivado2 ""
   else if operacao == "2" then menu "contrato finalizado"
   else do
     putStrLn operacaoInvalida
     mensagens "contrato finalizado"
+
+mensagens "ultima mensagem" = do
+  putStrLn cabecalhoMensagens
+  putStrLn "Você possui 0 novas mensagens"
+  putStrLn ""
+  putStrLn "M3lch10r saiu."
+  putStrLn ""
+  putStrLn "1. Voltar ao Menu"
+  putStrLn ""
+  putStrLn "Digite o número da operação desejada: "
+  operacao <- getLine
+  if operacao == "1" then menu "ultima mensagem"
+  else do
+    putStrLn operacaoInvalida
+    mensagens "ultima mensagem"
+
+mensagens "fim de jogo" = do
+  putStrLn cabecalhoMensagens
+  putStrLn "Você possui 0 novas mensagens"
+  putStrLn ""
+  putStrLn "M3lch10r saiu."
+  putStrLn ""
+  putStrLn "1. Voltar ao Menu"
+  putStrLn ""
+  putStrLn "Digite o número da operação desejada: "
+  operacao <- getLine
+  if operacao == "1" then menu "fim de jogo"
+  else do
+    putStrLn operacaoInvalida
+    mensagens "fim de jogo"
 
 mensagens evento = do
   putStrLn cabecalhoMensagens
@@ -787,11 +875,38 @@ chatPrivado msgsEnviadas@(ultimaMsg:msgsAnteriores) = do
   else (chatPrivado msgsEnviadas)
 
 
-chatPrivado2 :: IO()
-chatPrivado2 = do 
-  putStrLn "<Ainda nao implementado>"
-  mensagens "contrato finalizado"
-
+chatPrivado2 :: String -> IO()
+chatPrivado2 "" = do 
+  putStrLn ""
+  putStrLn mensagem6
+  putStrLn ""
+  putStrLn "-> Do que está falando?"
+  putStrLn ""
+  putStrLn "Digite sua resposta: "
+  resposta <- getLine
+  putStrLn ""
+  if resposta == "Do que está falando?" then do
+    putStrLn "<usuario>: Do que está falando?"
+    putStrLn ""
+    chatPrivado2 "ultima mensagem"
+  else do
+    putStrLn operacaoInvalida
+    chatPrivado2 ""
+chatPrivado2 "ultima mensagem" = do
+  putStrLn ""
+  putStrLn mensagem7
+  putStrLn ""
+  putStrLn "M3lch10r saiu."
+  putStrLn ""
+  putStrLn "1. Voltar a Mensagens."
+  putStrLn ""
+  putStrLn "Digite o número da operação desejada: "
+  resposta <- getLine
+  putStrLn ""
+  if resposta == "1" then mensagens "ultima mensagem"
+  else do
+    putStrLn operacaoInvalida
+    chatPrivado2 "ultima mensagem"
 
 --Tela de perfil do usuário
 --Será mostrado detalhes do perfil do usuário
@@ -902,6 +1017,46 @@ contratos "contrato finalizado" = do
     putStrLn operacaoInvalida
     contratos "contrato finalizado"
 
+contratos "ultima mensagem" = do
+  putStrLn cabecalhoContratos
+  putStrLn "*********ATIVOS**********"
+  putStrLn "Você possui 0 contrato(s) ativo(s)."
+  putStrLn ""
+  putStrLn "******FINALIZADOS*******"
+  putStrLn "Você possui 1 contrato(s) finalizado(s)."
+  putStrLn "O Ninho da Aranha"
+  putStrLn ""
+  putStrLn "1. Voltar ao Menu"
+  putStrLn ""
+  putStrLn "Digite o número da operação desejada: "
+  operacao <- getLine
+  if operacao == "1" 
+    then do
+      menu "ultima mensagem"
+  else do
+    putStrLn operacaoInvalida
+    contratos "ultima mensagem"
+
+contratos "fim de jogo" = do
+  putStrLn cabecalhoContratos
+  putStrLn "*********ATIVOS**********"
+  putStrLn "Você possui 0 contrato(s) ativo(s)."
+  putStrLn ""
+  putStrLn "******FINALIZADOS*******"
+  putStrLn "Você possui 1 contrato(s) finalizado(s)."
+  putStrLn "O Ninho da Aranha"
+  putStrLn ""
+  putStrLn "1. Voltar ao Menu"
+  putStrLn ""
+  putStrLn "Digite o número da operação desejada: "
+  operacao <- getLine
+  if operacao == "1" 
+    then do
+      menu "fim de jogo"
+  else do
+    putStrLn operacaoInvalida
+    contratos "fim de jogo"
+
 contratos evento = do
   putStrLn cabecalhoContratos
   putStrLn "*********ATIVOS**********"
@@ -921,13 +1076,8 @@ contratos evento = do
     putStrLn operacaoInvalida
     contratos evento
 
+
 -- FUNÇÕES PARA INVASÃO:
-
-
-gameOver :: IO()
-gameOver = do
-  putStrLn "GAME OVER" -- < TEMPORÁRIO! Será substituido pela mensagem de fim de jogo.
-  menu "inicio do contrato"
   
 
 invasao :: String -> IO() -- TEMPORARIO! Deve retornar um IO()
@@ -1287,6 +1437,7 @@ noticia "evento 0" = do
   else do
     putStrLn operacaoInvalida
     noticia "evento 0"
+
 noticia "noticia 1 lida" = do
   putStrLn cabecalhoNoticias
   putStrLn "Você possui 1 nova notícia."
@@ -1312,6 +1463,7 @@ noticia "noticia 1 lida" = do
   else do
     putStrLn operacaoInvalida
     noticia "noticia 1 lida"
+
 noticia "noticia 2 lida" = do
   putStrLn cabecalhoNoticias
   putStrLn "Você possui 1 nova notícia."
@@ -1337,6 +1489,7 @@ noticia "noticia 2 lida" = do
   else do
     putStrLn operacaoInvalida
     noticia "noticia 2 lida"
+
 noticia "noticias 1 e 2 lidas" = do
   putStrLn cabecalhoNoticias
   putStrLn "Você possui 0 novas notícias."
@@ -1362,6 +1515,69 @@ noticia "noticias 1 e 2 lidas" = do
   else do
     putStrLn operacaoInvalida
     noticia "noticias 1 e 2 lidas"
+
+noticia "ultima mensagem" = do
+  putStrLn cabecalhoNoticias
+  putStrLn "Você possui 1 nova notícia."
+  putStrLn ""
+  putStrLn "1. Tecnologia: Projeto Connected World É Um Sucesso!"
+  putStrLn "2. Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web."
+  putStrLn "3. (!) URGENTE: Projeto Connected World É Um Golpe de Nível Mundial!"
+  putStrLn ""
+  putStrLn "4. Voltar ao Menu"
+  putStrLn ""
+  putStrLn "Digite o número da operação desejada: "
+  operacao <- getLine
+  if operacao == "1"
+    then do
+      putStrLn noticia1
+      noticia "ultima mensagem"
+  else if operacao == "2"
+    then do
+      putStrLn noticia2
+      noticia "ultima mensagem"
+  else if operacao == "3"
+    then do
+      putStrLn noticia3
+      noticia "fim de jogo"
+  else if operacao == "4"
+    then
+      menu "ultima mensagem"
+  else do
+    putStrLn operacaoInvalida
+    noticia "ultima mensagem"
+
+noticia "fim de jogo" = do
+  putStrLn cabecalhoNoticias
+  putStrLn "Você possui 0 novas notícias."
+  putStrLn ""
+  putStrLn "1. Tecnologia: Projeto Connected World É Um Sucesso!"
+  putStrLn "2. Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web."
+  putStrLn "3. URGENTE: Projeto Connected World É Um Golpe de Nível Mundial!"
+  putStrLn ""
+  putStrLn "4. Voltar ao Menu"
+  putStrLn ""
+  putStrLn "Digite o número da operação desejada: "
+  operacao <- getLine
+  if operacao == "1"
+    then do
+      putStrLn noticia1
+      noticia "fim de jogo"
+  else if operacao == "2"
+    then do
+      putStrLn noticia2
+      noticia "fim de jogo"
+  else if operacao == "3"
+    then do
+      putStrLn noticia3
+      noticia "fim de jogo"
+  else if operacao == "4"
+    then
+      menu "fim de jogo"
+  else do
+    putStrLn operacaoInvalida
+    noticia "fim de jogo"
+
 noticia evento = do
   putStrLn cabecalhoNoticias
   putStrLn "Você possui 0 novas notícias."
