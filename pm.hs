@@ -165,7 +165,49 @@ mensagem4 =
 
 mensagem5 :: String
 mensagem5 =
+  "M3lch10r: Fico no aguardo.\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n\
+  \\n"
+
+
+mensagem6 :: String
+mensagem6 =
   "M3lch10r: Fico no aguardo."
+
 
 derrubaFuncs :: IO()
 derrubaFuncs = do
@@ -174,8 +216,21 @@ derrubaFuncs = do
  putStrLn ""
  let funcsRestantes = (37 - num)
  putStrLn ((show num) ++ " funcionários bloqueados com sucesso. Restam " ++ (show funcsRestantes) ++ " online.")
- if num > 18 then ninhoDaAranhaMenu2 funcsRestantes
- else gameOver
+ if num > 18 then do
+  putStrLn ""
+  putStrLn "Mais de 50% dos usuários online foram derrubados."
+  putStrLn ""
+  putStrLn "Nível de proteção da rede Digital Spider diminuído!"
+  ninhoDaAranhaMenu2 funcsRestantes
+ else do
+  putStrLn "Poucos usuários derrubados. Ataque ineficaz."
+  putStrLn "Nível de proteção da rede Digital Spider não sofreu alterações."
+  putStrLn ""
+  putStrLn "Você está sofrendo uma tentativa de rastreio. Bloqueando rastreador..."
+  putStrLn ""
+  putStrLn ""
+  putStrLn "Falha no bloqueio. Você foi rastreado! Sua identidade e localização foram comprometidos!"
+  gameOver
 
 ninhoDaAranhaMenu :: IO()
 ninhoDaAranhaMenu = do
@@ -192,9 +247,7 @@ ninhoDaAranhaMenu = do
   putStrLn ""
   putStrLn "1. Iniciar invasão"
   putStrLn "2. Derrubar funcionários da rede"
-  putStrLn "3. Hackear drone"
-  putStrLn ""
-  putStrLn "4. Voltar a Contratos"
+  putStrLn "3. Hackear drone <Indisponível>"
   putStrLn ""
   putStrLn "Digite o número da operação desejada: "
   op <- getLine
@@ -210,10 +263,8 @@ ninhoDaAranhaMenu = do
       derrubaFuncs
   else if op == "3"
     then do 
-      putStrLn "FUNCAO hackear drone"
-  else if op == "4"
-    then do 
-      contratos "inicio do contrato"
+      putStrLn "OPERAÇÃO ATUALMENTE INDISPONÍVEL!"
+      ninhoDaAranhaMenu
   else do
     putStrLn operacaoInvalida
     contratoNinhoDaAranha
@@ -229,11 +280,11 @@ ninhoDaAranhaMenu2 funcsRestantes = do
   putStrLn ""
   putStrLn "Chance do invasor ser rastreado ao invadir: Baixo."
   putStrLn "Dificuldade atual de uma invasão direta: Baixo."
-  putStrLn "Melhor curso de ação: Instalar um vírus fisicamente na sala de controle."
+  putStrLn "Melhor curso de ação: Invasão direta."
   putStrLn ""
   putStrLn ""
   putStrLn "1. Iniciar invasão"
-  putStrLn "2. Hackear drone"
+  putStrLn "2. Hackear drone <Indisponível>"
   putStrLn ""
   putStrLn "Digite o número da operação desejada: "
   op <- getLine
@@ -246,10 +297,48 @@ ninhoDaAranhaMenu2 funcsRestantes = do
       invasao "baixa"
   else if op == "2"
     then do 
-      putStrLn "FUNCAO hackear drone"
+      putStrLn "OPERAÇÃO ATUALMENTE INDISPONÍVEL!"
+      ninhoDaAranhaMenu2 funcsRestantes
   else do
     putStrLn operacaoInvalida
     ninhoDaAranhaMenu2 funcsRestantes
+
+ninhoDaAranhaMenu3 :: IO()
+ninhoDaAranhaMenu3 = do
+  putStrLn cabecalhoContrato1
+  putStrLn ""
+  putStrLn "1. Enviar 3 arquivos baixados para M3lch10r"
+  putStrLn ""
+  putStrLn "Digite o número da operação desejada: "
+  op <- getLine
+  if op == "1"
+    then do
+      putStrLn "Enviando..."
+      putStrLn "1/3..."
+      putStrLn "2/3..."
+      putStrLn "3/3"
+      putStrLn "Envio completo!"
+      ninhoDaAranhaMenu4
+  else do
+    putStrLn operacaoInvalida
+    ninhoDaAranhaMenu3
+
+ninhoDaAranhaMenu4 :: IO()
+ninhoDaAranhaMenu4 = do
+  putStrLn cabecalhoContrato1
+  putStrLn ""
+  putStrLn "CONTRATO FINALIZADO!"
+  putStrLn ""
+  putStrLn "1. Voltar a Contratos"
+  putStrLn ""
+  putStrLn "Digite o número da operação desejada: "
+  op <- getLine
+  if op == "1"
+    then do
+      contratos "contrato finalizado"
+  else do
+    putStrLn operacaoInvalida
+    ninhoDaAranhaMenu4
 
 
 -- Contrato 1 : Ninho da Aranha.
@@ -767,6 +856,7 @@ contratos "evento 0" = do
   else do
     putStrLn operacaoInvalida
     contratos "evento 0"
+
 contratos "inicio do contrato" = do
   putStrLn cabecalhoContratos
   putStrLn "*********ATIVOS**********"
@@ -791,6 +881,27 @@ contratos "inicio do contrato" = do
   else do
     putStrLn operacaoInvalida
     contratos "inicio do contrato"
+
+contratos "contrato finalizado" = do
+  putStrLn cabecalhoContratos
+  putStrLn "*********ATIVOS**********"
+  putStrLn "Você possui 0 contrato(s) ativo(s)."
+  putStrLn ""
+  putStrLn "******FINALIZADOS*******"
+  putStrLn "Você possui 1 contrato(s) finalizado(s)."
+  putStrLn "O Ninho da Aranha"
+  putStrLn ""
+  putStrLn "1. Voltar ao Menu"
+  putStrLn ""
+  putStrLn "Digite o número da operação desejada: "
+  operacao <- getLine
+  if operacao == "1" 
+    then do
+      menu "contrato finalizado"
+  else do
+    putStrLn operacaoInvalida
+    contratos "contrato finalizado"
+
 contratos evento = do
   putStrLn cabecalhoContratos
   putStrLn "*********ATIVOS**********"
@@ -1140,10 +1251,10 @@ roubarArquivos pesquisasFeitas@(ultimaPesquisa:pesquisasAnteriores) = do
     operacao <- getLine
     putStrLn ""
     if operacao == "1" then
-      menu "contrato finalizado" {-TEMPORARIO! Deve retornar para Contratos-}
+      ninhoDaAranhaMenu3
     else do
       putStrLn operacaoInvalida
-      roubarArquivos ["contrato finalizado"]
+      roubarArquivos ["finalizado"]
 
   else roubarArquivos pesquisasFeitas
 
