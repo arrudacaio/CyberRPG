@@ -3,10 +3,23 @@
 A ideia é termos um jogo com um estilo RPG (Rolle-Playing Game) totalmente via linha de comando.
 
 
+## Módulos importados usados no projeto:
+ - System.Directory
+ - System.IO
+ - System.Random
+ 
+ 
+## Para rodar o CyberRPG no Ubuntu, você precisará baixar a biblioteca Random. Siga os passos para instalar:
+```
+Execute os seguintes comandos no terminal
+
+sudo apt install cabal-install
+cabal update
+cabal install random
+```
 
 
-
-## Para rodar o CyberRPG no windows, você precisará acompanhar estes passos: 
+## Para rodar o CyberRPG no Windows, você precisará baixar a biblioteca Random. Siga os passos para instalar:
 
 Antes de tudo instale o chocolatey (gerenciador de pacotes para o windows) 
 https://chocolatey.org/install 
