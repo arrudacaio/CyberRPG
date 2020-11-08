@@ -935,7 +935,7 @@ perfil evento = do
   putStrLn ""
   putStrLn "*****EXPERIÊNCIA*****"
   putStrLn "Pontos: <quantidade de pontos>"
-  putStrLn "Fama: Stalker Amador"
+  putStrLn "Fama: Hacker Mediano"
   putStrLn ""
   putStrLn "1.Melhoria de Habilidade"
   putStrLn "2.Voltar ao Menu"
