@@ -8,8 +8,9 @@ A ideia é termos um jogo com um estilo RPG (Rolle-Playing Game) totalmente via 
  - System.IO
  - System.Random
  
- 
+### Funcional:
 ## Para rodar o CyberRPG no Ubuntu, você precisará baixar a biblioteca Random. Siga os passos para instalar:
+ 
 ```
 Execute os seguintes comandos no terminal
 
