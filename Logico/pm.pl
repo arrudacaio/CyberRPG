@@ -6,6 +6,7 @@ getCabecalho(2, '\n\n\n\n\n\n\n:::::::::::::PERFIL:::::::::::::\n\n').
 getCabecalho(3, '\n\n\n\n\n\n\n:::::::::::::CONTRATOS:::::::::::::\n\n').
 getCabecalho(4, '\n\n\n\n\n\n\n:::::::::::::NOTÍCIAS:::::::::::::\n\n').
 getCabecalho(5, '\n\n\n\n\n\n\n:::::::::::::DESENVOLVEDORES:::::::::::::\n\n').
+getCabecalho('chat', '\n\n\n\n\n\n\n:::::::::::::M3lch10r:::::::::::::\n\n').
 
 getOpcaoInvalida:- 
   writeln('Opção inválida. Tente novamente').
@@ -14,13 +15,30 @@ getOpcaoInvalida:-
 getMenu('evento 0', ' \n \n \n \n \n \n ««««««««ABYSS»»»»»»»» \n O ambiente de trabalho para aqueles que seguem suas próprias leis.\n  \n :::::::::::::MENU:::::::::::::\n 1. Mensagens\n 2. Perfil\n 3. Contratos\n 4. Notícias(2)\n 5. Desenvolvedores\n \n Digite o número da operação desejada: \n ').
 getMenu('noticia 1 lida', ' \n \n \n \n \n \n ««««««««ABYSS»»»»»»»» \n O ambiente de trabalho para aqueles que seguem suas próprias leis.\n  \n :::::::::::::MENU:::::::::::::\n 1. Mensagens\n 2. Perfil\n 3. Contratos\n 4. Notícias(1)\n 5. Desenvolvedores\n \n Digite o número da operação desejada: \n ').
 getMenu('noticia 2 lida', ' \n \n \n \n \n \n ««««««««ABYSS»»»»»»»» \n O ambiente de trabalho para aqueles que seguem suas próprias leis.\n  \n :::::::::::::MENU:::::::::::::\n 1. Mensagens\n 2. Perfil\n 3. Contratos\n 4. Notícias(1)\n 5. Desenvolvedores\n \n Digite o número da operação desejada: \n ').
-getMenu('noticia 1 e 2 lida', ' \n \n \n \n \n \n ««««««««ABYSS»»»»»»»» \n O ambiente de trabalho para aqueles que seguem suas próprias leis.\n  \n :::::::::::::MENU:::::::::::::\n 1. Mensagens\n 2. Perfil\n 3. Contratos\n 4. Notícias\n 5. Desenvolvedores\n \n Digite o número da operação desejada: \n ').
+getMenu('noticia 1 e 2 lida', ' \n \n \n \n \n \n ««««««««ABYSS»»»»»»»» \n O ambiente de trabalho para aqueles que seguem suas próprias leis.\n  \n :::::::::::::MENU:::::::::::::\n 1. Mensagens(!)\n 2. Perfil\n 3. Contratos\n 4. Notícias\n 5. Desenvolvedores\n \n Digite o número da operação desejada: \n ').
+getMenu('contrato ativado', ' \n \n \n \n \n \n ««««««««ABYSS»»»»»»»» \n O ambiente de trabalho para aqueles que seguem suas próprias leis.\n  \n :::::::::::::MENU:::::::::::::\n 1. Mensagens\n 2. Perfil\n 3. Contratos(!)\n 4. Notícias\n 5. Desenvolvedores\n \n Digite o número da operação desejada: \n ').
 
 getNoticia('evento 0', 'Você possui 0 novas notícias.\n (!)1.Tecnologia: Projeto Connected World É Um Sucesso!\n (!)2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n \n 3. Voltar ao Menu\n \nDigite o número da opção desejada').
 getNoticia('noticia 1 lida', 'Você possui 0 novas notícias.\n 1.Tecnologia: Projeto Connected World É Um Sucesso!\n (!)2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n \n 3. Voltar ao Menu\n \nDigite o número da opção desejada').
 getNoticia('noticia 2 lida', 'Você possui 0 novas notícias.\n (!)1.Tecnologia: Projeto Connected World É Um Sucesso!\n 2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n \n 3. Voltar ao Menu\n \nDigite o número da opção desejada').
 getNoticia('noticia 1 e 2 lida', 'Você possui 0 novas notícias.\n 1.Tecnologia: Projeto Connected World É Um Sucesso!\n 2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n \n 3. Voltar ao Menu\n \nDigite o número da opção desejada').
 getNoticia('ultima mensagem', 'Você possui 1 novas notícias.\n 1.Tecnologia: Projeto Connected World É Um Sucesso!\n 2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n 3. (!) URGENTE: Projeto Connected Word É Um Golpe de Nível Mundial! \n 4. Voltar ao Menu \nDigite o número da opção desejada').
+
+getMensagem('evento 0', 'Você possui 0 novas mensagens. \n\n\n 1. Voltar ao Menu. \n\n Digite o número da operação desejada').
+getMensagem('noticia 1 e 2 lida', 'Você possui 1 novas mensagens.\n\n1. (!) M3lch10r: Oi, ouvi falar que você sabe hackear coisas... \n2. Voltar ao Menu\n\n Digite o número da operação desejada:').
+getMensagem('inicio do contrato', 'Você possui 0 novas mensagens\n\nM3lch10r: Fico no aguardo.\n\n1. Voltar ao Menu\n\nDigite o número da operação desejada: ').
+getMensagem('contrato finalizado', 'Você possui 1 nova mensagem\n\n1.(!) M3lch10r: Você realmente conseguiu\n\n2. Voltar ao Menu.\n\nDigite o número da operação desejada.').
+getMensagem('ultima mensagem', 'Você possui 0 novas mensagens\n\nM3lch10r saiu.\n\n1. Voltar ao Menu\n\nDigite o número da operação desejada:  ').
+
+
+mensagem('mensagem 1', 'M3lch10r: Oi, ouvi falar que você sabe hackear coisas. Gostaria que fizesse um pequeno serviço pra mim.').
+mensagem('mensagem 2', 'M3lch10r: Você sabe como isso aqui funciona. Só usuários \"verificados\" pelos chefões do Abyss podem entrar\nem contato com vocês. Além disso, mesmo se eu fosse um tira, o que diabos eu poderia fazer? Todo mundo é\npraticamente irrastreável aqui, contanto que não façam nada muito estúpido. Agora, você quer o trabalho\nou não?\n').
+mensagem('mensagem 3', 'M3lch10r: E eu aqui achando que você levaria o trabalho a sério. Tudo bem. Mas supondo que eu não tenha\nouvido errado, enquanto eu não achar alguém mais disposto a me ajudar, vou estar por aqui se mudar de\nideia (mas não por muito tempo).').
+mensagem('mensagem 4', 'M3lch10r: Sabe a Digital Spider? Então, preciso que você invada ela e \"pegue emprestado\" alguns dados\npra mim. Quero tudo o que você puder encontrar sobre a GhostWeb, sobre o projeto Connected World, e, se\npossível, sobre algo chamado \"Puppet_M@ster\". Não se preocupe se não achar nada sobre este último. Ele\né mais uma lenda urbana do que qualquer outra coisa. Enfim, se olhar em sua conta bancária do Abyss,\nverá que o pagamento já foi enviado e só aguarda a confirmação de que nosso contrato foi concluído para\nque você de fato receba o dinheiro. Verá também que é uma quantia bem generosa. Posso contar com seus\nserviços?').
+mensagem('mensagem 5', 'M3lch10r: Fico no aguardo.').
+mensagem('mensagem 6', 'M3lch10r: Você realmente conseguiu! Eu admito, por vários momentos duvidei de\nvocê. Tenho que aprender a confiar mais na minha rede de contatos. Enfim, saiba\nque você não apenas prestou a MIM um grande serviço, mas provavelmente ao\nmundo inteiro. Te agradeço de verdade.').
+mensagem('mensagem 7', 'M3lch10r: Sabe aquela \"lenda urbana\" que eu te falei? Aquilo sobre um tal de Puppet_M@ster? Acontece que\nessa coisa é muito mais real do que eu gostaria. Acho que não preciso te explicar. Se quiser saber mais,\napenas fique de olho nas notícias. Tenho certeza de que não vai demorar muito até aqueles desgraçados da\nDigital Spider serem desmascarados globalmente. Ah, já ia esquecendo: eu faço parte da AGI (Agência Global\nde Inteligência). Sim, sim, acontece que eu SOU um \"tira\", como vocês malandros dizem. Mas não se preocupe.\nJá que você foi tão cooperativo, não tenho interesse em te prender... ainda. Mas saiba que você se daria\nmuito bem por aqui na AGI. Sempre precisamos de pessoas com suas... habilidades. Pense no assunto. Você sabe\nonde nos encontrar se estiver interessado. Agora eu pretendo desaparecer dessa rede. Acho que os chefões\ndo Abyss vão me deletar daqui em breve de qualquer forma. Mais uma vez, em nome de toda a AGI e, pra ser\nsincero, de todo o mundo: muito obrigado.').
+
 
 getNoticia1 :-
   getCabecalho(4, R),
@@ -89,15 +107,9 @@ getNoticia3 :-
   writeln('mundo jamais será o mesmo.'),
   writeln('\n').
   
-getMensagem(1, 'M3lch10r: Oi, ouvi falar que você sabe hackear coisas. Gostaria que fizesse um pequeno serviço pra mim.').
-getMensagem(2, 'M3lch10r: Você sabe como isso aqui funciona. Só usuários \"verificados\" pelos chefões do Abyss podem entrar\nnem contato com vocês. Além disso, mesmo se eu fosse um tira, o que diabos eu poderia fazer? Todo mundo é\npraticamente irrastreável aqui, contanto que não façam nada muito estúpido. Agora, você quer o trabalho\nou não?\n').
-getMensagem(3, 'M3lch10r: E eu aqui achando que você levaria o trabalho a sério. Tudo bem. Mas supondo que eu não tenha\nouvido errado, enquanto eu não achar alguém mais disposto a me ajudar, vou estar por aqui se mudar de\nideia (mas não por muito tempo).\n').
-getMensagem(4, 'M3lch10r: Sabe a Digital Spider? Então, preciso que você invada ela e \"pegue emprestado\" alguns dados\npra mim. Quero tudo o que você puder encontrar sobre a GhostWeb, sobre o projeto Connected World, e, se\npossível, sobre algo chamado \"Puppet_M@ster\". Não se preocupe se não achar nada sobre este último. Ele\né mais uma lenda urbana do que qualquer outra coisa. Enfim, se olhar em sua conta bancária do Abyss,\nverá que o pagamento já foi enviado e só aguarda a confirmação de que nosso contrato foi concluído para\nque você de fato receba o dinheiro. Verá também que é uma quantia bem generosa. Posso contar com seus\nserviços?\n').
-getMensagem(5, 'M3lch10r: Fico no aguardo.\n').
-getMensagem(6, 'M3lch10r: Você realmente conseguiu! Eu admito, por vários momentos duvidei de\nvocê. Tenho que aprender a confiar mais na minha rede de contatos. Enfim, saiba\nque você não apenas prestou a MIM um grande serviço, mas provavelmente ao\nmundo inteiro. Te agradeço de verdade.\n').
-getMensagem(7, 'M3lch10r: Sabe aquela \"lenda urbana\" que eu te falei? Aquilo sobre um tal de Puppet_M@ster? Acontece que\nessa coisa é muito mais real do que eu gostaria. Acho que não preciso te explicar. Se quiser saber mais,\napenas fique de olho nas notícias. Tenho certeza de que não vai demorar muito até aqueles desgraçados da\nDigital Spider serem desmascarados globalmente. Ah, já ia esquecendo: eu faço parte da AGI (Agência Global\nde Inteligência). Sim, sim, acontece que eu SOU um \"tira\", como vocês malandros dizem. Mas não se preocupe.\nJá que você foi tão cooperativo, não tenho interesse em te prender... ainda. Mas saiba que você se daria\nmuito bem por aqui na AGI. Sempre precisamos de pessoas com suas... habilidades. Pense no assunto. Você sabe\nonde nos encontrar se estiver interessado. Agora eu pretendo desaparecer dessa rede. Acho que os chefões\ndo Abyss vão me deletar daqui em breve de qualquer forma. Mais uma vez, em nome de toda a AGI e, pra ser\nsincero, de todo o mundo: muito obrigado.\n').
-
 getGameOverMsg('::::::::::::NOTA OFICIAL DOS DESENVOLVEDORES::::::::::::\nNós do Abyss lamentamos seu miserável fracasso. Infelizmente, para você, não podemos deixar que sua\nincompetência nos arraste junto com você para a fossa. Você está imediatamente desligado do nosso sistema.\nA partir de agora, não temos ligação alguma com você, não o conhecemos, e, para prevenir que nenhuma de\nnossas informações será vazada para ouvidos indesejáveis, garantiremos que você permaneça em completo e\nabsoluto silêncio.\n\nObrigado por ter escolhido o Abyss!\n\nAh, e é melhor não pisar lá fora. Bem, na verdade não faz diferença. Eles já estão dentro :).\n\n#######GAME OVER#######\n').
+
+
 
 noticia('evento 0') :-
   writeln('\n \n \n'),
@@ -131,7 +143,129 @@ noticia('noticia 1 e 2 lida') :-
   read(Option), 
   (Option =:= 1 -> getNoticia1, noticia('noticia 1 e 2 lida'); Option =:= 2 -> getNoticia2, noticia('noticia 1 e 2 lida'); Option =:= 3 -> menu('noticia 1 e 2 lida'); getOpcaoInvalida, noticia('noticia 1 e 2 lida')).
 
+noticia('ultima mensagem'):-
+  writeln('\n \n \n'),
+  getNoticia('ultima mensagem', Text),
+  writeln(Text),
+  read(Option), 
+  (Option =:= 1 -> getNoticia1, noticia('ultima mensagem'); Option =:= 2 -> getNoticia2, noticia('noticia 1 e 2 lida'); Option =:= 3 -> getNoticia3, noticia('ultima mensagem'); Option =:= 4, menu('ultima mensagem'); getOpcaoInvalida, noticia('ultima mensagem')).
+
+noticia('contrato ativado'):-
+  writeln('\n \n \n'),
+  getNoticia('noticia 1 e 2 lida', Text),
+  writeln(Text),
+  read(Option), 
+  (Option =:= 1 -> getNoticia1, noticia('noticia 1 e 2 lida'); Option =:= 2 -> getNoticia2, noticia('noticia 1 e 2 lida'); Option =:= 3 -> menu('contrato ativado'); getOpcaoInvalida, noticia('contrato ativado')).
+
+/* A partir daqui vai ser as funções de mensagem */
+
+getChat('mensagem 1'):-
+  getCabecalho('chat', Cabecalho),
+  writeln(Cabecalho),
+  mensagem('mensagem 1', Text),
+  writeln(Text),
+  writeln('1. Ok, pode mandar.'),
+  writeln('2. E como sei que você não é um tira?'),
+  writeln('3. Você ouviu errado. Cai fora.'),
+  read(Option),
+  (Option =:= 1 -> getChat('mensagem 4'); Option =:= 2 -> getChat('mensagem 2'); Option =:= 3 -> getChat('mensagem 3'); getChat('mensagem 1'); writeln('Operação inválida! Tente novamente.'), getChat('mensagem 1')).
+  
+getChat('mensagem 2'):-
+  getCabecalho('chat', Cabecalho),
+  writeln(Cabecalho),
+  mensagem('mensagem 2', Text),
+  writeln(Text),
+  writeln('1. Ok, pode mandar.'),
+  writeln('2. Você ouviu errado. Cai fora.'),
+  read(Option),
+  (Option =:= 1 -> getChat('mensagem 4'); Option =:= 2 -> getChat('mensagem 4'); writeln('Operação inválida! Tente novamente.'), getChat('mensagem 2')).
+
+getChat('mensagem 3'):-
+  getCabecalho('chat', Cabecalho),
+  writeln(Cabecalho),
+  mensagem('mensagem 3', Text),
+  writeln(Text),
+  writeln('1. Ok, pode mandar.'),
+  writeln('2. E como sei que você não é um tira?'),
+  read(Option),
+  (Option =:= 1 -> getChat('mensagem 4'); Option =:= 2 -> getChat('mensagem 6'); writeln('Operação inválida! Tente novamente.'), getChat('mensagem 3')).
+ 
+getChat('mensagem 4'):-
+  getCabecalho('chat', Cabecalho),
+  writeln(Cabecalho),
+  mensagem('mensagem 4', Text),
+  writeln(Text),
+  writeln('1. Considere feito.'),
+  read(Option),
+  (Option =:= 1 -> menu('Contrato Ativo');  writeln('Operação inválida! Tente novamente.'), getChat('mensagem 4')).
+  
+/*Se o for para mensagem 2  digitar 'voce ouviu errado, cai fora'  */
+getChat('mensagem 5'):-
+  getCabecalho('chat', Cabecalho),
+  writeln(Cabecalho),
+  mensagem('mensagem 3', Text),
+  writeln(Text),
+  writeln('1. Ok, pode mandar.'),
+  read(Option),
+  (Option =:= 1 -> getChat('mensagem 4'); writeln('Operação inválida! Tente novamente.'), getChat('mensagem 5')).
+
+/*Se o jogador for para mensagem 3 e digitar 'e como sei que vc n e um tira?'*/
+getChat('mensagem 6'):-
+  getCabecalho('chat', Cabecalho),
+  writeln(Cabecalho),
+  mensagem('mensagem 2', Text),
+  writeln(Text),
+  writeln('1. Ok, pode mandar.'),
+  read(Option),
+  (Option =:= 1 -> getChat('mensagem 4'); writeln('Operação inválida! Tente novamente.'), getChat('mensagem 6')).
+
+
+mensagemMenu('evento 0'):-
+  getCabecalho(1, Cabecalho),
+  writeln(Cabecalho),
+  getMensagem('evento 0', Text),
+  writeln(Text),
+  read(Option),
+  (Option =:= 1 -> menu('evento 0'); writeln('Operação inválida! Tente novamente'), mensagemMenu('evento 0')).
+  
+mensagemMenu('noticia 1 lida'):-
+  getCabecalho(1, Cabecalho),
+  writeln(Cabecalho),
+  getMensagem('evento 0', Text),
+  writeln(Text),
+  read(Option),
+  (Option =:= 1 -> menu('noticia 1 lida'); writeln('Operação inválida! Tente novamente'), mensagemMenu('noticia 1 lida')).
+  
+mensagemMenu('noticia 2 lida'):-
+  getCabecalho(1, Cabecalho),
+  writeln(Cabecalho),
+  getMensagem('evento 0', Text),
+  writeln(Text),
+  read(Option),
+  (Option =:= 1 -> menu('noticia 2 lida'); writeln('Operação inválida! Tente novamente'), mensagemMenu('noticia 2 lida')).
+
+mensagemMenu('noticia 1 e 2 lida'):-
+  getCabecalho(1, Cabecalho),
+  writeln(Cabecalho),
+  getMensagem('noticia 1 e 2 lida', Text),
+  writeln(Text),
+  read(Option),
+  (Option =:= 1 -> getChat('mensagem 1'); mensagemMenu('noticia 1 e 2 lida')).
+  
+mensagemMenu('contrato ativado'):-
+  getCabecalho(1, Cabecalho),
+  writeln(Cabecalho),
+  getMensagem('inicio do contrato', Text),
+  writeln(Text),
+  read(Option),
+  (Option =:= 1 -> menu('contrato ativado')).
+  
+  
+
+
+getOption(Evento, 1) :- mensagemMenu(Evento).
 getOption(Evento, 4) :- noticia(Evento).
+
 
 main :- 
   menu('evento 0'),
@@ -144,10 +278,4 @@ menu(Evento) :-
   getOption(Evento, Option),
   write(R),
   read(Skip).
-
-  
-  
-
-  
-
 
