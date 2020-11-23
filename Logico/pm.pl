@@ -1,11 +1,11 @@
 getRandom(N1, N2, R):- R = random_between(0, 100, R).
 
 
-getCabecalho(1, '\n\n\n\n\n\n\n:::::::::::::MENSAGENS:::::::::::::\n\n').
-getCabecalho(2, '\n\n\n\n\n\n\n:::::::::::::PERFIL:::::::::::::\n\n').
-getCabecalho(3, '\n\n\n\n\n\n\n:::::::::::::CONTRATOS:::::::::::::\n\n').
-getCabecalho(4, '\n\n\n\n\n\n\n:::::::::::::NOTÍCIAS:::::::::::::\n\n').
-getCabecalho(5, '\n\n\n\n\n\n\n:::::::::::::DESENVOLVEDORES:::::::::::::\n\n').
+getCabecalho('1', '\n\n\n\n\n\n\n:::::::::::::MENSAGENS:::::::::::::\n\n').
+getCabecalho('2', '\n\n\n\n\n\n\n:::::::::::::PERFIL:::::::::::::\n\n').
+getCabecalho('3', '\n\n\n\n\n\n\n:::::::::::::CONTRATOS:::::::::::::\n\n').
+getCabecalho('4', '\n\n\n\n\n\n\n:::::::::::::NOTÍCIAS:::::::::::::\n\n').
+getCabecalho('5', '\n\n\n\n\n\n\n:::::::::::::DESENVOLVEDORES:::::::::::::\n\n').
 getCabecalho('chat', '\n\n\n\n\n\n\n:::::::::::::M3lch10r:::::::::::::\n\n').
 
 getOpcaoInvalida:- 
@@ -41,7 +41,7 @@ mensagem('mensagem 7', 'M3lch10r: Sabe aquela \"lenda urbana\" que eu te falei? 
 
 
 getNoticia1 :-
-  getCabecalho(4, R),
+  getCabecalho('4', R),
   writeln(R),
   writeln('\n \n ------------------------------------------------------------------------------------------------------------------------'),
   writeln('\n \n ****************************Tecnologia: Projeto Connected World É Um Sucesso!****************************'),
@@ -63,7 +63,7 @@ getNoticia1 :-
   writeln('').
   
 getNoticia2 :-
-  getCabecalho(4, R),
+  getCabecalho('4', R),
   writeln(R),
   writeln('\n'),
   writeln('------------------------------------------------------------------------------------------------------------------------'),
@@ -80,7 +80,7 @@ getNoticia2 :-
   writeln('\n').
 
 getNoticia3 :-
-  getCabecalho(4, R),
+  getCabecalho('4', R),
   writeln(R),
   writeln('------------------------------------------------------------------------------------------------------------------------'),
   writeln('\n****************************URGENTE: Projeto Connected World É Um Golpe de Nível Mundial!****************************'),
@@ -115,15 +115,17 @@ noticia('evento 0') :-
   writeln('\n \n \n'),
   getNoticia('evento 0', Text),
   writeln(Text),
-  read(Option),
-  (Option =:= 1 -> getNoticia1, noticia('noticia 1 lida'); Option =:= 2 -> getNoticia2, noticia('noticia 2 lida'); Option =:= 3 -> menu('evento 0'); getOpcaoInvalida, noticia('evento 0')).
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option = '1' -> getNoticia1, noticia('noticia 1 lida'); Option = '2' -> getNoticia2, noticia('noticia 2 lida'); Option = '3' -> menu('evento 0'); getOpcaoInvalida, noticia('evento 0')).
 
 noticia('noticia 1 lida') :-
   writeln('\n \n \n'),
   getNoticia('noticia 1 lida', Text),
   writeln(Text),
-  read(Option),
-  (Option =:= 1 -> getNoticia1, noticia('noticia 1 lida'); Option =:= 2 -> getNoticia2, noticia('noticia 1 e 2 lida'); Option =:= 3 -> menu('noticia 1 lida')),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option = '1' -> getNoticia1, noticia('noticia 1 lida'); Option = '2' -> getNoticia2, noticia('noticia 1 e 2 lida'); Option = '3' -> menu('noticia 1 lida')),
   writeln('Digite uma opção válida'),
   noticia('noticia 1 lida').
 
@@ -131,8 +133,9 @@ noticia('noticia 2 lida') :-
   writeln('\n \n \n'),
   getNoticia('noticia 2 lida', Text),
   writeln(Text),
-  read(Option),
-  (Option =:= 1 -> getNoticia1, noticia('noticia 1 e 2 lida'); Option =:= 2 -> getNoticia2, noticia('noticia 2 lida'); Option =:= 3 -> menu('noticia 2 lida')),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option = '1' -> getNoticia1, noticia('noticia 1 e 2 lida'); Option = '2' -> getNoticia2, noticia('noticia 2 lida'); Option = '3' -> menu('noticia 2 lida')),
   writeln('Digite uma opção válida'),
   noticia('noticia 2 lida').
  
@@ -140,22 +143,25 @@ noticia('noticia 1 e 2 lida') :-
   writeln('\n \n \n'),
   getNoticia('noticia 1 e 2 lida', Text),
   writeln(Text),
-  read(Option), 
-  (Option =:= 1 -> getNoticia1, noticia('noticia 1 e 2 lida'); Option =:= 2 -> getNoticia2, noticia('noticia 1 e 2 lida'); Option =:= 3 -> menu('noticia 1 e 2 lida'); getOpcaoInvalida, noticia('noticia 1 e 2 lida')).
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op), 
+  (Option = '1' -> getNoticia1, noticia('noticia 1 e 2 lida'); Option = '2' -> getNoticia2, noticia('noticia 1 e 2 lida'); Option = '3' -> menu('noticia 1 e 2 lida'); getOpcaoInvalida, noticia('noticia 1 e 2 lida')).
 
 noticia('ultima mensagem'):-
   writeln('\n \n \n'),
   getNoticia('ultima mensagem', Text),
   writeln(Text),
-  read(Option), 
-  (Option =:= 1 -> getNoticia1, noticia('ultima mensagem'); Option =:= 2 -> getNoticia2, noticia('noticia 1 e 2 lida'); Option =:= 3 -> getNoticia3, noticia('ultima mensagem'); Option =:= 4, menu('ultima mensagem'); getOpcaoInvalida, noticia('ultima mensagem')).
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op), 
+  (Option = '1' -> getNoticia1, noticia('ultima mensagem'); Option = '2' -> getNoticia2, noticia('noticia 1 e 2 lida'); Option = '3' -> getNoticia3, noticia('ultima mensagem'); Option =:= 4, menu('ultima mensagem'); getOpcaoInvalida, noticia('ultima mensagem')).
 
 noticia('contrato ativado'):-
   writeln('\n \n \n'),
   getNoticia('noticia 1 e 2 lida', Text),
   writeln(Text),
-  read(Option), 
-  (Option =:= 1 -> getNoticia1, noticia('noticia 1 e 2 lida'); Option =:= 2 -> getNoticia2, noticia('noticia 1 e 2 lida'); Option =:= 3 -> menu('contrato ativado'); getOpcaoInvalida, noticia('contrato ativado')).
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op), 
+  (Option = '1' -> getNoticia1, noticia('noticia 1 e 2 lida'); Option = '2' -> getNoticia2, noticia('noticia 1 e 2 lida'); Option = '3' -> menu('contrato ativado'); getOpcaoInvalida, noticia('contrato ativado')).
 
 /* A partir daqui vai ser as funções de mensagem */
 
@@ -167,8 +173,9 @@ getChat('mensagem 1'):-
   writeln('1. Ok, pode mandar.'),
   writeln('2. E como sei que você não é um tira?'),
   writeln('3. Você ouviu errado. Cai fora.'),
-  read(Option),
-  (Option =:= 1 -> getChat('mensagem 4'); Option =:= 2 -> getChat('mensagem 2'); Option =:= 3 -> getChat('mensagem 3'); getChat('mensagem 1'); writeln('Operação inválida! Tente novamente.'), getChat('mensagem 1')).
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option = '1' -> getChat('mensagem 4'); Option = '2' -> getChat('mensagem 2'); Option = '3' -> getChat('mensagem 3'); getChat('mensagem 1'); writeln('Operação inválida! Tente novamente.'), getChat('mensagem 1')).
   
 getChat('mensagem 2'):-
   getCabecalho('chat', Cabecalho),
@@ -177,8 +184,9 @@ getChat('mensagem 2'):-
   writeln(Text),
   writeln('1. Ok, pode mandar.'),
   writeln('2. Você ouviu errado. Cai fora.'),
-  read(Option),
-  (Option =:= 1 -> getChat('mensagem 4'); Option =:= 2 -> getChat('mensagem 4'); writeln('Operação inválida! Tente novamente.'), getChat('mensagem 2')).
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option = '1' -> getChat('mensagem 4'); Option = '2' -> getChat('mensagem 4'); writeln('Operação inválida! Tente novamente.'), getChat('mensagem 2')).
 
 getChat('mensagem 3'):-
   getCabecalho('chat', Cabecalho),
@@ -187,8 +195,9 @@ getChat('mensagem 3'):-
   writeln(Text),
   writeln('1. Ok, pode mandar.'),
   writeln('2. E como sei que você não é um tira?'),
-  read(Option),
-  (Option =:= 1 -> getChat('mensagem 4'); Option =:= 2 -> getChat('mensagem 6'); writeln('Operação inválida! Tente novamente.'), getChat('mensagem 3')).
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option = '1' -> getChat('mensagem 4'); Option = '2' -> getChat('mensagem 6'); writeln('Operação inválida! Tente novamente.'), getChat('mensagem 3')).
  
 getChat('mensagem 4'):-
   getCabecalho('chat', Cabecalho),
@@ -196,8 +205,9 @@ getChat('mensagem 4'):-
   mensagem('mensagem 4', Text),
   writeln(Text),
   writeln('1. Considere feito.'),
-  read(Option),
-  (Option =:= 1 -> menu('Contrato Ativo');  writeln('Operação inválida! Tente novamente.'), getChat('mensagem 4')).
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option = '1' -> menu('contrato ativado');  writeln('Operação inválida! Tente novamente.'), getChat('mensagem 4')).
   
 /*Se o for para mensagem 2  digitar 'voce ouviu errado, cai fora'  */
 getChat('mensagem 5'):-
@@ -206,8 +216,9 @@ getChat('mensagem 5'):-
   mensagem('mensagem 3', Text),
   writeln(Text),
   writeln('1. Ok, pode mandar.'),
-  read(Option),
-  (Option =:= 1 -> getChat('mensagem 4'); writeln('Operação inválida! Tente novamente.'), getChat('mensagem 5')).
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option = '1' -> getChat('mensagem 4'); writeln('Operação inválida! Tente novamente.'), getChat('mensagem 5')).
 
 /*Se o jogador for para mensagem 3 e digitar 'e como sei que vc n e um tira?'*/
 getChat('mensagem 6'):-
@@ -216,56 +227,62 @@ getChat('mensagem 6'):-
   mensagem('mensagem 2', Text),
   writeln(Text),
   writeln('1. Ok, pode mandar.'),
-  read(Option),
-  (Option =:= 1 -> getChat('mensagem 4'); writeln('Operação inválida! Tente novamente.'), getChat('mensagem 6')).
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option = '1' -> getChat('mensagem 4'); writeln('Operação inválida! Tente novamente.'), getChat('mensagem 6')).
 
 
 mensagemMenu('evento 0'):-
-  getCabecalho(1, Cabecalho),
+  getCabecalho('1', Cabecalho),
   writeln(Cabecalho),
   getMensagem('evento 0', Text),
   writeln(Text),
-  read(Option),
-  (Option =:= 1 -> menu('evento 0'); writeln('Operação inválida! Tente novamente'), mensagemMenu('evento 0')).
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option = '1' -> menu('evento 0'); writeln('Operação inválida! Tente novamente'), mensagemMenu('evento 0')).
   
 mensagemMenu('noticia 1 lida'):-
-  getCabecalho(1, Cabecalho),
+  getCabecalho('1', Cabecalho),
   writeln(Cabecalho),
   getMensagem('evento 0', Text),
   writeln(Text),
-  read(Option),
-  (Option =:= 1 -> menu('noticia 1 lida'); writeln('Operação inválida! Tente novamente'), mensagemMenu('noticia 1 lida')).
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option = '1' -> menu('noticia 1 lida'); writeln('Operação inválida! Tente novamente'), mensagemMenu('noticia 1 lida')).
   
 mensagemMenu('noticia 2 lida'):-
-  getCabecalho(1, Cabecalho),
+  getCabecalho('1', Cabecalho),
   writeln(Cabecalho),
   getMensagem('evento 0', Text),
   writeln(Text),
-  read(Option),
-  (Option =:= 1 -> menu('noticia 2 lida'); writeln('Operação inválida! Tente novamente'), mensagemMenu('noticia 2 lida')).
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option = '1' -> menu('noticia 2 lida'); writeln('Operação inválida! Tente novamente'), mensagemMenu('noticia 2 lida')).
 
 mensagemMenu('noticia 1 e 2 lida'):-
-  getCabecalho(1, Cabecalho),
+  getCabecalho('1', Cabecalho),
   writeln(Cabecalho),
   getMensagem('noticia 1 e 2 lida', Text),
   writeln(Text),
-  read(Option),
-  (Option =:= 1 -> getChat('mensagem 1'); mensagemMenu('noticia 1 e 2 lida')).
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option = '1' -> getChat('mensagem 1'); mensagemMenu('noticia 1 e 2 lida')).
   
 mensagemMenu('contrato ativado'):-
-  getCabecalho(1, Cabecalho),
+  getCabecalho('1', Cabecalho),
   writeln(Cabecalho),
   getMensagem('inicio do contrato', Text),
   writeln(Text),
-  read(Option),
-  (Option =:= 1 -> menu('contrato ativado')).
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option = '1' -> menu('contrato ativado')).
   
   
 
 
-getOption(Evento, 1) :- mensagemMenu(Evento).
-getOption(Evento, 4) :- noticia(Evento).
-
+getOption(Evento, '1') :- mensagemMenu(Evento).
+getOption(Evento, '4') :- noticia(Evento).
+getOption(Evento,_) :- writeln('Opção inválida'), menu(Evento).
 
 main :- 
   menu('evento 0'),
@@ -274,8 +291,7 @@ main :-
 menu(Evento) :-
   getMenu(Evento, Text),
   write(Text),
-  read(Option),
-  getOption(Evento, Option),
-  write(R),
-  read(Skip).
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  getOption(Evento, Option).
 
