@@ -276,18 +276,69 @@ mensagemMenu('contrato ativado'):-
   read_line_to_codes(user_input, Op),
   atom_codes(Option, Op),
   (Option = '1' -> menu('contrato ativado')).
-  
-  
 
 
 getOption(Evento, '1') :- mensagemMenu(Evento).
 getOption(Evento, '4') :- noticia(Evento).
 getOption(Evento,_) :- writeln('Opção inválida'), menu(Evento).
 
-main :- 
-  menu('evento 0'),
-  halt.
+/*Funcionalidade de Login*/
   
+verifica_senha(Senha,SenhaArq):- Senha = SenhaArq, menu('evento 0').
+verifica_senha(Senha,SenhaArq):- Senha \= SenhaArq, writeln("Senha incorreta!!"),signIn.
+
+verifica_existencia(Arquivo):- exists_file(Arquivo), login(Arquivo).
+verifica_existencia(Arquivo):- not(exists_file(Arquivo)), writeln("Usuário não encontrado!"),main.
+
+verifica_usuario(Arquivo):- not(exists_file(Arquivo)), signUp2(Arquivo).
+verifica_usuario(Arquivo):- exists_file(Arquivo), writeln("Usuário já existente!! Tente outro!"), signUp.
+
+login(Arquivo):-
+    write("Senha: "),
+	read_line_to_codes(user_input, Pass1),
+	atom_codes(Senha, Pass1),
+	open(Arquivo,read,X),
+	read_line_to_codes(X, Pass),
+	atom_codes(SenhaArq, Pass),
+	verifica_senha(Senha,SenhaArq),
+	close(X).
+
+signUp:-
+	write("Nome: "),
+	read_line_to_codes(user_input, Nom1),
+	atom_codes(Nome, Nom1),
+	string_concat(Nome,".txt",Arquivo),
+	verifica_usuario(Arquivo).
+	
+signUp2(Arquivo):-
+	open(Arquivo,write,X),
+	write("Senha: "),
+	read_line_to_codes(user_input, Pass),
+	atom_codes(Senha, Pass),
+	write(X,Senha),
+	close(X),
+	write("Usuário criado com sucesso!!\n\n"),
+	main.
+
+	
+signIn:-
+    write("Nome: "),
+	read_line_to_codes(user_input, Nom),
+	atom_codes(Nome, Nom),
+	string_concat(Nome,".txt",Arquivo),
+	verifica_existencia(Arquivo).
+
+main:-
+ 	writeln("\n\n\n\n««««««««ABYSS»»»»»»»»"),
+    writeln("O ambiente de trabalho para aqueles que seguem suas próprias leis."),
+    writeln(""),
+    writeln(":::::::::::::LOGIN:::::::::::::"),
+    writeln("Já possui uma conta? (S/N) ou Q para sair!"),
+	read_line_to_codes(user_input, Op),
+	atom_codes(Opp, Op),
+	string_lower(Opp,Option),
+    (Option = "s" -> signIn; Option = "n" -> signUp; Option = "q" -> write("ADEUS!"), halt; write("getOpcaoInvalida"), main).
+
 menu(Evento) :-
   getMenu(Evento, Text),
   write(Text),
