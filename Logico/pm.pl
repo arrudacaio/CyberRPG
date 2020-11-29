@@ -37,7 +37,7 @@ getMenu('evento 0', ' \n \n \n \n \n \n ««««««««ABYSS»»»»»»»» \n
 getMenu('noticia 1 lida', ' \n \n \n \n \n \n ««««««««ABYSS»»»»»»»» \n O ambiente de trabalho para aqueles que seguem suas próprias leis.\n  \n :::::::::::::MENU:::::::::::::\n 1. Mensagens\n 2. Perfil\n 3. Contratos\n 4. Notícias(1)\n 5. Desenvolvedores\n \n Digite o número da operação desejada: \n ').
 getMenu('noticia 2 lida', ' \n \n \n \n \n \n ««««««««ABYSS»»»»»»»» \n O ambiente de trabalho para aqueles que seguem suas próprias leis.\n  \n :::::::::::::MENU:::::::::::::\n 1. Mensagens\n 2. Perfil\n 3. Contratos\n 4. Notícias(1)\n 5. Desenvolvedores\n \n Digite o número da operação desejada: \n ').
 getMenu('noticia 1 e 2 lida', ' \n \n \n \n \n \n ««««««««ABYSS»»»»»»»» \n O ambiente de trabalho para aqueles que seguem suas próprias leis.\n  \n :::::::::::::MENU:::::::::::::\n 1. Mensagens(!)\n 2. Perfil\n 3. Contratos\n 4. Notícias\n 5. Desenvolvedores\n \n Digite o número da operação desejada: \n ').
-getMenu('contrato ativado', ' \n \n \n \n \n \n ««««««««ABYSS»»»»»»»» \n O ambiente de trabalho para aqueles que seguem suas próprias leis.\n  \n :::::::::::::MENU:::::::::::::\n 1. Mensagens\n 2. Perfil\n 3. Contratos(!)\n 4. Notícias\n 5. Desenvolvedores\n \n Digite o número da operação desejada: \n ').
+getMenu('inicio do contrato', ' \n \n \n \n \n \n ««««««««ABYSS»»»»»»»» \n O ambiente de trabalho para aqueles que seguem suas próprias leis.\n  \n :::::::::::::MENU:::::::::::::\n 1. Mensagens\n 2. Perfil\n 3. Contratos(!)\n 4. Notícias\n 5. Desenvolvedores\n \n Digite o número da operação desejada: \n ').
 
 getNoticia('evento 0', 'Você possui 0 novas notícias.\n (!)1.Tecnologia: Projeto Connected World É Um Sucesso!\n (!)2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n \n 3. Voltar ao Menu\n \nDigite o número da opção desejada').
 getNoticia('noticia 1 lida', 'Você possui 0 novas notícias.\n 1.Tecnologia: Projeto Connected World É Um Sucesso!\n (!)2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n \n 3. Voltar ao Menu\n \nDigite o número da opção desejada').
@@ -47,10 +47,37 @@ getNoticia('ultima mensagem', 'Você possui 1 novas notícias.\n 1.Tecnologia: P
 
 
 getContrato('tela 1',
-'Você possui 0 contrato(s) ativo(s).
+'*********ATIVOS*********
+Você possui 0 contratos ativos.
 
 ******FINALIZADOS*******
-Você possui 0 contrato(s) finalizado(s).
+Você possui 0 contratos finalizados.
+
+1. Voltar ao Menu
+
+Digite o número da operação desejada: ').
+
+getContrato('tela 2',
+'*********ATIVOS*********
+Você possui 1 contrato ativo.
+
+1. (!) O Ninho da Aranha
+
+******FINALIZADOS*******
+Você possui 0 contratos finalizados.
+
+2. Voltar ao Menu
+
+Digite o número da operação desejada: ').
+
+getContrato('tela 3',
+'*********ATIVOS*********
+Você possui 0 contratos ativos.
+
+******FINALIZADOS*******
+Você possui 1 contrato finalizado.
+
+O Ninho da Aranha
 
 1. Voltar ao Menu
 
@@ -143,6 +170,8 @@ getNoticia3 :-
 getGameOverMsg('::::::::::::NOTA OFICIAL DOS DESENVOLVEDORES::::::::::::\nNós do Abyss lamentamos seu miserável fracasso. Infelizmente, para você, não podemos deixar que sua\nincompetência nos arraste junto com você para a fossa. Você está imediatamente desligado do nosso sistema.\nA partir de agora, não temos ligação alguma com você, não o conhecemos, e, para prevenir que nenhuma de\nnossas informações será vazada para ouvidos indesejáveis, garantiremos que você permaneça em completo e\nabsoluto silêncio.\n\nObrigado por ter escolhido o Abyss!\n\nAh, e é melhor não pisar lá fora. Bem, na verdade não faz diferença. Eles já estão dentro :).\n\n#######GAME OVER#######\n').
 
 
+/*operacaoInvalida() :- writeln('Operacao invalida! Tente novamente.').*/
+
 
 noticia('evento 0') :-
   writeln('\n \n \n'),
@@ -188,13 +217,13 @@ noticia('ultima mensagem'):-
   atom_codes(Option, Op), 
   (Option = '1' -> getNoticia1, noticia('ultima mensagem'); Option = '2' -> getNoticia2, noticia('noticia 1 e 2 lida'); Option = '3' -> getNoticia3, noticia('ultima mensagem'); Option =:= 4, menu('ultima mensagem'); getOpcaoInvalida, noticia('ultima mensagem')).
 
-noticia('contrato ativado'):-
+noticia('inicio do contrato'):-
   writeln('\n \n \n'),
   getNoticia('noticia 1 e 2 lida', Text),
   writeln(Text),
   read_line_to_codes(user_input, Op),
   atom_codes(Option, Op), 
-  (Option = '1' -> getNoticia1, noticia('noticia 1 e 2 lida'); Option = '2' -> getNoticia2, noticia('noticia 1 e 2 lida'); Option = '3' -> menu('contrato ativado'); getOpcaoInvalida, noticia('contrato ativado')).
+  (Option = '1' -> getNoticia1, noticia('noticia 1 e 2 lida'); Option = '2' -> getNoticia2, noticia('noticia 1 e 2 lida'); Option = '3' -> menu('inicio do contrato'); getOpcaoInvalida, noticia('inicio do contrato')).
 
 /* A partir daqui vai ser as funções de mensagem */
 
@@ -240,7 +269,7 @@ getChat('mensagem 4'):-
   writeln('1. Considere feito.'),
   read_line_to_codes(user_input, Op),
   atom_codes(Option, Op),
-  (Option = '1' -> menu('contrato ativado');  writeln('Operação inválida! Tente novamente.'), getChat('mensagem 4')).
+  (Option = '1' -> menu('inicio do contrato');  writeln('Operação inválida! Tente novamente.'), getChat('mensagem 4')).
   
 /*Se o for para mensagem 2  digitar 'voce ouviu errado, cai fora'  */
 getChat('mensagem 5'):-
@@ -301,30 +330,113 @@ mensagemMenu('noticia 1 e 2 lida'):-
   atom_codes(Option, Op),
   (Option = '1' -> getChat('mensagem 1'); mensagemMenu('noticia 1 e 2 lida')).
   
-mensagemMenu('contrato ativado'):-
+mensagemMenu(''):-
   getCabecalho('1', Cabecalho),
   writeln(Cabecalho),
   getMensagem('inicio do contrato', Text),
   writeln(Text),
   read_line_to_codes(user_input, Op),
   atom_codes(Option, Op),
-  (Option = '1' -> menu('contrato ativado')).
+  (Option = '1' -> menu('inicio do contrato')).
 
 
 /*INICIO DA TELA DE CONTRATOS*/
 
-contratos(Evento) :-
-    (Evento = 'evento 0';
-    Evento = 'noticia 1 lida';
-    Evento = 'noticia 2 lida';
-    Evento = 'noticia 1 e 2 lida'),
+contratos('evento 0') :-
     getCabecalho('3', Cabecalho),
     writeln(Cabecalho),
     getContrato('tela 1', Msg),
     writeln(Msg),
     read_line_to_codes(user_input, Op),
     atom_codes(Option, Op),
-    Option = '1' -> menu(Evento).
+    Option = '1' -> menu('evento 0');
+    writeln('Operacao invalida! Tente novamente.'),
+    contratos('evento 0').
+
+contratos('noticia 1 lida') :-
+    getCabecalho('3', Cabecalho),
+    writeln(Cabecalho),
+    getContrato('tela 1', Msg),
+    writeln(Msg),
+    read_line_to_codes(user_input, Op),
+    atom_codes(Option, Op),
+    Option = '1' -> menu('noticia 1 lida');
+    writeln('Operacao invalida! Tente novamente.'),
+    contratos('noticia 1 lida').
+
+contratos('noticia 2 lida') :-
+    getCabecalho('3', Cabecalho),
+    writeln(Cabecalho),
+    getContrato('tela 1', Msg),
+    writeln(Msg),
+    read_line_to_codes(user_input, Op),
+    atom_codes(Option, Op),
+    Option = '1' -> menu('noticia 2 lida');
+    writeln('Operacao invalida! Tente novamente.'),
+    contratos('noticia 2 lida').
+
+contratos('noticia 1 e 2 lida') :-
+    getCabecalho('3', Cabecalho),
+    writeln(Cabecalho),
+    getContrato('tela 1', Msg),
+    writeln(Msg),
+    read_line_to_codes(user_input, Op),
+    atom_codes(Option, Op),
+    Option = '1' -> menu('noticia 1 e 2 lida');
+    writeln('Operacao invalida! Tente novamente.'),
+    contratos('noticia 1 e 2 lida').
+
+/*contratos('inicio do contrato') :- contratos('inicio do contrato', _).*/
+
+contratos('inicio do contrato') :- /*Esta bem bugado*/
+    getCabecalho('3', Cabecalho),
+    writeln(Cabecalho),
+    getContrato('tela 2', Msg),
+    writeln(Msg),
+    read_line_to_codes(user_input, Op), /*Precisa repetir na recursao*/
+    atom_codes(Option, Op),
+    (Option == '1' -> 
+        writeln('<AINDA NAO IMPLEMENTADO>'),
+        contratos('inicio do contrato');
+    Option == '2' -> menu('inicio do contrato');
+    writeln('Operacao invalida! Tente novamente.'),
+    contratos('inicio do contrato')).
+
+contratos('contrato finalizado') :-
+    getCabecalho('3', Cabecalho),
+    writeln(Cabecalho),
+    getContrato('tela 3', Msg),
+    writeln(Msg),
+    read_line_to_codes(user_input, Op),
+    atom_codes(Option, Op),
+    Option = '1' -> menu('contrato finalizado');
+    writeln('Operacao invalida! Tente novamente.'),
+    contratos('contrato finalizado').
+
+contratos('ultima mensagem') :-
+    getCabecalho('3', Cabecalho),
+    writeln(Cabecalho),
+    getContrato('tela 3', Msg),
+    writeln(Msg),
+    read_line_to_codes(user_input, Op),
+    atom_codes(Option, Op),
+    Option = '1' -> menu('ultima mensagem');
+    writeln('Operacao invalida! Tente novamente.'),
+    contratos('ultima mensagem').
+
+contratos('fim de jogo') :-
+    getCabecalho('3', Cabecalho),
+    writeln(Cabecalho),
+    getContrato('tela 3', Msg),
+    writeln(Msg),
+    read_line_to_codes(user_input, Op),
+    atom_codes(Option, Op),
+    Option = '1' -> menu('fim de jogo');
+    writeln('Operacao invalida! Tente novamente.'),
+    contratos('fim de jogo').
+
+
+/*FIM DA TELA DE CONTRATOS*/
 
 
 /*Opcoes do MENU*/
