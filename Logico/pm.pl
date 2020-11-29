@@ -386,14 +386,12 @@ contratos('noticia 1 e 2 lida') :-
     writeln('Operacao invalida! Tente novamente.'),
     contratos('noticia 1 e 2 lida').
 
-/*contratos('inicio do contrato') :- contratos('inicio do contrato', _).*/
-
-contratos('inicio do contrato') :- /*Esta bem bugado*/
+contratos('inicio do contrato') :-
     getCabecalho('3', Cabecalho),
     writeln(Cabecalho),
     getContrato('tela 2', Msg),
     writeln(Msg),
-    read_line_to_codes(user_input, Op), /*Precisa repetir na recursao*/
+    read_line_to_codes(user_input, Op),
     atom_codes(Option, Op),
     (Option == '1' -> 
         writeln('<AINDA NAO IMPLEMENTADO>'),
