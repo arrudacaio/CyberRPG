@@ -1,3 +1,24 @@
+/*
+LISTA DE EVENTOS E SUAS DESCRICOES:
+
+'evento 0': Momento em que o usuario acabou de entrar no jogo.
+
+'noticia 1 lida': Momento em que o texto 1 da aba Noticias foi lido pelo jogador.
+
+'noticia 2 lida': Momento em que o texto 2 da aba Noticias foi lido pelo jogador.
+
+'noticias 1 e 2 lidas': Momento em que os dois primeiros textos da aba Noticias foram lidos pelo jogador, desbloquando a primeira mensagem.
+
+'inicio do contrato': Momento em que a missao fica disponivel.
+
+'contrato finalizado': Termino da missao e inicio do ultimo dialogo em Mensagens.
+
+'ultima mensagem': Ultimo dialogo finalizado. A ultima noticia eh liberada.
+
+'fim de jogo': Nao ha mais eventos para ocorrer.
+*/
+
+
 getRandom(N1, N2, R):- R = random_between(0, 100, R).
 
 
@@ -23,6 +44,8 @@ getNoticia('noticia 1 lida', 'Você possui 0 novas notícias.\n 1.Tecnologia: Pr
 getNoticia('noticia 2 lida', 'Você possui 0 novas notícias.\n (!)1.Tecnologia: Projeto Connected World É Um Sucesso!\n 2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n \n 3. Voltar ao Menu\n \nDigite o número da opção desejada').
 getNoticia('noticia 1 e 2 lida', 'Você possui 0 novas notícias.\n 1.Tecnologia: Projeto Connected World É Um Sucesso!\n 2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n \n 3. Voltar ao Menu\n \nDigite o número da opção desejada').
 getNoticia('ultima mensagem', 'Você possui 1 novas notícias.\n 1.Tecnologia: Projeto Connected World É Um Sucesso!\n 2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n 3. (!) URGENTE: Projeto Connected Word É Um Golpe de Nível Mundial! \n 4. Voltar ao Menu \nDigite o número da opção desejada').
+
+getContrato('evento 0', '').
 
 getMensagem('evento 0', 'Você possui 0 novas mensagens. \n\n\n 1. Voltar ao Menu. \n\n Digite o número da operação desejada').
 getMensagem('noticia 1 e 2 lida', 'Você possui 1 novas mensagens.\n\n1. (!) M3lch10r: Oi, ouvi falar que você sabe hackear coisas... \n2. Voltar ao Menu\n\n Digite o número da operação desejada:').
@@ -277,6 +300,16 @@ mensagemMenu('contrato ativado'):-
   atom_codes(Option, Op),
   (Option = '1' -> menu('contrato ativado')).
 
+
+/*INICIO DA TELA DE CONTRATOS
+
+contratos('evento 0') :-
+    getCabecalho('3', Cabecalho),
+    writeln(Cabecalho),
+*/
+
+
+/*Opcoes do MENU*/
 
 getOption(Evento, '1') :- mensagemMenu(Evento).
 getOption(Evento, '4') :- noticia(Evento).
