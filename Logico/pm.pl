@@ -7,7 +7,7 @@ LISTA DE EVENTOS E SUAS DESCRICOES:
 
 'noticia 2 lida': Momento em que o texto 2 da aba Noticias foi lido pelo jogador.
 
-'noticias 1 e 2 lidas': Momento em que os dois primeiros textos da aba Noticias foram lidos pelo jogador, desbloquando a primeira mensagem.
+'noticia 1 e 2 lida': Momento em que os dois primeiros textos da aba Noticias foram lidos pelo jogador, desbloquando a primeira mensagem.
 
 'inicio do contrato': Momento em que a missao fica disponivel.
 
@@ -45,7 +45,17 @@ getNoticia('noticia 2 lida', 'Você possui 0 novas notícias.\n (!)1.Tecnologia:
 getNoticia('noticia 1 e 2 lida', 'Você possui 0 novas notícias.\n 1.Tecnologia: Projeto Connected World É Um Sucesso!\n 2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n \n 3. Voltar ao Menu\n \nDigite o número da opção desejada').
 getNoticia('ultima mensagem', 'Você possui 1 novas notícias.\n 1.Tecnologia: Projeto Connected World É Um Sucesso!\n 2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n 3. (!) URGENTE: Projeto Connected Word É Um Golpe de Nível Mundial! \n 4. Voltar ao Menu \nDigite o número da opção desejada').
 
-getContrato('evento 0', '').
+
+getContrato('tela 1',
+'Você possui 0 contrato(s) ativo(s).
+
+******FINALIZADOS*******
+Você possui 0 contrato(s) finalizado(s).
+
+1. Voltar ao Menu
+
+Digite o número da operação desejada: ').
+
 
 getMensagem('evento 0', 'Você possui 0 novas mensagens. \n\n\n 1. Voltar ao Menu. \n\n Digite o número da operação desejada').
 getMensagem('noticia 1 e 2 lida', 'Você possui 1 novas mensagens.\n\n1. (!) M3lch10r: Oi, ouvi falar que você sabe hackear coisas... \n2. Voltar ao Menu\n\n Digite o número da operação desejada:').
@@ -301,17 +311,26 @@ mensagemMenu('contrato ativado'):-
   (Option = '1' -> menu('contrato ativado')).
 
 
-/*INICIO DA TELA DE CONTRATOS
+/*INICIO DA TELA DE CONTRATOS*/
 
-contratos('evento 0') :-
+contratos(Evento) :-
+    (Evento = 'evento 0';
+    Evento = 'noticia 1 lida';
+    Evento = 'noticia 2 lida';
+    Evento = 'noticia 1 e 2 lida'),
     getCabecalho('3', Cabecalho),
     writeln(Cabecalho),
-*/
+    getContrato('tela 1', Msg),
+    writeln(Msg),
+    read_line_to_codes(user_input, Op),
+    atom_codes(Option, Op),
+    Option = '1' -> menu(Evento).
 
 
 /*Opcoes do MENU*/
 
 getOption(Evento, '1') :- mensagemMenu(Evento).
+getOption(Evento, '3') :- contratos(Evento).
 getOption(Evento, '4') :- noticia(Evento).
 getOption(Evento,_) :- writeln('Opção inválida'), menu(Evento).
 
