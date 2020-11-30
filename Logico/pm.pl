@@ -28,7 +28,7 @@ getCabecalho('3', '\n\n\n\n\n\n\n:::::::::::::CONTRATOS:::::::::::::\n\n').
 getCabecalho('4', '\n\n\n\n\n\n\n:::::::::::::NOTÍCIAS:::::::::::::\n\n').
 getCabecalho('5', '\n\n\n\n\n\n\n:::::::::::::DESENVOLVEDORES:::::::::::::\n\n').
 getCabecalho('chat', '\n\n\n\n\n\n\n:::::::::::::M3lch10r:::::::::::::\n\n').
-getCabecalho('ninho1', '\n\n\n\n\n\n\n:::::::::::::O Ninho da Aranha:::::::::::::\n\n').
+getCabecalho('ninho', '\n\n\n\n\n\n\n:::::::::::::O Ninho da Aranha:::::::::::::\n\n').
 
 getOpcaoInvalida:- 
   writeln('Opção inválida. Tente novamente').
@@ -438,7 +438,7 @@ contratos('fim de jogo') :-
 /*INICIO DA TELA DE "O NINHO DA ARANHA"*/
 
 ninho1() :-
-    getCabecalho('ninho1',X),
+    getCabecalho('ninho',X),
     writeln(X),
     writeln('1. Analisar a rede interna da Digital Spider'),
     writeln('2. Voltar a Contratos'),
@@ -452,9 +452,8 @@ ninho1() :-
     operacaoInvalida()),
     ninho1().
 
-
 ninho2() :-
-    getCabecalho('ninho1',X),
+    getCabecalho('ninho',X),
     writeln(X),
     writeln('Funcionarios online: 37'),
     writeln('Nivel de protecao da rede: Muito Alto'),
@@ -462,12 +461,51 @@ ninho2() :-
     writeln(''),
     writeln('Chance de o invasor ser rastreado ao invadir: Extremamente Alta.'),
     writeln('Dificuldade atual de uma invasao direta: Extremamente Alta.'),
-    writeln('Melhor curso de acao: diminuir seguranca antes de realizar a invasao.'),
+    writeln('Melhor curso de acao: Diminuir seguranca antes de realizar a invasao.'),
     writeln(''),
     writeln(''),
     writeln('1. Iniciar invasao'),
     writeln('2. Derrubar funcionarios da rede'),
-    writeln('3. Hackear drone <Indisponivel>'),
+    writeln('3. Hackear drone'),
+    writeln(''),
+    writeln('Digite o numero da operacao desejada: '),
+    writeln(''),
+    read_line_to_codes(user_input, Op),
+    atom_codes(Option, Op),
+    (Option == '1' ->
+        /*O CODIGO ABAIXO EH TEMPORARIO! Sera trocado pela chamada da funcao de invasao (favor remover este comentario quando esta for implementada).*/
+        writeln('Iniciando invasao...'),
+        writeln(''),
+        writeln('Atravessando firewall...'),
+        writeln(''),
+        write('invasao com dificuldade extremamente alta');
+    Option == '2' ->
+        /*O CODIGO ABAIXO EH TEMPORARIO! Sera trocado pela chamada da funcao de derrubar funcionarios (favor remover este comentario quando esta for implementada).*/
+        writeln('derrubando funcionarios... Funcionarios derrubados'),
+        ninho3('10'); 
+    Option == '3' ->
+        writeln('Procurando drones...'),
+        writeln(''),
+        writeln('Nenhum drone foi detectado na rede.'),
+        ninho2());
+    operacaoInvalida(),
+    ninho2().
+
+ninho3(FuncsRestantes) :-
+    getCabecalho('ninho',X),
+    writeln(X),
+    write('Funcionarios online: ' ),
+    writeln(FuncsRestantes),
+    writeln(''),
+    writeln('Nivel de protecao da rede: Baixo'),
+    writeln(''),
+    writeln(''),
+    writeln('Chance do invasor ser rastreado ao invadir: Baixo.'),
+    writeln('Dificuldade atual de uma invasao direta: Baixo.'),
+    writeln('Melhor curso de acao: Invasao direta.'),
+    writeln(''),
+    writeln('1. Iniciar invasao'),
+    writeln('2. Hackear drone'),
     writeln(''),
     writeln('Digite o numero da operacao desejada: '),
     writeln(''),
@@ -478,17 +516,52 @@ ninho2() :-
         writeln(''),
         writeln('Atravessando firewall...'),
         writeln(''),
-        write('invasao com dificuldade extremamente alta');
+        /*O CODIGO ABAIXO EH TEMPORARIO! Sera trocado pela chamada da funcao de invasao (favor remover este comentario quando esta for implementada).*/
+        writeln('Invasao bem sucedida!'),
+        ninho4();
     Option == '2' ->
-        writeln('derrubando funcionarios...');
-    Option == '3' ->
         writeln('Procurando drones...'),
         writeln(''),
         writeln('Nenhum drone foi detectado na rede.'),
-        ninho2);
+        ninho3(FuncsRestantes);
     operacaoInvalida(),
-    ninho2().
+    ninho3(FuncsRestantes)).
     
+ninho4() :-
+    getCabecalho('ninho',X),
+    writeln(X),
+    writeln(''),
+    writeln('1. Enviar 3 arquivos baixados para M3lch10r'),
+    writeln(''),
+    writeln('Digite o numero da operacao desejada: '),
+    writeln(''),
+    read_line_to_codes(user_input, Op),
+    atom_codes(Option, Op),
+    (Option == '1' ->
+        writeln('Enviando...'),
+        writeln('1/3...'),
+        writeln('2/3...'),
+        writeln('3/3'),
+        writeln('Envio completo!'),
+        ninho5();
+    operacaoInvalida(),
+    ninho4()).
+
+ninho5() :-
+    getCabecalho('ninho',X),
+    writeln(X),
+    writeln(''),
+    writeln('CONTRATO FINALIZADO!'),
+    writeln(''),
+    writeln('1. Voltar a Contratos'),
+    writeln(''),
+    writeln('Digite o numero da operacao desejada: '),
+    writeln(''),
+    read_line_to_codes(user_input, Op),
+    atom_codes(Option, Op),
+   (Option == '1' -> contratos('contrato finalizado');
+   operacaoInvalida(),
+   ninho5()).
 
 /*FIM DA TELA DE "O NINHO DA ARANHA"*/
 
