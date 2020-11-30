@@ -480,9 +480,7 @@ ninho2() :-
         writeln(''),
         write('invasao com dificuldade extremamente alta');
     Option == '2' ->
-        /*O CODIGO ABAIXO EH TEMPORARIO! Sera trocado pela chamada da funcao de derrubar funcionarios (favor remover este comentario quando esta for implementada).*/
-        writeln('derrubando funcionarios... Funcionarios derrubados'),
-        ninho3('10'); 
+        derrubaFuncs();
     Option == '3' ->
         writeln('Procurando drones...'),
         writeln(''),
@@ -490,6 +488,34 @@ ninho2() :-
         ninho2());
     operacaoInvalida(),
     ninho2().
+	
+derrubaFuncs() :-
+	random_between(10,25,Derrubados),
+	writeln('Bloqueando o acesso dos funcionários online...'),
+    writeln(''),
+	FuncsRestantes is 37 - Derrubados,
+	write(Derrubados),
+	write(' funcionários bloqueados com sucesso. Restam '),
+	write(FuncsRestantes),
+	write(' online.'),
+	writeln(''),
+	(Derrubados > 18 ->
+		writeln(''),
+		writeln('Mais de 50% dos usuários online foram derrubados.'),
+		writeln(''),
+		writeln('Nível de proteção da rede Digital Spider diminuído!'),
+		ninho3(FuncsRestantes));
+	writeln('Poucos usuários derrubados. Ataque ineficaz.'),
+	writeln('Nível de proteção da rede Digital Spider não sofreu alterações.'),
+	writeln(''),
+	writeln('Você está sofrendo uma tentativa de rastreio. Bloqueando rastreador...'),
+	writeln(''),
+	writeln(''),
+	writeln('Falha no bloqueio. Você foi rastreado! Sua identidade e localização foram comprometidos!'),
+	getGameOverMsg(Msg),
+	writeln(''),
+	writeln(Msg),
+	menu('inicio do contrato').
 
 ninho3(FuncsRestantes) :-
     getCabecalho('ninho',X),
