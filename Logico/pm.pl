@@ -575,8 +575,15 @@ getOption(Evento,_) :- writeln('Opção inválida'), menu(Evento).
 
 /*Funcionalidade de Login*/
   
-verifica_senha(Senha,SenhaArq):- Senha = SenhaArq, menu('evento 0').
-verifica_senha(Senha,SenhaArq):- Senha \= SenhaArq, writeln("Senha incorreta!!"),signIn.
+verifica_senha(Senha,SenhaArq,Arquivo):- Senha = SenhaArq, 
+	open("userAtual.txt",write,X),
+	string_length(Arquivo,Ta),
+	Tamanho is Ta - 4,
+	sub_string(Arquivo,_,Tamanho,_,UserAtual),
+	write(X,UserAtual),
+	close(X),
+	menu('evento 0').
+verifica_senha(Senha,SenhaArq,_):- Senha \= SenhaArq, writeln("Senha incorreta!!"),signIn.
 
 verifica_existencia(Arquivo):- exists_file(Arquivo), login(Arquivo).
 verifica_existencia(Arquivo):- not(exists_file(Arquivo)), writeln("Usuário não encontrado!"),main.
@@ -591,7 +598,7 @@ login(Arquivo):-
 	open(Arquivo,read,X),
 	read_line_to_codes(X, Pass),
 	atom_codes(SenhaArq, Pass),
-	verifica_senha(Senha,SenhaArq),
+	verifica_senha(Senha,SenhaArq,Arquivo),
 	close(X).
 
 signUp:-
