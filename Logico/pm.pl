@@ -553,7 +553,61 @@ ninho3(FuncsRestantes) :-
         ninho3(FuncsRestantes);
     operacaoInvalida(),
     ninho3(FuncsRestantes)).
-    
+
+
+/*INICIO DA INVASAO*/
+
+invasao('dificil') :-
+    random_between(1,6,D1),
+    random_between(1,6,D2),
+    random_between(1,6,D3),
+    ((D1 == 6, D2 == 6, D3 == 6) ->
+        writeln('Rede interna Digital Spider invadida com sucesso!'); /*TEMPORARIO! Sera adicionada a funcao de roubarArquivos*/
+        writeln('Acesso bloqueado. Invasão mal sucedida.'),
+        writeln(''),
+        writeln('Você está sofrendo uma tentativa de rastreio. Bloqueando rastreador...'),
+        writeln(''),
+        writeln('Falha no bloqueio. Você foi rastreado! Sua identidade e localização foram comprometidos!'), /*TEMPORARIO! Sera acrescentada a funcao que calcula a probabilidade do bloqueio do rastreamento.*/
+        writeln(''),
+        getGameOverMsg(X),
+        writeln(X),
+        contratos('inicio do contrato')).
+
+invasao('media') :-
+    random_between(1,6,D1),
+    random_between(1,6,D2),
+    random_between(1,6,D3),
+    ((D1 > 3, D2 > 3, D3 > 3) ->
+        writeln('Rede interna Digital Spider invadida com sucesso!'); /*TEMPORARIO! Sera adicionada a funcao de roubarArquivos*/
+        writeln('Acesso bloqueado. Invasão mal sucedida.'),
+        writeln(''),
+        writeln('Você está sofrendo uma tentativa de rastreio. Bloqueando rastreador...'),
+        writeln(''),
+        writeln('Falha no bloqueio. Você foi rastreado! Sua identidade e localização foram comprometidos!'), /*TEMPORARIO! Sera acrescentada a funcao que calcula a probabilidade do bloqueio do rastreamento.*/
+        writeln(''),
+        getGameOverMsg(X),
+        writeln(X),
+        contratos('inicio do contrato')).
+
+invasao('facil') :-
+    random_between(1,6,D1),
+    random_between(1,6,D2),
+    random_between(1,6,D3),
+    ((D1 > 1, D2 > 1, D3 > 1) ->
+        writeln('Rede interna Digital Spider invadida com sucesso!'); /*TEMPORARIO! Sera adicionada a funcao de roubarArquivos*/
+        writeln('Acesso bloqueado. Invasão mal sucedida.'),
+        writeln(''),
+        writeln('Você está sofrendo uma tentativa de rastreio. Bloqueando rastreador...'),
+        writeln(''),
+        writeln('Falha no bloqueio. Você foi rastreado! Sua identidade e localização foram comprometidos!'), /*TEMPORARIO! Sera acrescentada a funcao que calcula a probabilidade do bloqueio do rastreamento.*/
+        writeln(''),
+        getGameOverMsg(X),
+        writeln(X),
+        contratos('inicio do contrato')).
+
+/*FIM DA INVASAO*/
+
+
 ninho4() :-
     getCabecalho('ninho',X),
     writeln(X),
