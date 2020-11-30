@@ -28,6 +28,7 @@ getCabecalho('3', '\n\n\n\n\n\n\n:::::::::::::CONTRATOS:::::::::::::\n\n').
 getCabecalho('4', '\n\n\n\n\n\n\n:::::::::::::NOTÍCIAS:::::::::::::\n\n').
 getCabecalho('5', '\n\n\n\n\n\n\n:::::::::::::DESENVOLVEDORES:::::::::::::\n\n').
 getCabecalho('chat', '\n\n\n\n\n\n\n:::::::::::::M3lch10r:::::::::::::\n\n').
+getCabecalho('ninho1', '\n\n\n\n\n\n\n:::::::::::::O Ninho da Aranha:::::::::::::\n\n').
 
 getOpcaoInvalida:- 
   writeln('Opção inválida. Tente novamente').
@@ -170,7 +171,7 @@ getNoticia3 :-
 getGameOverMsg('::::::::::::NOTA OFICIAL DOS DESENVOLVEDORES::::::::::::\nNós do Abyss lamentamos seu miserável fracasso. Infelizmente, para você, não podemos deixar que sua\nincompetência nos arraste junto com você para a fossa. Você está imediatamente desligado do nosso sistema.\nA partir de agora, não temos ligação alguma com você, não o conhecemos, e, para prevenir que nenhuma de\nnossas informações será vazada para ouvidos indesejáveis, garantiremos que você permaneça em completo e\nabsoluto silêncio.\n\nObrigado por ter escolhido o Abyss!\n\nAh, e é melhor não pisar lá fora. Bem, na verdade não faz diferença. Eles já estão dentro :).\n\n#######GAME OVER#######\n').
 
 
-/*operacaoInvalida() :- writeln('Operacao invalida! Tente novamente.').*/
+operacaoInvalida() :- writeln('Operacao invalida! Tente novamente.').
 
 
 noticia('evento 0') :-
@@ -393,9 +394,7 @@ contratos('inicio do contrato') :-
     writeln(Msg),
     read_line_to_codes(user_input, Op),
     atom_codes(Option, Op),
-    (Option == '1' -> 
-        writeln('<AINDA NAO IMPLEMENTADO>'),
-        contratos('inicio do contrato');
+    (Option == '1' -> ninho1();
     Option == '2' -> menu('inicio do contrato');
     writeln('Operacao invalida! Tente novamente.'),
     contratos('inicio do contrato')).
@@ -433,8 +432,65 @@ contratos('fim de jogo') :-
     writeln('Operacao invalida! Tente novamente.'),
     contratos('fim de jogo').
 
-
 /*FIM DA TELA DE CONTRATOS*/
+
+
+/*INICIO DA TELA DE "O NINHO DA ARANHA"*/
+
+ninho1() :-
+    getCabecalho('ninho1',X),
+    writeln(X),
+    writeln('1. Analisar a rede interna da Digital Spider'),
+    writeln('2. Voltar a Contratos'),
+    writeln(''),
+    writeln('Digite o numero da operacao desejada: '),
+    writeln(''),
+    read_line_to_codes(user_input, Op),
+    atom_codes(Option, Op),
+    (Option == '1' -> ninho2();
+    Option == '2' -> contratos('inicio do contrato');
+    operacaoInvalida()),
+    ninho1().
+
+
+ninho2() :-
+    getCabecalho('ninho1',X),
+    writeln(X),
+    writeln('Funcionarios online: 37'),
+    writeln('Nivel de protecao da rede: Muito Alto'),
+    writeln(''),
+    writeln(''),
+    writeln('Chance de o invasor ser rastreado ao invadir: Extremamente Alta.'),
+    writeln('Dificuldade atual de uma invasao direta: Extremamente Alta.'),
+    writeln('Melhor curso de acao: diminuir seguranca antes de realizar a invasao.'),
+    writeln(''),
+    writeln(''),
+    writeln('1. Iniciar invasao'),
+    writeln('2. Derrubar funcionarios da rede'),
+    writeln('3. Hackear drone <Indisponivel>'),
+    writeln(''),
+    writeln('Digite o numero da operacao desejada: '),
+    writeln(''),
+    read_line_to_codes(user_input, Op),
+    atom_codes(Option, Op),
+    (Option == '1' ->
+        writeln('Iniciando invasao...'),
+        writeln(''),
+        writeln('Atravessando firewall...'),
+        writeln(''),
+        write('invasao com dificuldade extremamente alta');
+    Option == '2' ->
+        writeln('derrubando funcionarios...');
+    Option == '3' ->
+        writeln('Procurando drones...'),
+        writeln(''),
+        writeln('Nenhum drone foi detectado na rede.'),
+        ninho2);
+    operacaoInvalida(),
+    ninho2().
+    
+
+/*FIM DA TELA DE "O NINHO DA ARANHA"*/
 
 
 /*Opcoes do MENU*/
