@@ -573,6 +573,13 @@ getOption(Evento, '3') :- contratos(Evento).
 getOption(Evento, '4') :- noticia(Evento).
 getOption(Evento,_) :- writeln('Opção inválida'), menu(Evento).
 
+/*Obter User Atual Logado*/
+get_User_Atual(R) :- 
+	open("userAtual.txt",read,X),
+	read_line_to_codes(X, User),
+	atom_codes(UserAtual, User),
+    R = UserAtual.
+	
 /*Funcionalidade de Login*/
   
 verifica_senha(Senha,SenhaArq,Arquivo):- Senha = SenhaArq, 
