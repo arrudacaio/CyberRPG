@@ -26,7 +26,7 @@ getCabecalho('1', '\n\n\n\n\n\n\n:::::::::::::MENSAGENS:::::::::::::\n\n').
 getCabecalho('2', '\n\n\n\n\n\n\n:::::::::::::PERFIL:::::::::::::\n\n').
 getCabecalho('3', '\n\n\n\n\n\n\n:::::::::::::CONTRATOS:::::::::::::\n\n').
 getCabecalho('4', '\n\n\n\n\n\n\n:::::::::::::NOTÍCIAS:::::::::::::\n\n').
-getCabecalho('5', '\n\n\n\n\n\n\n:::::::::::::DESENVOLVEDORES:::::::::::::\n\n').
+getCabecalho('5', '\n\n\n\n\n\n\n:::::::::::::DESENVOLVEDORES:::::::::::::').
 getCabecalho('chat', '\n\n\n\n\n\n\n:::::::::::::M3lch10r:::::::::::::\n\n').
 getCabecalho('ninho', '\n\n\n\n\n\n\n:::::::::::::O Ninho da Aranha:::::::::::::\n\n').
 
@@ -40,6 +40,7 @@ getMenu('noticia 2 lida', ' \n \n \n \n \n \n ««««««««ABYSS»»»»»»�
 getMenu('noticia 1 e 2 lida', ' \n \n \n \n \n \n ««««««««ABYSS»»»»»»»» \n O ambiente de trabalho para aqueles que seguem suas próprias leis.\n  \n :::::::::::::MENU:::::::::::::\n 1. Mensagens(!)\n 2. Perfil\n 3. Contratos\n 4. Notícias\n 5. Desenvolvedores\n \n Digite o número da operação desejada: \n ').
 getMenu('inicio do contrato', ' \n \n \n \n \n \n ««««««««ABYSS»»»»»»»» \n O ambiente de trabalho para aqueles que seguem suas próprias leis.\n  \n :::::::::::::MENU:::::::::::::\n 1. Mensagens\n 2. Perfil\n 3. Contratos(!)\n 4. Notícias\n 5. Desenvolvedores\n \n Digite o número da operação desejada: \n ').
 getMenu('contrato finalizado', ' \n \n \n \n \n \n ««««««««ABYSS»»»»»»»» \n O ambiente de trabalho para aqueles que seguem suas próprias leis.\n  \n :::::::::::::MENU:::::::::::::\n 1. Mensagens(!)\n 2. Perfil\n 3. Contratos\n 4. Notícias\n 5. Desenvolvedores\n \n Digite o número da operação desejada: \n ').
+getMenu('ultima mensagem','MENU DA ULTIMA MENSAGEM AQUI VOU TERMINAR DPS PQ SAO 3 DA MANHA').
 
 getNoticia('evento 0', 'Você possui 0 novas notícias.\n (!)1.Tecnologia: Projeto Connected World É Um Sucesso!\n (!)2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n \n 3. Voltar ao Menu\n \nDigite o número da opção desejada').
 getNoticia('noticia 1 lida', 'Você possui 0 novas notícias.\n 1.Tecnologia: Projeto Connected World É Um Sucesso!\n (!)2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n \n 3. Voltar ao Menu\n \nDigite o número da opção desejada').
@@ -47,7 +48,8 @@ getNoticia('noticia 2 lida', 'Você possui 0 novas notícias.\n (!)1.Tecnologia:
 getNoticia('noticia 1 e 2 lida', 'Você possui 0 novas notícias.\n 1.Tecnologia: Projeto Connected World É Um Sucesso!\n 2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n \n 3. Voltar ao Menu\n \nDigite o número da opção desejada').
 getNoticia('ultima mensagem', 'Você possui 1 novas notícias.\n 1.Tecnologia: Projeto Connected World É Um Sucesso!\n 2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n 3. (!) URGENTE: Projeto Connected Word É Um Golpe de Nível Mundial! \n 4. Voltar ao Menu \nDigite o número da opção desejada').
 
-
+getDesenvolvedores('dev','1. Caio José dos Santos Arruda\n2. Enock Bezerra Ferreira de Souza\n3. João Vitor Patrício Romão\n4. Jonatha Kennedy Monteiro da Costa\n5. Thiago Farias de Almeida\n\nDigite(1) para Voltar ao Menu:').
+  
 
 getContrato('tela 1',
 '*********ATIVOS*********
@@ -273,6 +275,8 @@ getChat('mensagem 4'):-
   read_line_to_codes(user_input, Op),
   atom_codes(Option, Op),
   (Option = '1' -> menu('inicio do contrato');  writeln('Operação inválida! Tente novamente.'), getChat('mensagem 4')).
+
+
   
 /*Se o for para mensagem 2  digitar 'voce ouviu errado, cai fora'  */
 getChat('mensagem 5'):-
@@ -296,6 +300,27 @@ getChat('mensagem 6'):-
   atom_codes(Option, Op),
   (Option = '1' -> getChat('mensagem 4'); writeln('Operação inválida! Tente novamente.'), getChat('mensagem 6')).
 
+
+  getChat('mensagem 6finalizacao'):-
+  getCabecalho('chat', Cabecalho),
+  writeln(Cabecalho),
+  mensagem('mensagem 6', Text),
+  writeln(Text),
+  writeln('\n1. Do que está falando?'),
+  writeln('2. Voltar a Mensagens.'),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option = '1' -> getChat('mensagem 7'); Option = '2' -> mensagemMenu('contrato finalizado') ;writeln('Operação inválida! Tente novamente.'), getChat('mensagem 6finalizacao')).
+
+  getChat('mensagem 7'):-
+  getCabecalho('chat', Cabecalho),
+  writeln(Cabecalho),
+  mensagem('mensagem 7', Text),
+  writeln(Text),
+  writeln('\n1. Voltar a Mensagens.'),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option = '1' -> mensagemMenu('ultima mensagem'); writeln('Operação inválida! Tente novamente.'), getChat('mensagem 7')).
 
 mensagemMenu('evento 0'):-
   getCabecalho('1', Cabecalho),
@@ -341,6 +366,25 @@ mensagemMenu(''):-
   read_line_to_codes(user_input, Op),
   atom_codes(Option, Op),
   (Option = '1' -> menu('inicio do contrato')).
+
+mensagemMenu('contrato finalizado'):-
+  getCabecalho('1', Cabecalho),
+  writeln(Cabecalho),
+  getMensagem('contrato finalizado', Text),
+  writeln(Text),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option = '2' -> menu('contrato finalizado'); Option = '1' -> getChat('mensagem 6finalizacao')).
+
+  mensagemMenu('ultima mensagem'):-
+  getCabecalho('1', Cabecalho),
+  writeln(Cabecalho),
+  getMensagem('ultima mensagem', Text),
+  writeln(Text),
+  writeln('\n2. Voltar ao Menu'),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option = '2' -> menu('ultima mensagem')).
 
 
 /*INICIO DA TELA DE CONTRATOS*/
@@ -436,6 +480,17 @@ contratos('fim de jogo') :-
 
 /*FIM DA TELA DE CONTRATOS*/
 
+/*INICIO DA TELA DE DESENVOLVEDORES*/
+desenvolvedores() :-
+  getCabecalho('5',X),
+  getDesenvolvedores('dev',Y),
+  writeln(X),
+  writeln(Y),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option = '1' -> menu('evento 0'); writeln('Operação inválida! Tente novamente'), desenvolvedores()).
+
+/*FIM DA TELA DE DESENVOLVEDORES*/
 
 /*INICIO DA TELA DE "O NINHO DA ARANHA"*/
 getBloqueioFail():-
@@ -858,11 +913,14 @@ fimCombate(DroneName):-
 /*FIM DA TELA DE "O NINHO DA ARANHA"*/
 
 
+  
+
 /*Opcoes do MENU*/
 
 getOption(Evento, '1') :- mensagemMenu(Evento).
 getOption(Evento, '3') :- contratos(Evento).
 getOption(Evento, '4') :- noticia(Evento).
+getOption(Evento, '5') :- desenvolvedores().
 getOption(Evento,_) :- writeln('Opção inválida'), menu(Evento).
 
 /*Obter User Atual Logado*/
