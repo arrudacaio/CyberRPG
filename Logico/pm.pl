@@ -48,6 +48,7 @@ getNoticia('noticia 1 e 2 lida', 'Você possui 0 novas notícias.\n 1.Tecnologia
 getNoticia('ultima mensagem', 'Você possui 1 novas notícias.\n 1.Tecnologia: Projeto Connected World É Um Sucesso!\n 2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n 3. (!) URGENTE: Projeto Connected Word É Um Golpe de Nível Mundial! \n 4. Voltar ao Menu \nDigite o número da opção desejada').
 
 
+
 getContrato('tela 1',
 '*********ATIVOS*********
 Você possui 0 contratos ativos.
@@ -437,6 +438,15 @@ contratos('fim de jogo') :-
 
 
 /*INICIO DA TELA DE "O NINHO DA ARANHA"*/
+getBloqueioFail():-
+  getCabecalho('ninho',X),
+  writeln(X),
+  writeln('\n\n'),
+  writeln('Falha no bloqueio. Você foi rastreado! Sua identidade e localização foram comprometidos!'),
+  getGameOverMsg(Msg),
+  writeln(''),
+  writeln(Msg),
+  menu('inicio do contrato').
 
 ninho1() :-
     getCabecalho('ninho',X),
@@ -483,10 +493,7 @@ ninho2() :-
     Option == '2' ->
         derrubaFuncs();
     Option == '3' ->
-        writeln('Procurando drones...'),
-        writeln(''),
-        writeln('Nenhum drone foi detectado na rede.'),
-        ninho2());
+        drone());
     operacaoInvalida(),
     ninho2().
 	
@@ -510,13 +517,10 @@ derrubaFuncs() :-
 	writeln('Nível de proteção da rede Digital Spider não sofreu alterações.'),
 	writeln(''),
 	writeln('Você está sofrendo uma tentativa de rastreio. Bloqueando rastreador...'),
-	writeln(''),
-	writeln(''),
-	writeln('Falha no bloqueio. Você foi rastreado! Sua identidade e localização foram comprometidos!'),
-	getGameOverMsg(Msg),
-	writeln(''),
-	writeln(Msg),
-	menu('inicio do contrato').
+	random_between(0,100,Chance),
+	(Chance < 40 ->getBloqueioFail()),
+	writeln('Rastreio bloqueado com sucesso. Você conseguiu despistar seus inimigos!'),
+	ninho2().
 
 ninho3(FuncsRestantes) :-
     getCabecalho('ninho',X),
@@ -590,6 +594,267 @@ ninho5() :-
    operacaoInvalida(),
    ninho5()).
 
+
+drone():-
+  getCabecalho('ninho',X),
+  writeln(X),
+  writeln(''),
+  writeln('Detectando drones...\n'),
+  writeln('DRONES DISPONÍVEIS:\n'),
+  writeln('1. Tunderstorm#231982\n2. ZTX#53325\n3. Sphinx#142731\n\n4. Voltar'),
+  writeln('\nDigite o número da operação desejada:'),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option == '1' -> invadindoDrone('Tunderstorm#231982')),
+  (Option == '2' -> invadindoDrone('ZTX#53325')),
+  (Option == '3' -> invadindoDrone('Sphinx#142731')),
+  (Option == '4' -> ninho2()),
+  operacaoInvalida(),
+  drone().
+
+drone(FuncRestantes):-
+  getCabecalho('ninho',X),
+  writeln(X),
+  writeln(''),
+  writeln('Detectando drones...\n'),
+  writeln('DRONES DISPONÍVEIS:\n'),
+  writeln('1. Tunderstorm#231982\n2. ZTX#53325\n3. Sphinx#142731\n4. Voltar'),
+  writeln('\nDigite o número da operação desejada:'),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option == '1' -> invadindoDrone('Tunderstorm#231982', FuncRestantes); Option =='2' -> invadindoDrone('ZTX#53325', FuncRestantes); Option == '3' -> invadindoDrone('Sphinx#142731', FuncRestantes); Option == '4' -> ninho3(FuncRestantes)),
+  operacaoInvalida(),
+  drone().
+ 
+invadindoDrone(DroneName):-
+  getCabecalho('ninho',X),
+  writeln(X),
+  writeln(''),
+  writeln(DroneName),
+  writeln('\n\nSistema de armas: Online\nBateria: 80% carregada\nLocomoção: Aérea\nTamanho: Pequeno\nCondição da estrutura: 100% (Intacto)'),
+  writeln('\n\n1. Tomar controle do drone\n2. Voltar\n\n'),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option == '1' -> droneInvadido(DroneName)),
+  (Option == '2' -> drone()),
+  operacaoInvalida(),
+  invadindoDrone(DroneName).
+
+invadindoDrone(DroneName, FuncRestantes):-
+  getCabecalho('ninho',X),
+  writeln(X),
+  writeln(''),
+  writeln(DroneName),
+  writeln('\n\nSistema de armas: Online\nBateria: 80% carregada\nLocomoção: Aérea\nTamanho: Pequeno\nCondição da estrutura: 100% (Intacto)'),
+  writeln('\n\n1. Tomar controle do drone\n\n2. Voltar'),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option == '1' -> drone('invadindo')),
+  (Option == '2' -> drone(FuncRestantes)),
+  operacaoInvalida(),
+  invadindoDrone(DroneName, FuncRestantes).
+
+invadindoDrone2(DroneName):-
+  getCabecalho('ninho',X),
+  writeln(X),
+  writeln(''),
+  writeln('Invadindo drone...'),
+  random_between(0,100,Chance),
+  (Chance >= 40 -> writeln('Invasão bem sucedida.'), droneInvadido(DroneName)),
+  writeln('\n\nInvasão mal sucedida.\n\nVocê está sofrendo uma tentativa de rastreio. Bloqueando rastreador...'),
+  random_between(0,100, Chance2),
+  (Chance2 < 40 -> getBloqueioFail()),
+  writeln('Rastreio bloqueado com sucesso. Você conseguiu despistar seus inimigos!'),
+  drone().
+
+invadindoDrone2(DroneName,FuncRestantes):-
+  getCabecalho('ninho',X),
+  writeln(X),
+  writeln(''),
+  random_between(0,100,Chance),
+  (Chance >= 40 -> droneInvadido(DroneName, FuncRestantes)),
+  writeln('\n\nInvasão mal sucedida.\n\nVocê está sofrendo uma tentativa de rastreio. Bloqueando rastreador...'),
+  random_between(0,100, Chance2),
+  (Chance2 < 40 -> getBloqueioFail()),
+  writeln('Rastreio bloqueado com sucesso. Você conseguiu despistar seus inimigos!'),
+  drone(FuncRestantes).
+  
+droneInvadido(DroneName):-
+  getCabecalho('ninho',X),
+  writeln(X),
+  writeln(''),
+  My_string = 'Você agora tem o controle do ',
+  atom_concat(My_string, DroneName, Result),
+  writeln(Result),
+  writeln('\n1. Controlar drone.'),
+  writeln('2. Voltar\n'),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option == '1' -> virusInstalado(DroneName)),
+  (Option == '2' -> drone()),
+  operacaoInvalida(),
+  droneInvadido(DroneName).
+
+droneInvadido(DroneName, FuncRestantes):-
+  getCabecalho('ninho',X),
+  writeln(X),
+  writeln(''),
+  My_string = 'Você agora tem o controle do ',
+  atom_concat(My_string, DroneName, Result),
+  writeln(Result),
+  writeln('1. Controlar drone.'),
+  writeln('2. Voltar'),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option == '1' -> virusInstalado(DroneName, FuncRestantes), Option == '2' -> drone(FuncRestantes)),
+  operacaoInvalida(),
+  droneInvadido(DroneName, FuncRestantes).
+  
+instalandoVirus(DroneName):-
+  getCabecalho('ninho',X),
+  writeln(X),
+  writeln(''),
+  writeln('Virus instalado com êxito!'),
+  virusInstalado(DroneName).
+
+instalandoVirus(DroneName, FuncRestantes):-
+  getCabecalho('ninho',X),
+  writeln(X),
+  writeln(''),
+  writeln('Virus instalado com êxito!'),
+  virusInstalado(DroneName, FuncRestantes).
+  
+virusInstalado(DroneName):-
+  getCabecalho('ninho',X),
+  writeln(X),
+  writeln(''),
+
+  write(DroneName),
+  write(': Iniciando sistema de vôo.'),
+  writeln('\n\n'),
+  write(DroneName),
+  write(':Movendo-se para o ponto alvo...'),
+  writeln('\n\n'),
+  write(DroneName),
+  write(':Atenção! 2 elementos hostils detectados! Como proceder?'),
+
+  writeln('\n\n'),
+  writeln('Inimigo1:\nTipo:Humano\nArma detectada:Fuzil de assalto\nID de Profissao: Segurança Particular\nSaúde:100%'),
+  writeln('\n\n'),
+  writeln('Inimigo2:\nTipo:Humano\nArma detectada:Fuzil de assalto\nID de Profissao: Segurança Particular\nSaúde:100%'),
+  writeln('\n\n'),
+  writeln('1. Eliminar alvos hostis\n2. Abandonar drone e voltar'),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option == '1' -> combateDrone(DroneName, 100, 100, 100)),
+  (Option == '2' -> drone()),
+  operacaoInvalida(),
+  virusInstalado(DroneName).
+
+combateDroneMain(DroneName, DroneHp, Inimigo1, Inimigo2):-
+  writeln('\n'),
+  write(DroneName),
+  write(' - '),
+  write(DroneHp),
+  write('%'),
+  writeln('\n\n'),
+  write('Inimigo 1 - '),
+  write(Inimigo1),
+  write('%\n'),
+  write('Inimigo 2 - '),
+  write(Inimigo2),
+  write('%'),
+  writeln('\n\n'),
+  Inimigo1 == 0 -> combateDroneMain(DroneName, DroneHp, Inimigo2);
+  Inimigo2 == 0 -> combateDroneMain(DroneName, DroneHp, Inimigo1);
+  DroneHp == 0 -> writeln('Drone destruído.'), drone();
+  ataqueInimigo(DroneHp, DroneHp1);
+  DroneHp1 == 0 -> writeln('Drone destruído.'), drone();
+  ataqueInimigo(DroneHp1, DroneHp2);
+  DroneHp2 == 0 -> writeln('Drone destruído.'), drone();
+  combateDrone(DroneName, DroneHp2, Inimigo1, Inimigo2).
+  
+
+combateDroneMain(DroneName, DroneHp, Inimigo):-
+  (Inimigo == 0 -> fimCombate(Dronename)),
+  (DroneHp == 0 -> writeln('Drone destruído.'), drone()),
+  ataqueInimigo(DroneHp, DroneHp1),
+  (DroneHp1 == 0 -> writeln('Drone destruído.'), drone()).
+
+
+combateDrone(DroneName, DroneHp, Inimigo1, Inimigo2):-
+  getCabecalho('ninho',X),
+  writeln(X),
+  writeln('\n'),
+  write(DroneName),
+  write(' - '),
+  write(DroneHp),
+  write('%'),
+  writeln('\n\n'),
+  write('Inimigo 1 - '),
+  write(Inimigo1),
+  write('%\n'),
+  write('Inimigo 2 - '),
+  write(Inimigo2),
+  write('%'),
+  
+  writeln('\n\n'),
+  writeln('1. Atacar inimigo 1\n2. Atacar inimigo 2\n4. Abandonar Drone'),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option == '4' -> drone(); Option == '1' -> ataqueDrone(DroneName, DroneHp, Inimigo1, Inimigo2, '1');  Option == '2' -> ataqueDrone(DroneName, DroneHp, Inimigo1, Inimigo2, '2')),
+  operacaoInvalida(),
+  combateDrone(DroneName, DroneHp, Inimigo1, Inimigo2).
+  
+combateDrone(DroneName, DroneHp, Inimigo) :-
+  getCabecalho('ninho',X),
+  writeln(X),
+  writeln(''),
+  write(DroneName),
+  write(' - '),
+  write(DroneHp),
+  write('%'),
+  writeln('\n\n'),
+  write('Inimigo 1 - '),
+  write(Inimigo1),
+  write('%\n\n'),
+  writeln('1. Atacar inimigo 1\n2. Atacar inimigo 2\n 3. Abandonar Drone'),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option == '3' -> drone()),
+  (Option == '1' -> ataqueDrone(DroneName, DroneHp, Inimigo));
+  operacaoInvalida(),
+  combateDrone(DroneName, DroneHp, Inimigo1, Inimigo2).
+
+ataqueDrone(DroneName, DroneHp, Inimigo1, Inimigo2, Alvo):-  
+  (Alvo == '1' -> writeln('Rajada disparada em Inimigo 1'), R1 is Inimigo1 - 25, random_between(0,100, Chance1),
+  (Chance1 >= 25 -> writeln('Inimigo 1 atingido!'), 
+  combateDroneMain(DroneName, DroneHp, R1, Inimigo2); 
+  writeln('Inimigo 1 não foi atingido'), 
+  combateDroneMain(DroneName, DroneHp, Inimigo1, Inimigo2)));
+  
+  (Alvo == '2' -> writeln('Rajada disparada em Inimigo 2'), R2 is Inimigo2 - 25, random_between(0,100, Chance1),
+  (Chance1 >= 25 -> writeln('Inimigo 2 atingido!'), 
+  combateDroneMain(DroneName, DroneHp, Inimigo1, R2); 
+  writeln('Inimigo 2 não foi atingido'),
+  combateDroneMain(DroneName, DroneHp, Inimigo1, Inimigo2))).
+  
+
+ataqueDrone(DroneName, DroneHp, Inimigo):-
+  writeln('Rajada disparada no Inimigo\n'),
+  random_between(0, 100, Chance1),
+  (Chance1 >= 25 -> writeln('Inimigo atingido!'),  combateDroneMain(DroneName, DroneHp, Inimigo)),
+  (Chance1 < 25  -> writeln('Inimigo não foi atingido.'), combateDroneMain(DroneName, DroneHp, Inimigo)).
+
+ataqueInimigo(DroneHp, DroneHpFinal):-
+  writeln('Inimigo atira contra o drone.'),
+  random_between(0, 100, Chance),
+  (Chance >= 70 -> writeln('Drone atingido!'), DroneHpFinal is DroneHp - 25);
+  random_between(0, 100, Chance1),
+  (Chance1 < 70 -> writeln('Drone não foi atingido!'), DroneHpFinal is DroneHP).
+ 
+fimCombate(DroneName):-
+  writeln('FIM').
 /*FIM DA TELA DE "O NINHO DA ARANHA"*/
 
 
