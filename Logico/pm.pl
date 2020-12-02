@@ -548,12 +548,12 @@ ninho1() :-
     writeln(''),
     read_line_to_codes(user_input, Op),
     atom_codes(Option, Op),
-    (Option == '1' -> ninho2();
+    (Option == '1' -> ninhoSeguranca([],37);
     Option == '2' -> contratos('inicio do contrato');
     operacaoInvalida()),
     ninho1().
 
-ninho2() :-
+/*ninho2() :-
     getCabecalho('ninho',X),
     writeln(X),
     writeln('Funcionarios online: 37'),
@@ -584,9 +584,64 @@ ninho2() :-
     Option == '3' ->
         drone());
     operacaoInvalida(),
-    ninho2().
+    ninho2().*/
+
+ninhoSeguranca(MissoesFeitas,FuncsOn) :-
+    (
+    (member('funcionarios derrubados',MissoesFeitas),
+    member('drone hackeado',MissoesFeitas)) ->
+        Dificuldade = 'Baixa',
+        Dica = 'Invasao direta';
+    (member('funcionarios derrubados',MissoesFeitas);
+    member('drone hackeado',MissoesFeitas)) ->
+        Dificuldade = 'Media',
+        Dica = 'Diminuir a seguranca antes de realizar a invasao';
+    Dificuldade = 'Alta',
+    Dica = 'Diminuir a seguranca antes de realizar a invasao'
+    ),
+    getCabecalho('ninho',X),
+    writeln(X),
+    write('Funcionarios online: '),
+    writeln(FuncsOn),
+    write('Protecao da rede: '),
+    writeln(Dificuldade),
+    writeln(''),
+    writeln(''),
+    write('Chance de o invasor ser rastreado ao invadir: '),
+    writeln(Dificuldade),
+    writeln(''),
+    write('Dificuldade atual de uma invasao direta: '),
+    writeln(Dificuldade),
+    writeln(''),
+    write('Melhor curso de acao: '),
+    writeln(Dica),
+    writeln(''),
+    writeln(''),
+    writeln(''),
+    writeln('1. Iniciar invasao'),
+    writeln('2. Derrubar funcionarios da rede'),
+    writeln('3. Hackear drone'),
+    writeln(''),
+    writeln('Digite o numero da operacao desejada: '),
+    writeln(''),
+    read_line_to_codes(user_input, Op),
+    atom_codes(Option, Op),
+    (
+    Option == '1' ->
+        writeln('Iniciando invasao...'),
+        writeln(''),
+        writeln('Atravessando firewall...'),
+        writeln(''),
+        invasao(MissoesFeitas,FuncsOn,Dificuldade);
+    Option == '2' ->
+        derrubaFuncs(MissoesFeitas,FuncsOn);
+    Option == '3' ->
+        drone(MissoesFeitas,FuncsOn)
+    );
+    operacaoInvalida(),
+    ninhoSeguranca(MissoesFeitas,FuncsOn).
 	
-derrubaFuncs() :-
+derrubaFuncs(MissoesFeitas,FuncsOn) :-
 	random_between(10,25,Derrubados),
 	writeln('Bloqueando o acesso dos funcionários online...'),
     writeln(''),
@@ -601,15 +656,19 @@ derrubaFuncs() :-
 		writeln('Mais de 50% dos usuários online foram derrubados.'),
 		writeln(''),
 		writeln('Nível de proteção da rede Digital Spider diminuído!'),
-		ninho3(FuncsRestantes));
+		append(['funcionarios derrubados'],MissoesFeitas,NewList),
+        ninhoSeguranca(NewList,FuncsRestantes));
 	writeln('Poucos usuários derrubados. Ataque ineficaz.'),
 	writeln('Nível de proteção da rede Digital Spider não sofreu alterações.'),
 	writeln(''),
 	writeln('Você está sofrendo uma tentativa de rastreio. Bloqueando rastreador...'),
 	random_between(0,100,Chance),
-	(Chance < 40 ->getBloqueioFail()),
+	(Chance < 40 ->getBloqueioFail());
 	writeln('Rastreio bloqueado com sucesso. Você conseguiu despistar seus inimigos!'),
-	ninho2().
+	ninhoSeguranca(MissoesFeitas,FuncsOn).
+
+/*
+/CODIGO OBSOLETO ABAIXO:/
 
 ninho3(FuncsRestantes) :-
     getCabecalho('ninho',X),
@@ -645,60 +704,64 @@ ninho3(FuncsRestantes) :-
         ninho3(FuncsRestantes);
     operacaoInvalida(),
     ninho3(FuncsRestantes)).
+*/
 
 
 /*INICIO DA INVASAO*/
 
-invasao('dificil') :-
+invasao(MissoesFeitas,FuncsOn,'Alta') :-
     random_between(1,6,D1),
     random_between(1,6,D2),
     random_between(1,6,D3),
-    ((D1 == 6, D2 == 6, D3 == 6) ->
+    (
+    (D1 == 6, D2 == 6, D3 == 6) ->
         writeln('Rede interna Digital Spider invadida com sucesso!'),
         roubarArquivos1();
     writeln('Acesso bloqueado. Invasão mal sucedida.'),
     writeln(''),
     writeln('Você está sofrendo uma tentativa de rastreio. Bloqueando rastreador...'),
     writeln(''),
-    writeln('Falha no bloqueio. Você foi rastreado! Sua identidade e localização foram comprometidos!'), /*TEMPORARIO! Sera acrescentada a funcao que calcula a probabilidade do bloqueio do rastreamento.*/
-    writeln(''),
-    getGameOverMsg(X),
-    writeln(X),
-    contratos('inicio do contrato')).
+	random_between(0,100,Chance),
+	(Chance < 40 ->getBloqueioFail());
+	writeln('Rastreio bloqueado com sucesso. Você conseguiu despistar seus inimigos!'),
+	ninhoSeguranca(MissoesFeitas,FuncsOn)
+    ).
 
-invasao('media') :-
+invasao(MissoesFeitas,FuncsOn,'Media') :-
     random_between(1,6,D1),
     random_between(1,6,D2),
     random_between(1,6,D3),
-    ((D1 > 3, D2 > 3, D3 > 3) ->
+    (
+    (D1 > 3, D2 > 3, D3 > 3) ->
         writeln('Rede interna Digital Spider invadida com sucesso!'),
         roubarArquivos1();
     writeln('Acesso bloqueado. Invasão mal sucedida.'),
     writeln(''),
     writeln('Você está sofrendo uma tentativa de rastreio. Bloqueando rastreador...'),
     writeln(''),
-    writeln('Falha no bloqueio. Você foi rastreado! Sua identidade e localização foram comprometidos!'), /*TEMPORARIO! Sera acrescentada a funcao que calcula a probabilidade do bloqueio do rastreamento.*/
-    writeln(''),
-    getGameOverMsg(X),
-    writeln(X),
-    contratos('inicio do contrato')).
+	random_between(0,100,Chance),
+	(Chance < 40 ->getBloqueioFail());
+	writeln('Rastreio bloqueado com sucesso. Você conseguiu despistar seus inimigos!'),
+	ninhoSeguranca(MissoesFeitas,FuncsOn)
+    ).
 
-invasao('facil') :-
+invasao(MissoesFeitas,FuncsOn,'Baixa') :-
     random_between(1,6,D1),
     random_between(1,6,D2),
     random_between(1,6,D3),
-    ((D1 > 1, D2 > 1, D3 > 1) ->
+    (
+    (D1 > 1, D2 > 1, D3 > 1) ->
         writeln('Rede interna Digital Spider invadida com sucesso!'),
         roubarArquivos1();
     writeln('Acesso bloqueado. Invasão mal sucedida.'),
     writeln(''),
     writeln('Você está sofrendo uma tentativa de rastreio. Bloqueando rastreador...'),
     writeln(''),
-    writeln('Falha no bloqueio. Você foi rastreado! Sua identidade e localização foram comprometidos!'), /*TEMPORARIO! Sera acrescentada a funcao que calcula a probabilidade do bloqueio do rastreamento.*/
-    writeln(''),
-    getGameOverMsg(X),
-    writeln(X),
-    contratos('inicio do contrato')).
+	random_between(0,100,Chance),
+	(Chance < 40 ->getBloqueioFail());
+	writeln('Rastreio bloqueado com sucesso. Você conseguiu despistar seus inimigos!'),
+	ninhoSeguranca(MissoesFeitas,FuncsOn)
+    ).
 
 /*FIM DA INVASAO*/
 
@@ -706,6 +769,7 @@ invasao('facil') :-
 /*INICIO DO ROUBO DE DADOS*/
 
 roubarArquivos1() :-
+    writeln(''),
     writeln('DIGITAL SPIDER - BANCO DE DADOS'),
     writeln(''),
     writeln(''),
@@ -1206,7 +1270,11 @@ ninho5() :-
    operacaoInvalida(),
    ninho5()).
 
-
+drone(MissoesFeitas,FuncsOn) :-
+    write('DRONE HACKEADO!!!'),
+    append(['drone hackeado'],MissoesFeitas,NewList),
+    ninhoSeguranca(NewList,FuncsOn).
+/*
 drone():-
   getCabecalho('ninho',X),
   writeln(X),
@@ -1220,6 +1288,7 @@ drone():-
   (Option == '1' -> invadindoDrone('Tunderstorm#231982'); Option == '2' -> invadindoDrone('ZTX#53325'); Option == '3' -> invadindoDrone('Sphinx#142731'); Option == '4' -> ninho2()),
   operacaoInvalida(),
   drone().
+
 
 drone(FuncRestantes):-
   getCabecalho('ninho',X),
@@ -1477,7 +1546,7 @@ droneSabotaAr(DroneName):-
   (Option == '1' -> virusInstalado(DroneName, 1)),
   operacaoInvalida(),
   droneSabotaAr(DroneName).
- 
+ */
 
 
 /*FIM DA TELA DE "O NINHO DA ARANHA"*/
