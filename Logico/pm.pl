@@ -608,6 +608,471 @@ invasao('facil') :-
 /*FIM DA INVASAO*/
 
 
+/*INICIO DO ROUBO DE DADOS*/
+
+roubarArquivos1() :-
+    writeln('DIGITAL SPIDER - BANCO DE DADOS'),
+    writeln(''),
+    writeln(''),
+    writeln(''),
+    writeln(''),
+    writeln(''),
+    writeln('Informacoes a pesquisar:'),
+    writeln(''),
+    writeln('-> Connected World'),
+    writeln('-> GhostWeb'),
+    writeln('-> Pupp3t_M@st3r'),
+    writeln(''),
+    writeln('1. Realizar o download automatico dos dados'),
+    writeln(''),
+    writeln('Digite o numero da operacao desejada: '),
+    read_line_to_codes(user_input, Op),
+    atom_codes(Option, Op),
+    (
+    Option == '1' ->
+        roubarArquivos2();
+    operacaoInvalida,
+    roubarArquivos1()
+    ).
+    
+roubarArquivos2() :-
+    writeln('DIGITAL SPIDER - BANCO DE DADOS'),
+    writeln(''),
+    writeln(''),
+    writeln(''),
+    writeln(''),
+    writeln(''),
+    writeln('Todas as informacoes necessarias foram baixadas.'),
+    writeln(''),
+    writeln('1. Sair do banco de dados.'),
+    writeln(''),
+    writeln('Digite o numero da operacao desejada: '),
+    read_line_to_codes(user_input, Op),
+    atom_codes(Option, Op),
+    writeln(''),
+    (
+    Option == '1' ->
+        writeln('Pesquisando arquivos...'),
+        writeln('3/3 Arquivos encontrados!'),
+        writeln(''),
+        writeln('Realizando download...'),
+        writeln('1/3...'),
+        writeln('2/3...'),
+        writeln('3/3'),
+        writeln('Download completo!'),
+        ninho4();
+    operacaoInvalida,
+    roubarArquivos2()
+    ).
+
+/*
+
+/*O CODIGO ABAIXO CONTEM ERROS, E NAO FOI UTILIZADO DEVIDO A DIFICULDADES COM RECURSÃO E CONDIÇÕES IF ELSE EM PROLOG.*/
+
+/*Função que garante que um elemento da pesquisa só aparece como opção se não tiver sido pesquisado ainda:*/
+verificaPesquisa(Pesquisa, PesquisasAnteriores) :-
+    (member(Pesquisa, PesquisasAnteriores) -> write('');
+    writeln(Pesquisa)).
+
+roubarArquivos(PesquisasFeitas) :-
+    PesquisasFeitas = [UltimaPesquisa|_],
+    (
+    UltimaPesquisa == '' ->
+        writeln('DIGITAL SPIDER - BANCO DE DADOS'),
+        writeln(''),
+        writeln(''),
+        writeln(''),
+        writeln(''),
+        writeln(''),
+        writeln('Informacoes a pesquisar:'),
+        writeln(''),
+        writeln('-> Connected World'),
+        writeln('-> GhostWeb'),
+        writeln('-> Pupp3t_M@st3r'),
+        writeln(''),
+        write('Pesquise por um arquivo digitando seu nome: '),
+        read_line_to_codes(user_input, Rp),
+        atom_codes(Resposta, Rp),
+        
+        (
+        Resposta == 'Connected World' ->
+            writeln('Pesquisando...'),
+            writeln(''),
+            writeln('1 resultado encontrado:'),
+            writeln(''),
+            writeln('Connected_World.zip'),
+            writeln(''),
+            writeln('Baixar arquivo?'),
+            writeln(''),
+            writeln('Digite sua resposta: '),
+            read_line_to_codes(user_input, Bx),
+            atom_codes(Baixar, Bx),
+            (
+            (Baixar \== 'sim', Baixar \== 'Sim') ->
+                operacaoInvalida(),
+                writeln('-----------------------------------------------'),
+                roubarArquivos(PesquisasFeitas);
+            writeln('Baixando...'),
+            
+            writeln(''),
+            writeln('Baixado!'),
+            writeln(''),
+            writeln('-----------------------------------------------'),
+            append(['-> Connected World'],PesquisasFeitas,NewList),
+            roubarArquivos(NewList)
+            )
+        );
+                    
+        (
+        Resposta == 'GhostWeb' ->
+            writeln('Pesquisando...'),
+            writeln(''),
+            writeln('1 resultado encontrado:'),
+            writeln(''),
+            writeln('GhostWeb.zip'),
+            writeln(''),
+            writeln('Baixar arquivo?'),
+            writeln(''),
+            writeln('Digite sua resposta: '),
+            read_line_to_codes(user_input, Bx),
+            atom_codes(Baixar, Bx),
+            (
+            (Baixar \== 'sim', Baixar \== 'Sim') ->
+                operacaoInvalida(),
+                writeln('-----------------------------------------------'),
+                roubarArquivos(PesquisasFeitas)
+            );
+            writeln('Baixando...'),
+            writeln(''),
+            writeln('Baixado!'),
+            writeln('-----------------------------------------------'),
+            writeln(''),
+            append(['-> GhostWeb'],PesquisasFeitas,NewList),
+            roubarArquivos(NewList)
+        );
+        
+        (
+        Resposta == 'Pupp3t_M@st3r' ->
+            writeln('Pesquisando...'),
+            writeln(''),
+            writeln('1 resultado encontrado:'),
+            writeln(''),
+            writeln('Pupp3t_M@st3r.zip'),
+            writeln(''),
+            writeln('Baixar arquivo?'),
+            writeln(''),
+            writeln('Digite sua resposta: '),
+            read_line_to_codes(user_input, Bx),
+            atom_codes(Baixar, Bx),
+            (
+            (Baixar \== 'sim', Baixar \== 'Sim') ->
+                operacaoInvalida(),
+                writeln('-----------------------------------------------'),
+                roubarArquivos(PesquisasFeitas)
+            );
+            writeln('Baixando...'),
+            writeln(''),
+            writeln('Baixado!'),
+            writeln(''),
+            writeln('-----------------------------------------------'),
+            append(['-> Pupp3t_M@st3r'],PesquisasFeitas,NewList),
+            roubarArquivos(NewList)
+        );
+
+        operacaoInvalida(),
+        writeln('-----------------------------------------------'),
+        roubarArquivos(PesquisasFeitas)
+    ).
+   
+roubarArquivos(PesquisasFeitas) :-
+    PesquisasFeitas = [UltimaPesquisa|_],  
+    (
+    UltimaPesquisa == '-> Connected World' ->
+        writeln('DIGITAL SPIDER - BANCO DE DADOS'),
+        writeln(''),  
+        writeln(''),
+        writeln(''),
+        writeln(''),
+        writeln(''),
+        writeln('Informacoes a pesquisar:'),
+        writeln(''),
+        verificaPesquisa('-> GhostWeb',PesquisasFeitas),
+        verificaPesquisa('-> Pupp3t_M@st3r',PesquisasFeitas),
+        writeln(''),
+        write('Pesquise por um arquivo digitando seu nome: '),
+        read_line_to_codes(user_input, Rp),
+        atom_codes(Resposta, Rp),
+        
+        (
+        Resposta == 'GhostWeb' ->
+            writeln('Pesquisando...'),
+            writeln(''),
+            writeln('1 resultado encontrado:'),
+            writeln(''),
+            writeln('GhostWeb.zip'),
+            writeln(''),
+            writeln('Baixar arquivo?'),
+            writeln(''),
+            writeln('Digite sua resposta: '),
+            read_line_to_codes(user_input, Bx),
+            atom_codes(Baixar, Bx),
+            (
+            (Baixar \== 'sim', Baixar \== 'Sim') ->
+                operacaoInvalida(),
+                writeln('-----------------------------------------------'),
+                roubarArquivos(PesquisasFeitas)
+            );
+            writeln('Baixando...'),
+            writeln(''),
+            writeln('Baixado!'),
+            writeln(''),
+            writeln('-----------------------------------------------'),
+            (
+            member('-> Pupp3t_M@st3r',PesquisasFeitas) ->
+                roubarArquivos(['finalizado']);
+            append(['-> GhostWeb'],PesquisasFeitas,NewList),
+            roubarArquivos(NewList)
+            )
+        );
+        
+        (Resposta == 'Pupp3t_M@st3r' ->
+            writeln('Pesquisando...'),
+            writeln(''),
+            writeln('1 resultado encontrado:'),
+            writeln(''),
+            writeln('Pupp3t_M@st3r.zip'),
+            writeln(''),
+            writeln('Baixar arquivo?'),
+            writeln(''),
+            writeln('Digite sua resposta: '),
+            read_line_to_codes(user_input, Bx),
+            atom_codes(Baixar, Bx),
+            (
+            (Baixar \== 'sim', Baixar \== 'Sim') ->
+                operacaoInvalida(),
+                writeln('-----------------------------------------------'),
+                roubarArquivos(PesquisasFeitas)
+            );
+            writeln('Baixando...'),
+            writeln(''),
+            writeln('Baixado!'),
+            writeln(''),
+            writeln('-----------------------------------------------'),
+            (
+            member('-> GhostWeb',PesquisasFeitas) ->
+                roubarArquivos(['finalizado']);
+            append(['-> Pupp3t_M@st3r'],PesquisasFeitas,NewList),
+            roubarArquivos(NewList)
+            )
+        );
+        
+        operacaoInvalida(),
+        writeln('-----------------------------------------------'),
+        roubarArquivos(PesquisasFeitas)
+    ).
+
+roubarArquivos(PesquisasFeitas) :-
+    PesquisasFeitas = [UltimaPesquisa|_],  
+    (
+    UltimaPesquisa == '-> GhostWeb' ->
+        writeln('DIGITAL SPIDER - BANCO DE DADOS'),
+        writeln(''),  
+        writeln(''),
+        writeln(''),
+        writeln(''),
+        writeln(''),
+        writeln('Informacoes a pesquisar:'),
+        writeln(''),
+        verificaPesquisa('-> Connected World',PesquisasFeitas),
+        verificaPesquisa('-> Pupp3t_M@st3r',PesquisasFeitas),
+        writeln(''),
+        write('Pesquise por um arquivo digitando seu nome: '),
+        read_line_to_codes(user_input, Rp),
+        atom_codes(Resposta, Rp),
+        
+        (
+        Resposta == 'Connected World' ->
+            writeln('Pesquisando...'),
+            writeln(''),
+            writeln('1 resultado encontrado:'),
+            writeln(''),
+            writeln('Connected_World.zip'),
+            writeln(''),
+            writeln('Baixar arquivo?'),
+            writeln(''),
+            writeln('Digite sua resposta: '),
+            read_line_to_codes(user_input, Bx),
+            atom_codes(Baixar, Bx),
+            (
+            (Baixar \== 'sim', Baixar \== 'Sim') ->
+                operacaoInvalida(),
+                writeln('-----------------------------------------------'),
+                roubarArquivos(PesquisasFeitas)
+            );
+            writeln('Baixando...'),
+            writeln(''),
+            writeln('Baixado!'),
+            writeln(''),
+            writeln('-----------------------------------------------'),
+            (
+            member('-> Pupp3t_M@st3r',PesquisasFeitas) ->
+                roubarArquivos(['finalizado']);
+            append(['-> Connected World'],PesquisasFeitas,NewList),
+            roubarArquivos(NewList)
+            )
+        );
+        
+        (Resposta == 'Pupp3t_M@st3r' ->
+            writeln('Pesquisando...'),
+            writeln(''),
+            writeln('1 resultado encontrado:'),
+            writeln(''),
+            writeln('Pupp3t_M@st3r.zip'),
+            writeln(''),
+            writeln('Baixar arquivo?'),
+            writeln(''),
+            writeln('Digite sua resposta: '),
+            read_line_to_codes(user_input, Bx),
+            atom_codes(Baixar, Bx),
+            (
+            (Baixar \== 'sim', Baixar \== 'Sim') ->
+                operacaoInvalida(),
+                writeln('-----------------------------------------------'),
+                roubarArquivos(PesquisasFeitas)
+            );
+            writeln('Baixando...'),
+            writeln(''),
+            writeln('Baixado!'),
+            writeln(''),
+            writeln('-----------------------------------------------'),
+            (
+            member('-> Connected World',PesquisasFeitas) ->
+                roubarArquivos(['finalizado']);
+            append(['-> Pupp3t_M@st3r'],PesquisasFeitas,NewList),
+            roubarArquivos(NewList)
+            )
+        );
+        
+        operacaoInvalida(),
+        writeln('-----------------------------------------------'),
+        roubarArquivos(PesquisasFeitas)
+    ).
+
+roubarArquivos(PesquisasFeitas) :-
+    PesquisasFeitas = [UltimaPesquisa|_],  
+    (
+    UltimaPesquisa == '-> Pupp3t_M@st3r' ->
+        writeln('DIGITAL SPIDER - BANCO DE DADOS'),
+        writeln(''),  
+        writeln(''),
+        writeln(''),
+        writeln(''),
+        writeln(''),
+        writeln('Informacoes a pesquisar:'),
+        writeln(''),
+        verificaPesquisa('-> Connected World',PesquisasFeitas),
+        verificaPesquisa('-> GhostWeb',PesquisasFeitas),
+        writeln(''),
+        write('Pesquise por um arquivo digitando seu nome: '),
+        read_line_to_codes(user_input, Rp),
+        atom_codes(Resposta, Rp),
+        
+        (
+        Resposta == 'Connected World' ->
+            writeln('Pesquisando...'),
+            writeln(''),
+            writeln('1 resultado encontrado:'),
+            writeln(''),
+            writeln('Connected_World.zip'),
+            writeln(''),
+            writeln('Baixar arquivo?'),
+            writeln(''),
+            writeln('Digite sua resposta: '),
+            read_line_to_codes(user_input, Bx),
+            atom_codes(Baixar, Bx),
+            (
+            (Baixar \== 'sim', Baixar \== 'Sim') ->
+                operacaoInvalida(),
+                writeln('-----------------------------------------------'),
+                roubarArquivos(PesquisasFeitas)
+            );
+            writeln('Baixando...'),
+            writeln(''),
+            writeln('Baixado!'),
+            writeln(''),
+            writeln('-----------------------------------------------'),
+            (
+            member('-> GhostWeb',PesquisasFeitas) ->
+                roubarArquivos(['finalizado']);
+            append(['-> Connected World'],PesquisasFeitas,NewList),
+            roubarArquivos(NewList)
+            )
+        );
+        
+        (Resposta == 'GhostWeb' ->
+            writeln('Pesquisando...'),
+            writeln(''),
+            writeln('1 resultado encontrado:'),
+            writeln(''),
+            writeln('GhostWeb.zip'),
+            writeln(''),
+            writeln('Baixar arquivo?'),
+            writeln(''),
+            writeln('Digite sua resposta: '),
+            read_line_to_codes(user_input, Bx),
+            atom_codes(Baixar, Bx),
+            (
+            (Baixar \== 'sim', Baixar \== 'Sim') ->
+                operacaoInvalida(),
+                writeln('-----------------------------------------------'),
+                roubarArquivos(PesquisasFeitas)
+            );
+            writeln('Baixando...'),
+            writeln(''),
+            writeln('Baixado!'),
+            writeln(''),
+            writeln('-----------------------------------------------'),
+            (
+            member('-> Connected World',PesquisasFeitas) ->
+                roubarArquivos(['finalizado']);
+            append(['-> GhostWeb'],PesquisasFeitas,NewList),
+            roubarArquivos(NewList)
+            )
+        );
+        
+        operacaoInvalida(),
+        writeln('-----------------------------------------------'),
+        roubarArquivos(PesquisasFeitas)
+    ).
+    
+roubarArquivos([UltimaPesquisa|_]) :-
+    (
+    UltimaPesquisa == 'finalizado' ->
+        writeln('DIGITAL SPIDER - BANCO DE DADOS'),
+        writeln(''),
+        writeln(''),
+        writeln(''),
+        writeln(''),
+        writeln(''),
+        writeln('Todas as informacoes necessarias foram baixadas.'),
+        writeln(''),
+        writeln('1. Sair do banco de dados.'),
+        writeln(''),
+        writeln('Digite o numero da operacao desejada: '),
+        read_line_to_codes(user_input, Op),
+        atom_codes(Option, Op),
+        writeln(''),
+        (
+        operacao == '1' ->
+            ninho4();
+        operacaoInvalida,
+        roubarArquivos(['finalizado'])
+        )
+    ).
+*/
+/*FIM DO ROUBO DE DADOS*/
+
+
 ninho4() :-
     getCabecalho('ninho',X),
     writeln(X),
