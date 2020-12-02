@@ -241,6 +241,7 @@ writeln('\n \n \n'),
   writeln(Text),
   read_line_to_codes(user_input, Op),
   atom_codes(Option, Op), 
+  (Option = '1' -> getNoticia1, noticia('ultima noticia');Option = '2' -> getNoticia2, noticia('ultima noticia');Option = '3' -> getNoticia3, noticia('noticia 3 lida');Option = '4' -> menu('ultima noticia');noticia('ultima noticia')).
 
 
 
