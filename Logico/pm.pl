@@ -26,9 +26,14 @@ getCabecalho('1', '\n\n\n\n\n\n\n:::::::::::::MENSAGENS:::::::::::::\n\n').
 getCabecalho('2', '\n\n\n\n\n\n\n:::::::::::::PERFIL:::::::::::::\n\n').
 getCabecalho('3', '\n\n\n\n\n\n\n:::::::::::::CONTRATOS:::::::::::::\n\n').
 getCabecalho('4', '\n\n\n\n\n\n\n:::::::::::::NOTÍCIAS:::::::::::::\n\n').
-getCabecalho('5', '\n\n\n\n\n\n\n:::::::::::::DESENVOLVEDORES:::::::::::::\n\n').
+getCabecalho('5', '\n\n\n\n\n\n\n:::::::::::::DESENVOLVEDORES:::::::::::::').
 getCabecalho('chat', '\n\n\n\n\n\n\n:::::::::::::M3lch10r:::::::::::::\n\n').
 getCabecalho('ninho', '\n\n\n\n\n\n\n:::::::::::::O Ninho da Aranha:::::::::::::\n\n').
+getCabecalho('ninho2', '\n\n\n\n\n\n\n:::::::::::::O Ninho da Aranha:::::::::::::').
+getCabecalho('Tunderstorm#231982', ':::::::::::>>Tunderstorm<<:::::::::::\n\n').
+getCabecalho('ZTX#53325', ':::::::::::>>ZTX<<:::::::::::\n\n').
+getCabecalho('Sphinx#142731', ':::::::::::>>Sphinx<<:::::::::::\n\n').
+
 
 getOpcaoInvalida:- 
   writeln('Opção inválida. Tente novamente').
@@ -40,13 +45,29 @@ getMenu('noticia 2 lida', ' \n \n \n \n \n \n ««««««««ABYSS»»»»»»�
 getMenu('noticia 1 e 2 lida', ' \n \n \n \n \n \n ««««««««ABYSS»»»»»»»» \n O ambiente de trabalho para aqueles que seguem suas próprias leis.\n  \n :::::::::::::MENU:::::::::::::\n 1. Mensagens(!)\n 2. Perfil\n 3. Contratos\n 4. Notícias\n 5. Desenvolvedores\n \n Digite o número da operação desejada: \n ').
 getMenu('inicio do contrato', ' \n \n \n \n \n \n ««««««««ABYSS»»»»»»»» \n O ambiente de trabalho para aqueles que seguem suas próprias leis.\n  \n :::::::::::::MENU:::::::::::::\n 1. Mensagens\n 2. Perfil\n 3. Contratos(!)\n 4. Notícias\n 5. Desenvolvedores\n \n Digite o número da operação desejada: \n ').
 getMenu('contrato finalizado', ' \n \n \n \n \n \n ««««««««ABYSS»»»»»»»» \n O ambiente de trabalho para aqueles que seguem suas próprias leis.\n  \n :::::::::::::MENU:::::::::::::\n 1. Mensagens(!)\n 2. Perfil\n 3. Contratos\n 4. Notícias\n 5. Desenvolvedores\n \n Digite o número da operação desejada: \n ').
+getMenu('ultima noticia','\n \n \n \n \n \n ««««««««ABYSS»»»»»»»» \n O ambiente de trabalho para aqueles que seguem suas próprias leis.\n \n :::::::::::::MENU:::::::::::::\n 1. Mensagens\n 2. Perfil\n 3. Contratos\n 4. Notícias (1)\n 5. Crédito aos Desenvolvedores\n \n Digite o número da operação desejada: \n').
+
+
+
+
+
+
+
+
+
+
+
+
 
 getNoticia('evento 0', 'Você possui 0 novas notícias.\n (!)1.Tecnologia: Projeto Connected World É Um Sucesso!\n (!)2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n \n 3. Voltar ao Menu\n \nDigite o número da opção desejada').
 getNoticia('noticia 1 lida', 'Você possui 0 novas notícias.\n 1.Tecnologia: Projeto Connected World É Um Sucesso!\n (!)2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n \n 3. Voltar ao Menu\n \nDigite o número da opção desejada').
 getNoticia('noticia 2 lida', 'Você possui 0 novas notícias.\n (!)1.Tecnologia: Projeto Connected World É Um Sucesso!\n 2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n \n 3. Voltar ao Menu\n \nDigite o número da opção desejada').
 getNoticia('noticia 1 e 2 lida', 'Você possui 0 novas notícias.\n 1.Tecnologia: Projeto Connected World É Um Sucesso!\n 2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n \n 3. Voltar ao Menu\n \nDigite o número da opção desejada').
-getNoticia('ultima mensagem', 'Você possui 1 novas notícias.\n 1.Tecnologia: Projeto Connected World É Um Sucesso!\n 2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n 3. (!) URGENTE: Projeto Connected Word É Um Golpe de Nível Mundial! \n 4. Voltar ao Menu \nDigite o número da opção desejada').
+getNoticia('ultima noticia', 'Você possui 1 novas notícias.\n 1.Tecnologia: Projeto Connected World É Um Sucesso!\n 2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n 3.(!) URGENTE: Projeto Connected Word É Um Golpe de Nível Mundial! \n 4. Voltar ao Menu \nDigite o número da opção desejada').
+getNoticia('noticia 3 lida','Você possui 0 novas notícias.\n 1.Tecnologia: Projeto Connected World É Um Sucesso!\n 2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n 3.URGENTE: Projeto Connected Word É Um Golpe de Nível Mundial! \n 4. Voltar ao Menu \nDigite o número da opção desejada').
 
+getDesenvolvedores('dev','1. Caio José dos Santos Arruda\n2. Enock Bezerra Ferreira de Souza\n3. João Vitor Patrício Romão\n4. Jonatha Kennedy Monteiro da Costa\n5. Thiago Farias de Almeida\n\nDigite(1) para Voltar ao Menu:').
+  
 
 getContrato('tela 1',
 '*********ATIVOS*********
@@ -211,6 +232,24 @@ noticia('noticia 1 e 2 lida') :-
   atom_codes(Option, Op), 
   (Option = '1' -> getNoticia1, noticia('noticia 1 e 2 lida'); Option = '2' -> getNoticia2, noticia('noticia 1 e 2 lida'); Option = '3' -> menu('noticia 1 e 2 lida'); getOpcaoInvalida, noticia('noticia 1 e 2 lida')).
 
+noticia('noticia 3 lida') :-
+  writeln('\n \n \n'),
+  getNoticia('noticia 3 lida', Text),
+  writeln(Text),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option = '1' -> getNoticia1, noticia('noticia 3 lida');Option = '2' -> getNoticia2, noticia('noticia 3 lida');Option = '3' -> getNoticia3, noticia('noticia 3 lida');Option = '4' -> menu('evento 0'); getOpcaoInvalida, noticia('noticia 3 lida')).
+
+noticia('ultima noticia'):-
+writeln('\n \n \n'),
+  getNoticia('ultima noticia', Text),
+  writeln(Text),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op), 
+  (Option = '1' -> getNoticia1, noticia('ultima noticia');Option = '2' -> getNoticia2, noticia('ultima noticia');Option = '3' -> getNoticia3, noticia('noticia 3 lida');Option = '4' -> menu('ultima noticia');noticia('ultima noticia')).
+
+
+
 noticia('ultima mensagem'):-
   writeln('\n \n \n'),
   getNoticia('ultima mensagem', Text),
@@ -272,6 +311,8 @@ getChat('mensagem 4'):-
   read_line_to_codes(user_input, Op),
   atom_codes(Option, Op),
   (Option = '1' -> menu('inicio do contrato');  writeln('Operação inválida! Tente novamente.'), getChat('mensagem 4')).
+
+
   
 /*Se o for para mensagem 2  digitar 'voce ouviu errado, cai fora'  */
 getChat('mensagem 5'):-
@@ -295,6 +336,27 @@ getChat('mensagem 6'):-
   atom_codes(Option, Op),
   (Option = '1' -> getChat('mensagem 4'); writeln('Operação inválida! Tente novamente.'), getChat('mensagem 6')).
 
+
+  getChat('mensagem 6finalizacao'):-
+  getCabecalho('chat', Cabecalho),
+  writeln(Cabecalho),
+  mensagem('mensagem 6', Text),
+  writeln(Text),
+  writeln('\n1. Do que está falando?'),
+  writeln('2. Voltar a Mensagens.'),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option = '1' -> getChat('mensagem 7'); Option = '2' -> mensagemMenu('contrato finalizado') ;writeln('Operação inválida! Tente novamente.'), getChat('mensagem 6finalizacao')).
+
+  getChat('mensagem 7'):-
+  getCabecalho('chat', Cabecalho),
+  writeln(Cabecalho),
+  mensagem('mensagem 7', Text),
+  writeln(Text),
+  writeln('\n1. Voltar a Mensagens.'),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option = '1' -> mensagemMenu('ultima mensagem'); writeln('Operação inválida! Tente novamente.'), getChat('mensagem 7')).
 
 mensagemMenu('evento 0'):-
   getCabecalho('1', Cabecalho),
@@ -340,6 +402,24 @@ mensagemMenu(''):-
   read_line_to_codes(user_input, Op),
   atom_codes(Option, Op),
   (Option = '1' -> menu('inicio do contrato')).
+
+mensagemMenu('contrato finalizado'):-
+  getCabecalho('1', Cabecalho),
+  writeln(Cabecalho),
+  getMensagem('contrato finalizado', Text),
+  writeln(Text),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option = '2' -> menu('contrato finalizado'); Option = '1' -> getChat('mensagem 6finalizacao')).
+
+  mensagemMenu('ultima mensagem'):-
+  getCabecalho('1', Cabecalho),
+  writeln(Cabecalho),
+  getMensagem('ultima mensagem', Text),
+  writeln(Text),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option = '1' -> menu('ultima noticia')).
 
 
 /*INICIO DA TELA DE CONTRATOS*/
@@ -435,8 +515,28 @@ contratos('fim de jogo') :-
 
 /*FIM DA TELA DE CONTRATOS*/
 
+/*INICIO DA TELA DE DESENVOLVEDORES*/
+desenvolvedores() :-
+  getCabecalho('5',X),
+  getDesenvolvedores('dev',Y),
+  writeln(X),
+  writeln(Y),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option = '1' -> menu('evento 0'); writeln('Operação inválida! Tente novamente'), desenvolvedores()).
+
+/*FIM DA TELA DE DESENVOLVEDORES*/
 
 /*INICIO DA TELA DE "O NINHO DA ARANHA"*/
+getBloqueioFail():-
+  getCabecalho('ninho',X),
+  writeln(X),
+  writeln('\n\n'),
+  writeln('Falha no bloqueio. Você foi rastreado! Sua identidade e localização foram comprometidos!'),
+  getGameOverMsg(Msg),
+  writeln(''),
+  writeln(Msg),
+  menu('inicio do contrato').
 
 ninho1() :-
     getCabecalho('ninho',X),
@@ -483,10 +583,7 @@ ninho2() :-
     Option == '2' ->
         derrubaFuncs();
     Option == '3' ->
-        writeln('Procurando drones...'),
-        writeln(''),
-        writeln('Nenhum drone foi detectado na rede.'),
-        ninho2());
+        drone());
     operacaoInvalida(),
     ninho2().
 	
@@ -510,13 +607,10 @@ derrubaFuncs() :-
 	writeln('Nível de proteção da rede Digital Spider não sofreu alterações.'),
 	writeln(''),
 	writeln('Você está sofrendo uma tentativa de rastreio. Bloqueando rastreador...'),
-	writeln(''),
-	writeln(''),
-	writeln('Falha no bloqueio. Você foi rastreado! Sua identidade e localização foram comprometidos!'),
-	getGameOverMsg(Msg),
-	writeln(''),
-	writeln(Msg),
-	menu('inicio do contrato').
+	random_between(0,100,Chance),
+	(Chance < 40 ->getBloqueioFail()),
+	writeln('Rastreio bloqueado com sucesso. Você conseguiu despistar seus inimigos!'),
+	ninho2().
 
 ninho3(FuncsRestantes) :-
     getCabecalho('ninho',X),
@@ -1109,14 +1203,291 @@ ninho5() :-
    operacaoInvalida(),
    ninho5()).
 
+
+drone():-
+  getCabecalho('ninho',X),
+  writeln(X),
+  writeln(''),
+  writeln('Detectando drones...\n'),
+  writeln('DRONES DISPONÍVEIS:\n'),
+  writeln('1. Tunderstorm#231982\n2. ZTX#53325\n3. Sphinx#142731\n\n4. Voltar'),
+  writeln('\nDigite o número da operação desejada:'),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option == '1' -> invadindoDrone('Tunderstorm#231982'); Option == '2' -> invadindoDrone('ZTX#53325'); Option == '3' -> invadindoDrone('Sphinx#142731'); Option == '4' -> ninho2()),
+  operacaoInvalida(),
+  drone().
+
+drone(FuncRestantes):-
+  getCabecalho('ninho',X),
+  writeln(X),
+  writeln(''),
+  writeln('Detectando drones...\n'),
+  writeln('DRONES DISPONÍVEIS:\n'),
+  writeln('1. Tunderstorm#231982\n2. ZTX#53325\n3. Sphinx#142731\n4. Voltar'),
+  writeln('\nDigite o número da operação desejada:'),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option == '1' -> invadindoDrone('Tunderstorm#231982', FuncRestantes); Option =='2' -> invadindoDrone('ZTX#53325', FuncRestantes); Option == '3' -> invadindoDrone('Sphinx#142731', FuncRestantes); Option == '4' -> ninho3(FuncRestantes)),
+  operacaoInvalida(),
+  drone().
+ 
+invadindoDrone(DroneName):-
+  getCabecalho('ninho',X),
+  writeln(X),
+  writeln(''),
+  writeln(DroneName),
+  writeln('\n\nSistema de armas: Offline\nBateria: 80% carregada\nLocomoção: Aérea\nTamanho: Pequeno\nCondição da estrutura: 100% (Intacto)'),
+  writeln('\n\n1. Tomar controle do drone\n2. Voltar\n\n'),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option == '1' -> droneInvadido(DroneName)),
+  (Option == '2' -> drone()),
+  operacaoInvalida(),
+  invadindoDrone(DroneName).
+
+invadindoDrone(DroneName, FuncRestantes):-
+  getCabecalho('ninho',X),
+  writeln(X),
+  writeln(''),
+  writeln(DroneName),
+  writeln('\n\nSistema de armas: Online\nBateria: 80% carregada\nLocomoção: Aérea\nTamanho: Pequeno\nCondição da estrutura: 100% (Intacto)'),
+  writeln('\n\n1. Tomar controle do drone\n\n2. Voltar'),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option == '1' -> drone('invadindo')),
+  (Option == '2' -> drone(FuncRestantes)),
+  operacaoInvalida(),
+  invadindoDrone(DroneName, FuncRestantes).
+
+invadindoDrone2(DroneName):-
+  getCabecalho('ninho',X),
+  writeln(X),
+  writeln(''),
+  writeln('Invadindo drone...'),
+  random_between(0,100,Chance),
+  (Chance >= 40 -> writeln('Invasão bem sucedida.'), droneInvadido(DroneName)),
+  writeln('\n\nInvasão mal sucedida.\n\nVocê está sofrendo uma tentativa de rastreio. Bloqueando rastreador...'),
+  random_between(0,100, Chance2),
+  (Chance2 < 40 -> getBloqueioFail()),
+  writeln('Rastreio bloqueado com sucesso. Você conseguiu despistar seus inimigos!'),
+  drone().
+
+invadindoDrone2(DroneName,FuncRestantes):-
+  getCabecalho('ninho',X),
+  writeln(X),
+  writeln(''),
+  random_between(0,100,Chance),
+  (Chance >= 40 -> droneInvadido(DroneName, FuncRestantes)),
+  writeln('\n\nInvasão mal sucedida.\n\nVocê está sofrendo uma tentativa de rastreio. Bloqueando rastreador...'),
+  random_between(0,100, Chance2),
+  (Chance2 < 40 -> getBloqueioFail()),
+  writeln('Rastreio bloqueado com sucesso. Você conseguiu despistar seus inimigos!'),
+  drone(FuncRestantes).
+  
+droneInvadido(DroneName):-
+  getCabecalho('ninho',X),
+  writeln(X),
+  writeln(''),
+  My_string = 'Você agora tem o controle do ',
+  atom_concat(My_string, DroneName, Result),
+  writeln(Result),
+  writeln('\n1. Controlar drone.'),
+  writeln('2. Voltar\n'),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option == '1' -> virusInstalado(DroneName)),
+  (Option == '2' -> drone()),
+  operacaoInvalida(),
+  droneInvadido(DroneName).
+
+droneInvadido(DroneName, FuncRestantes):-
+  getCabecalho('ninho2',X),
+  getCabecalho(DroneName, X2),
+  writeln(X),
+  writeln(X2),
+  writeln(''),
+  My_string = 'Você agora tem o controle do ',
+  atom_concat(My_string, DroneName, Result),
+  writeln(Result),
+  writeln('1. Controlar drone.'),
+  writeln('2. Voltar'),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option == '1' -> virusInstalado(DroneName, FuncRestantes), Option == '2' -> drone(FuncRestantes)),
+  operacaoInvalida(),
+  droneInvadido(DroneName, FuncRestantes).
+  
+instalandoVirus(DroneName):-
+  getCabecalho('ninho2',X),
+  getCabecalho(DroneName, X2),
+  writeln(X),
+  writeln(X2),
+  writeln(''),
+  writeln('Virus instalado com êxito!'),
+  virusInstalado(DroneName).
+
+instalandoVirus(DroneName, FuncRestantes):-
+  getCabecalho('ninho2',X),
+  getCabecalho(DroneName, X2),
+  writeln(X),
+  writeln(X2),
+  writeln(''),
+  writeln('Virus instalado com êxito!'),
+  virusInstalado(DroneName, FuncRestantes).
+  
+virusInstalado(DroneName):-
+  getCabecalho('ninho2',X),
+  getCabecalho(DroneName, X2),
+  writeln(X),
+  writeln(X2),
+  writeln(''),
+  write(DroneName),
+  write(': Iniciando sistema de vôo.'),
+  writeln('\n\n'),
+  write(DroneName),
+  write(':Recebendo informações da planta do prédio.'),
+  writeln('\nPontos estratégicos:\n\n1.Central de TI\n2.Câmara de resfriamento\n\n4.Abandonar drone'),
+  writeln('\n'),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option == '1' -> droneEscolhaPonto1(DroneName); Option == '2' -> droneEscolhaPonto2(DroneName)),
+  operacaoInvalida(),
+  virusInstalado(DroneName, 1).
+
+virusInstalado(DroneName, 1):-
+  getCabecalho('ninho2',X),
+  getCabecalho(DroneName, X2),
+  writeln(X),
+  writeln(X2),
+  writeln(''),
+  write(DroneName),
+  write(': Iniciando sistema de vôo.'),
+  writeln('\n\n'),
+  write(DroneName),
+  write(':Recebendo informações da planta do prédio.'),
+  writeln('\n\n Pontos estratégicos:\n\n1.Central de TI\n2.Abandonar drone'),
+  writeln('\n'),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option == '1' -> droneEscolhaPonto1(DroneName, 1); Option == '2' -> drone()),
+  operacaoInvalida(),
+  virusInstalado(DroneName, 1).
+
+droneEscolhaPonto1(DroneName):-
+  getCabecalho('ninho2',X),
+  getCabecalho(DroneName, X2),
+  writeln(X),
+  writeln(X2),
+  writeln(''),
+  write('2 elementos hostil detectados.'),
+  writeln('\n\n'),
+  writeln('Inimigo1:\nTipo:Humano\nArma detectada:Fuzil de assalto\nID de Profissao: Segurança Particular\nSaúde:100%'),
+  writeln('\n\n'),
+  writeln('Inimigo2:\nTipo:Humano\nArma detectada:Fuzil de assalto\nID de Profissao: Segurança Particular\nSaúde:100%'),
+  writeln('\n\n'),
+  writeln('1. Voltar\n2. Abandonar drone e voltar'),
+  writeln('\n'),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option == '1' -> virusInstalado(DroneName); Option == '2' -> drone()),
+  operacaoInvalida(),
+  droneEscolhaPonto1(DroneName).
+
+droneEscolhaPonto1(DroneName, 1):-
+  getCabecalho('ninho2',X),
+  getCabecalho(DroneName, X2),
+  writeln(X),
+  writeln(X2),
+  writeln(''),
+  writeln('Nenhum elemento hostil detectado. Seguindo para: Central de TI.'),
+  writeln('\n\n'),
+  writeln('---------- Central de TI ---------'),
+  writeln('1. Invadir sistema\n2. Abandonar drone e voltar'),
+  writeln('\n'),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option == '1' -> droneInstalarVirusSistema(DroneName); Option == '2' -> drone()),
+  operacaoInvalida(),
+  droneEscolhaPonto1(DroneName).
+
+droneEscolhaPonto2(DroneName):-
+  getCabecalho('ninho2',X),
+  getCabecalho(DroneName, X2),
+  writeln(X),
+  writeln(X2),
+  writeln(''),
+  writeln('Movendo até: Câmara de Resfriamento'),
+  writeln(''),
+  writeln('------ Câmera de Resfriamento ------'),
+  writeln('\nEncontrada vulnerabilidade no sistema de ar-condicionados do predio!'),
+  writeln('\n1. Sabotar sistema de ar-condicionado.\n3. Voltar'),
+  writeln('\n'),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option == '1' -> droneSabotaAr(DroneName); Option == '3' -> virusInstalado(DroneName)),
+  operacaoInvalida(),
+  droneEscolhaPonto2(DroneName).
+
+droneInstalarVirusSistema(DroneName):-
+  getCabecalho('ninho2',X),
+  getCabecalho(DroneName, X2),
+  writeln(X),
+  writeln(X2),
+  writeln('---------- Central de TI ---------\n'),
+  writeln('Encontrada vulnerabilidade no Firewall do sistema!'),
+  writeln('1. Derrubar Firewall do sistema\n2. Voltar'),
+  writeln('\n'),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option == '1' -> droneVirusSistemaInstalado(DroneName); Option == '2' -> virusInstalado(DroneName, 1)),
+  operacaoInvalida(),
+  droneInstalarVirusSistema(DroneName).
+
+droneVirusSistemaInstalado(DroneName):-
+  getCabecalho('ninho2',X),
+  getCabecalho(DroneName, X2),
+  writeln(X),
+  writeln(X2),
+  writeln('---------- Central de TI ---------\n'),
+  writeln('Firewall derrubado com sucesso. O Sistema de defesa está mais debilitado'),
+  writeln('\n1.Concluir e voltar.'),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  Option == '1' -> ninho2(),
+  operacaoInvalida(),
+  droneVirusSistemaInstalado(DroneName).
+
+droneSabotaAr(DroneName):-
+  getCabecalho('ninho2',X),
+  getCabecalho(DroneName, X2),
+  writeln(X),
+  writeln(X2),
+  writeln(''),
+  writeln('------ Câmera de Resfriamento ------'),
+  writeln('\nInfiltrado-se em vulnerabilidade de ar-condicionados...\nDesativando aparelhos...\n\nSabotagem concluída'),
+  writeln('\nFoi criada uma distração. A Central de TI está vulnerável'), 
+  writeln('1. Voltar'),
+  writeln('\n'),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option == '1' -> virusInstalado(DroneName, 1)),
+  operacaoInvalida(),
+  droneSabotaAr(DroneName).
+ 
+
+
 /*FIM DA TELA DE "O NINHO DA ARANHA"*/
 
+
+  
 
 /*Opcoes do MENU*/
 
 getOption(Evento, '1') :- mensagemMenu(Evento).
 getOption(Evento, '3') :- contratos(Evento).
 getOption(Evento, '4') :- noticia(Evento).
+getOption(Evento, '5') :- desenvolvedores().
 getOption(Evento,_) :- writeln('Opção inválida'), menu(Evento).
 
 /*Obter User Atual Logado*/
