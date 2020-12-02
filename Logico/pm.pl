@@ -574,12 +574,11 @@ ninho2() :-
     read_line_to_codes(user_input, Op),
     atom_codes(Option, Op),
     (Option == '1' ->
-        /*O CODIGO ABAIXO EH TEMPORARIO! Sera trocado pela chamada da funcao de invasao (favor remover este comentario quando esta for implementada).*/
         writeln('Iniciando invasao...'),
         writeln(''),
         writeln('Atravessando firewall...'),
         writeln(''),
-        write('invasao com dificuldade extremamente alta');
+        invasao('dificil');
     Option == '2' ->
         derrubaFuncs();
     Option == '3' ->
@@ -637,8 +636,7 @@ ninho3(FuncsRestantes) :-
         writeln(''),
         writeln('Atravessando firewall...'),
         writeln(''),
-        /*O CODIGO ABAIXO EH TEMPORARIO! Sera trocado pela chamada da funcao de invasao (favor remover este comentario quando esta for implementada).*/
-        writeln('Invasao bem sucedida!'),
+        invasao('facil'),
         ninho4();
     Option == '2' ->
         writeln('Procurando drones...'),
@@ -656,48 +654,51 @@ invasao('dificil') :-
     random_between(1,6,D2),
     random_between(1,6,D3),
     ((D1 == 6, D2 == 6, D3 == 6) ->
-        writeln('Rede interna Digital Spider invadida com sucesso!'); /*TEMPORARIO! Sera adicionada a funcao de roubarArquivos*/
-        writeln('Acesso bloqueado. Invasão mal sucedida.'),
-        writeln(''),
-        writeln('Você está sofrendo uma tentativa de rastreio. Bloqueando rastreador...'),
-        writeln(''),
-        writeln('Falha no bloqueio. Você foi rastreado! Sua identidade e localização foram comprometidos!'), /*TEMPORARIO! Sera acrescentada a funcao que calcula a probabilidade do bloqueio do rastreamento.*/
-        writeln(''),
-        getGameOverMsg(X),
-        writeln(X),
-        contratos('inicio do contrato')).
+        writeln('Rede interna Digital Spider invadida com sucesso!'),
+        roubarArquivos1();
+    writeln('Acesso bloqueado. Invasão mal sucedida.'),
+    writeln(''),
+    writeln('Você está sofrendo uma tentativa de rastreio. Bloqueando rastreador...'),
+    writeln(''),
+    writeln('Falha no bloqueio. Você foi rastreado! Sua identidade e localização foram comprometidos!'), /*TEMPORARIO! Sera acrescentada a funcao que calcula a probabilidade do bloqueio do rastreamento.*/
+    writeln(''),
+    getGameOverMsg(X),
+    writeln(X),
+    contratos('inicio do contrato')).
 
 invasao('media') :-
     random_between(1,6,D1),
     random_between(1,6,D2),
     random_between(1,6,D3),
     ((D1 > 3, D2 > 3, D3 > 3) ->
-        writeln('Rede interna Digital Spider invadida com sucesso!'); /*TEMPORARIO! Sera adicionada a funcao de roubarArquivos*/
-        writeln('Acesso bloqueado. Invasão mal sucedida.'),
-        writeln(''),
-        writeln('Você está sofrendo uma tentativa de rastreio. Bloqueando rastreador...'),
-        writeln(''),
-        writeln('Falha no bloqueio. Você foi rastreado! Sua identidade e localização foram comprometidos!'), /*TEMPORARIO! Sera acrescentada a funcao que calcula a probabilidade do bloqueio do rastreamento.*/
-        writeln(''),
-        getGameOverMsg(X),
-        writeln(X),
-        contratos('inicio do contrato')).
+        writeln('Rede interna Digital Spider invadida com sucesso!'),
+        roubarArquivos1();
+    writeln('Acesso bloqueado. Invasão mal sucedida.'),
+    writeln(''),
+    writeln('Você está sofrendo uma tentativa de rastreio. Bloqueando rastreador...'),
+    writeln(''),
+    writeln('Falha no bloqueio. Você foi rastreado! Sua identidade e localização foram comprometidos!'), /*TEMPORARIO! Sera acrescentada a funcao que calcula a probabilidade do bloqueio do rastreamento.*/
+    writeln(''),
+    getGameOverMsg(X),
+    writeln(X),
+    contratos('inicio do contrato')).
 
 invasao('facil') :-
     random_between(1,6,D1),
     random_between(1,6,D2),
     random_between(1,6,D3),
     ((D1 > 1, D2 > 1, D3 > 1) ->
-        writeln('Rede interna Digital Spider invadida com sucesso!'); /*TEMPORARIO! Sera adicionada a funcao de roubarArquivos*/
-        writeln('Acesso bloqueado. Invasão mal sucedida.'),
-        writeln(''),
-        writeln('Você está sofrendo uma tentativa de rastreio. Bloqueando rastreador...'),
-        writeln(''),
-        writeln('Falha no bloqueio. Você foi rastreado! Sua identidade e localização foram comprometidos!'), /*TEMPORARIO! Sera acrescentada a funcao que calcula a probabilidade do bloqueio do rastreamento.*/
-        writeln(''),
-        getGameOverMsg(X),
-        writeln(X),
-        contratos('inicio do contrato')).
+        writeln('Rede interna Digital Spider invadida com sucesso!'),
+        roubarArquivos1();
+    writeln('Acesso bloqueado. Invasão mal sucedida.'),
+    writeln(''),
+    writeln('Você está sofrendo uma tentativa de rastreio. Bloqueando rastreador...'),
+    writeln(''),
+    writeln('Falha no bloqueio. Você foi rastreado! Sua identidade e localização foram comprometidos!'), /*TEMPORARIO! Sera acrescentada a funcao que calcula a probabilidade do bloqueio do rastreamento.*/
+    writeln(''),
+    getGameOverMsg(X),
+    writeln(X),
+    contratos('inicio do contrato')).
 
 /*FIM DA INVASAO*/
 
@@ -724,6 +725,16 @@ roubarArquivos1() :-
     atom_codes(Option, Op),
     (
     Option == '1' ->
+        writeln(''),
+        writeln('Pesquisando arquivos...'),
+        writeln('3/3 Arquivos encontrados!'),
+        writeln(''),
+        writeln('Realizando download...'),
+        writeln('1/3...'),
+        writeln('2/3...'),
+        writeln('3/3'),
+        writeln('Download completo!'),
+        writeln(''),
         roubarArquivos2();
     operacaoInvalida,
     roubarArquivos1()
@@ -746,14 +757,6 @@ roubarArquivos2() :-
     writeln(''),
     (
     Option == '1' ->
-        writeln('Pesquisando arquivos...'),
-        writeln('3/3 Arquivos encontrados!'),
-        writeln(''),
-        writeln('Realizando download...'),
-        writeln('1/3...'),
-        writeln('2/3...'),
-        writeln('3/3'),
-        writeln('Download completo!'),
         ninho4();
     operacaoInvalida,
     roubarArquivos2()
