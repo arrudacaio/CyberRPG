@@ -1270,10 +1270,12 @@ ninho5() :-
    operacaoInvalida(),
    ninho5()).
 
+/*FUNÇÃO TEMPORARIA DE DRONE LOGO ABAIXO! Feita apenas para testar o novo design do jogo. Deve ser removida após as devidas alterações serem realizadas.*/
 drone(MissoesFeitas,FuncsOn) :-
     write('DRONE HACKEADO!!!'),
     append(['drone hackeado'],MissoesFeitas,NewList),
     ninhoSeguranca(NewList,FuncsOn).
+
 /*
 drone():-
   getCabecalho('ninho',X),
