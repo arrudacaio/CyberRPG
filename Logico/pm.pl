@@ -49,16 +49,6 @@ getMenu('ultima noticia','\n \n \n \n \n \n ««««««««ABYSS»»»»»»»�
 
 
 
-
-
-
-
-
-
-
-
-
-
 getNoticia('evento 0', 'Você possui 0 novas notícias.\n (!)1.Tecnologia: Projeto Connected World É Um Sucesso!\n (!)2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n \n 3. Voltar ao Menu\n \nDigite o número da opção desejada').
 getNoticia('noticia 1 lida', 'Você possui 0 novas notícias.\n 1.Tecnologia: Projeto Connected World É Um Sucesso!\n (!)2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n \n 3. Voltar ao Menu\n \nDigite o número da opção desejada').
 getNoticia('noticia 2 lida', 'Você possui 0 novas notícias.\n (!)1.Tecnologia: Projeto Connected World É Um Sucesso!\n 2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n \n 3. Voltar ao Menu\n \nDigite o número da opção desejada').
@@ -553,39 +543,6 @@ ninho1() :-
     operacaoInvalida()),
     ninho1().
 
-/*ninho2() :-
-    getCabecalho('ninho',X),
-    writeln(X),
-    writeln('Funcionarios online: 37'),
-    writeln('Nivel de protecao da rede: Muito Alto'),
-    writeln(''),
-    writeln(''),
-    writeln('Chance de o invasor ser rastreado ao invadir: Extremamente Alta.'),
-    writeln('Dificuldade atual de uma invasao direta: Extremamente Alta.'),
-    writeln('Melhor curso de acao: Diminuir seguranca antes de realizar a invasao.'),
-    writeln(''),
-    writeln(''),
-    writeln('1. Iniciar invasao'),
-    writeln('2. Derrubar funcionarios da rede'),
-    writeln('3. Hackear drone'),
-    writeln(''),
-    writeln('Digite o numero da operacao desejada: '),
-    writeln(''),
-    read_line_to_codes(user_input, Op),
-    atom_codes(Option, Op),
-    (Option == '1' ->
-        writeln('Iniciando invasao...'),
-        writeln(''),
-        writeln('Atravessando firewall...'),
-        writeln(''),
-        invasao('dificil');
-    Option == '2' ->
-        derrubaFuncs();
-    Option == '3' ->
-        drone());
-    operacaoInvalida(),
-    ninho2().*/
-
 ninhoSeguranca(MissoesFeitas,FuncsOn) :-
     (
     (member('funcionarios derrubados',MissoesFeitas),
@@ -666,45 +623,6 @@ derrubaFuncs(MissoesFeitas,FuncsOn) :-
 	(Chance < 40 ->getBloqueioFail());
 	writeln('Rastreio bloqueado com sucesso. Você conseguiu despistar seus inimigos!'),
 	ninhoSeguranca(MissoesFeitas,FuncsOn).
-
-/*
-/CODIGO OBSOLETO ABAIXO:/
-
-ninho3(FuncsRestantes) :-
-    getCabecalho('ninho',X),
-    writeln(X),
-    write('Funcionarios online: ' ),
-    writeln(FuncsRestantes),
-    writeln(''),
-    writeln('Nivel de protecao da rede: Baixo'),
-    writeln(''),
-    writeln(''),
-    writeln('Chance do invasor ser rastreado ao invadir: Baixo.'),
-    writeln('Dificuldade atual de uma invasao direta: Baixo.'),
-    writeln('Melhor curso de acao: Invasao direta.'),
-    writeln(''),
-    writeln('1. Iniciar invasao'),
-    writeln('2. Hackear drone'),
-    writeln(''),
-    writeln('Digite o numero da operacao desejada: '),
-    writeln(''),
-    read_line_to_codes(user_input, Op),
-    atom_codes(Option, Op),
-    (Option == '1' ->
-        writeln('Iniciando invasao...'),
-        writeln(''),
-        writeln('Atravessando firewall...'),
-        writeln(''),
-        invasao('facil'),
-        ninho4();
-    Option == '2' ->
-        writeln('Procurando drones...'),
-        writeln(''),
-        writeln('Nenhum drone foi detectado na rede.'),
-        ninho3(FuncsRestantes);
-    operacaoInvalida(),
-    ninho3(FuncsRestantes)).
-*/
 
 
 /*INICIO DA INVASAO*/
