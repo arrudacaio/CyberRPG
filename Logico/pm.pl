@@ -722,7 +722,7 @@ invasao(MissoesFeitas,FuncsOn,'Alta') :-
     writeln('Você está sofrendo uma tentativa de rastreio. Bloqueando rastreador...'),
     writeln(''),
 	random_between(0,100,Chance),
-	(Chance < 40 ->getBloqueioFail());
+	(Chance < 60 ->getBloqueioFail());
 	writeln('Rastreio bloqueado com sucesso. Você conseguiu despistar seus inimigos!'),
 	ninhoSeguranca(MissoesFeitas,FuncsOn)
     ).
@@ -740,7 +740,7 @@ invasao(MissoesFeitas,FuncsOn,'Media') :-
     writeln('Você está sofrendo uma tentativa de rastreio. Bloqueando rastreador...'),
     writeln(''),
 	random_between(0,100,Chance),
-	(Chance < 40 ->getBloqueioFail());
+	(Chance < 60 ->getBloqueioFail());
 	writeln('Rastreio bloqueado com sucesso. Você conseguiu despistar seus inimigos!'),
 	ninhoSeguranca(MissoesFeitas,FuncsOn)
     ).
@@ -758,7 +758,7 @@ invasao(MissoesFeitas,FuncsOn,'Baixa') :-
     writeln('Você está sofrendo uma tentativa de rastreio. Bloqueando rastreador...'),
     writeln(''),
 	random_between(0,100,Chance),
-	(Chance < 40 ->getBloqueioFail());
+	(Chance < 60 ->getBloqueioFail());
 	writeln('Rastreio bloqueado com sucesso. Você conseguiu despistar seus inimigos!'),
 	ninhoSeguranca(MissoesFeitas,FuncsOn)
     ).
@@ -1270,14 +1270,8 @@ ninho5() :-
    operacaoInvalida(),
    ninho5()).
 
-/*FUNÇÃO TEMPORARIA DE DRONE LOGO ABAIXO! Feita apenas para testar o novo design do jogo. Deve ser removida após as devidas alterações serem realizadas.*/
-drone(MissoesFeitas,FuncsOn) :-
-    write('DRONE HACKEADO!!!'),
-    append(['drone hackeado'],MissoesFeitas,NewList),
-    ninhoSeguranca(NewList,FuncsOn).
 
-
-drone(MissoesFeitas,FuncsOn, 1):-
+drone(MissoesFeitas,FuncsOn):-
   getCabecalho('ninho',X),
   writeln(X),
   writeln(''),
@@ -1451,9 +1445,10 @@ droneVirusSistemaInstalado(DroneName, MissoesFeitas,FuncsOn):-
   writeln('---------- Central de TI ---------\n'),
   writeln('Firewall derrubado com sucesso. O Sistema de defesa está mais debilitado'),
   writeln('\n1.Concluir e voltar.'),
+  append(['drone hackeado'],MissoesFeitas,NewList),
   read_line_to_codes(user_input, Op),
   atom_codes(Option, Op),
-  Option == '1' -> ninhoSeguranca(),
+  Option == '1' -> ninhoSeguranca(NewList,FuncsOn);
   operacaoInvalida(),
   droneVirusSistemaInstalado(DroneName, MissoesFeitas,FuncsOn).
 
