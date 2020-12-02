@@ -1276,8 +1276,8 @@ drone(MissoesFeitas,FuncsOn) :-
     append(['drone hackeado'],MissoesFeitas,NewList),
     ninhoSeguranca(NewList,FuncsOn).
 
-/*
-drone():-
+
+drone(MissoesFeitas,FuncsOn, 1):-
   getCabecalho('ninho',X),
   writeln(X),
   writeln(''),
@@ -1287,26 +1287,12 @@ drone():-
   writeln('\nDigite o número da operação desejada:'),
   read_line_to_codes(user_input, Op),
   atom_codes(Option, Op),
-  (Option == '1' -> invadindoDrone('Tunderstorm#231982'); Option == '2' -> invadindoDrone('ZTX#53325'); Option == '3' -> invadindoDrone('Sphinx#142731'); Option == '4' -> ninho2()),
+  (Option == '1' -> invadindoDrone('Tunderstorm#231982', MissoesFeitas,FuncsOn); Option == '2' -> invadindoDrone('ZTX#53325', MissoesFeitas,FuncsOn); Option == '3' -> invadindoDrone('Sphinx#142731', MissoesFeitas,FuncsOn); Option == '4' -> ninhoSeguranca(MissoesFeitas,FuncsOn)),
   operacaoInvalida(),
   drone().
 
-
-drone(FuncRestantes):-
-  getCabecalho('ninho',X),
-  writeln(X),
-  writeln(''),
-  writeln('Detectando drones...\n'),
-  writeln('DRONES DISPONÍVEIS:\n'),
-  writeln('1. Tunderstorm#231982\n2. ZTX#53325\n3. Sphinx#142731\n4. Voltar'),
-  writeln('\nDigite o número da operação desejada:'),
-  read_line_to_codes(user_input, Op),
-  atom_codes(Option, Op),
-  (Option == '1' -> invadindoDrone('Tunderstorm#231982', FuncRestantes); Option =='2' -> invadindoDrone('ZTX#53325', FuncRestantes); Option == '3' -> invadindoDrone('Sphinx#142731', FuncRestantes); Option == '4' -> ninho3(FuncRestantes)),
-  operacaoInvalida(),
-  drone().
  
-invadindoDrone(DroneName):-
+invadindoDrone(DroneName, MissoesFeitas,FuncsOn):-
   getCabecalho('ninho',X),
   writeln(X),
   writeln(''),
@@ -1315,51 +1301,25 @@ invadindoDrone(DroneName):-
   writeln('\n\n1. Tomar controle do drone\n2. Voltar\n\n'),
   read_line_to_codes(user_input, Op),
   atom_codes(Option, Op),
-  (Option == '1' -> droneInvadido(DroneName)),
-  (Option == '2' -> drone()),
+  (Option == '1' -> droneInvadido(DroneName, MissoesFeitas,FuncsOn)),
+  (Option == '2' -> drone(MissoesFeitas,FuncsOn)),
   operacaoInvalida(),
-  invadindoDrone(DroneName).
+  invadindoDrone(DroneName, MissoesFeitas,FuncsOn).
 
-invadindoDrone(DroneName, FuncRestantes):-
-  getCabecalho('ninho',X),
-  writeln(X),
-  writeln(''),
-  writeln(DroneName),
-  writeln('\n\nSistema de armas: Online\nBateria: 80% carregada\nLocomoção: Aérea\nTamanho: Pequeno\nCondição da estrutura: 100% (Intacto)'),
-  writeln('\n\n1. Tomar controle do drone\n\n2. Voltar'),
-  read_line_to_codes(user_input, Op),
-  atom_codes(Option, Op),
-  (Option == '1' -> drone('invadindo')),
-  (Option == '2' -> drone(FuncRestantes)),
-  operacaoInvalida(),
-  invadindoDrone(DroneName, FuncRestantes).
-
-invadindoDrone2(DroneName):-
+invadindoDrone2(DroneName, MissoesFeitas,FuncsOn):-
   getCabecalho('ninho',X),
   writeln(X),
   writeln(''),
   writeln('Invadindo drone...'),
   random_between(0,100,Chance),
-  (Chance >= 40 -> writeln('Invasão bem sucedida.'), droneInvadido(DroneName)),
+  (Chance >= 40 -> writeln('Invasão bem sucedida.'), droneInvadido(DroneName, MissoesFeitas,FuncsOn)),
   writeln('\n\nInvasão mal sucedida.\n\nVocê está sofrendo uma tentativa de rastreio. Bloqueando rastreador...'),
   random_between(0,100, Chance2),
   (Chance2 < 40 -> getBloqueioFail()),
   writeln('Rastreio bloqueado com sucesso. Você conseguiu despistar seus inimigos!'),
   drone().
-
-invadindoDrone2(DroneName,FuncRestantes):-
-  getCabecalho('ninho',X),
-  writeln(X),
-  writeln(''),
-  random_between(0,100,Chance),
-  (Chance >= 40 -> droneInvadido(DroneName, FuncRestantes)),
-  writeln('\n\nInvasão mal sucedida.\n\nVocê está sofrendo uma tentativa de rastreio. Bloqueando rastreador...'),
-  random_between(0,100, Chance2),
-  (Chance2 < 40 -> getBloqueioFail()),
-  writeln('Rastreio bloqueado com sucesso. Você conseguiu despistar seus inimigos!'),
-  drone(FuncRestantes).
   
-droneInvadido(DroneName):-
+droneInvadido(DroneName, MissoesFeitas,FuncsOn):-
   getCabecalho('ninho',X),
   writeln(X),
   writeln(''),
@@ -1370,47 +1330,12 @@ droneInvadido(DroneName):-
   writeln('2. Voltar\n'),
   read_line_to_codes(user_input, Op),
   atom_codes(Option, Op),
-  (Option == '1' -> virusInstalado(DroneName)),
+  (Option == '1' -> virusInstalado(DroneName, MissoesFeitas,FuncsOn)),
   (Option == '2' -> drone()),
   operacaoInvalida(),
-  droneInvadido(DroneName).
-
-droneInvadido(DroneName, FuncRestantes):-
-  getCabecalho('ninho2',X),
-  getCabecalho(DroneName, X2),
-  writeln(X),
-  writeln(X2),
-  writeln(''),
-  My_string = 'Você agora tem o controle do ',
-  atom_concat(My_string, DroneName, Result),
-  writeln(Result),
-  writeln('1. Controlar drone.'),
-  writeln('2. Voltar'),
-  read_line_to_codes(user_input, Op),
-  atom_codes(Option, Op),
-  (Option == '1' -> virusInstalado(DroneName, FuncRestantes), Option == '2' -> drone(FuncRestantes)),
-  operacaoInvalida(),
-  droneInvadido(DroneName, FuncRestantes).
+  droneInvadido(DroneName, MissoesFeitas,FuncsOn).
   
-instalandoVirus(DroneName):-
-  getCabecalho('ninho2',X),
-  getCabecalho(DroneName, X2),
-  writeln(X),
-  writeln(X2),
-  writeln(''),
-  writeln('Virus instalado com êxito!'),
-  virusInstalado(DroneName).
-
-instalandoVirus(DroneName, FuncRestantes):-
-  getCabecalho('ninho2',X),
-  getCabecalho(DroneName, X2),
-  writeln(X),
-  writeln(X2),
-  writeln(''),
-  writeln('Virus instalado com êxito!'),
-  virusInstalado(DroneName, FuncRestantes).
-  
-virusInstalado(DroneName):-
+virusInstalado(DroneName, MissoesFeitas,FuncsOn):-
   getCabecalho('ninho2',X),
   getCabecalho(DroneName, X2),
   writeln(X),
@@ -1425,11 +1350,11 @@ virusInstalado(DroneName):-
   writeln('\n'),
   read_line_to_codes(user_input, Op),
   atom_codes(Option, Op),
-  (Option == '1' -> droneEscolhaPonto1(DroneName); Option == '2' -> droneEscolhaPonto2(DroneName)),
+  (Option == '1' -> droneEscolhaPonto1(DroneName, MissoesFeitas,FuncsOn); Option == '2' -> droneEscolhaPonto2(DroneName, MissoesFeitas,FuncsOn)),
   operacaoInvalida(),
-  virusInstalado(DroneName, 1).
+  virusInstalado(DroneName, 1, MissoesFeitas,FuncsOn).
 
-virusInstalado(DroneName, 1):-
+virusInstalado(DroneName, 1, MissoesFeitas,FuncsOn):-
   getCabecalho('ninho2',X),
   getCabecalho(DroneName, X2),
   writeln(X),
@@ -1444,11 +1369,11 @@ virusInstalado(DroneName, 1):-
   writeln('\n'),
   read_line_to_codes(user_input, Op),
   atom_codes(Option, Op),
-  (Option == '1' -> droneEscolhaPonto1(DroneName, 1); Option == '2' -> drone()),
+  (Option == '1' -> droneEscolhaPonto1(DroneName, 1, MissoesFeitas,FuncsOn); Option == '2' -> drone()),
   operacaoInvalida(),
-  virusInstalado(DroneName, 1).
+  virusInstalado(DroneName, 1, MissoesFeitas,FuncsOn).
 
-droneEscolhaPonto1(DroneName):-
+droneEscolhaPonto1(DroneName, MissoesFeitas,FuncsOn):-
   getCabecalho('ninho2',X),
   getCabecalho(DroneName, X2),
   writeln(X),
@@ -1464,11 +1389,11 @@ droneEscolhaPonto1(DroneName):-
   writeln('\n'),
   read_line_to_codes(user_input, Op),
   atom_codes(Option, Op),
-  (Option == '1' -> virusInstalado(DroneName); Option == '2' -> drone()),
+  (Option == '1' -> virusInstalado(DroneName, MissoesFeitas,FuncsOn); Option == '2' -> drone()),
   operacaoInvalida(),
-  droneEscolhaPonto1(DroneName).
+  droneEscolhaPonto1(DroneName, MissoesFeitas,FuncsOn).
 
-droneEscolhaPonto1(DroneName, 1):-
+droneEscolhaPonto1(DroneName, 1, MissoesFeitas,FuncsOn):-
   getCabecalho('ninho2',X),
   getCabecalho(DroneName, X2),
   writeln(X),
@@ -1481,11 +1406,11 @@ droneEscolhaPonto1(DroneName, 1):-
   writeln('\n'),
   read_line_to_codes(user_input, Op),
   atom_codes(Option, Op),
-  (Option == '1' -> droneInstalarVirusSistema(DroneName); Option == '2' -> drone()),
+  (Option == '1' -> droneInstalarVirusSistema(DroneName, MissoesFeitas,FuncsOn); Option == '2' -> drone(MissoesFeitas,FuncsOn)),
   operacaoInvalida(),
-  droneEscolhaPonto1(DroneName).
+  droneEscolhaPonto1(DroneName, MissoesFeitas,FuncsOn).
 
-droneEscolhaPonto2(DroneName):-
+droneEscolhaPonto2(DroneName, MissoesFeitas,FuncsOn):-
   getCabecalho('ninho2',X),
   getCabecalho(DroneName, X2),
   writeln(X),
@@ -1499,11 +1424,11 @@ droneEscolhaPonto2(DroneName):-
   writeln('\n'),
   read_line_to_codes(user_input, Op),
   atom_codes(Option, Op),
-  (Option == '1' -> droneSabotaAr(DroneName); Option == '3' -> virusInstalado(DroneName)),
+  (Option == '1' -> droneSabotaAr(DroneName, MissoesFeitas,FuncsOn); Option == '3' -> virusInstalado(DroneName, MissoesFeitas,FuncsOn)),
   operacaoInvalida(),
-  droneEscolhaPonto2(DroneName).
+  droneEscolhaPonto2(DroneName, MissoesFeitas,FuncsOn).
 
-droneInstalarVirusSistema(DroneName):-
+droneInstalarVirusSistema(DroneName, MissoesFeitas,FuncsOn):-
   getCabecalho('ninho2',X),
   getCabecalho(DroneName, X2),
   writeln(X),
@@ -1514,11 +1439,11 @@ droneInstalarVirusSistema(DroneName):-
   writeln('\n'),
   read_line_to_codes(user_input, Op),
   atom_codes(Option, Op),
-  (Option == '1' -> droneVirusSistemaInstalado(DroneName); Option == '2' -> virusInstalado(DroneName, 1)),
+  (Option == '1' -> droneVirusSistemaInstalado(DroneName, MissoesFeitas,FuncsOn); Option == '2' -> virusInstalado(DroneName, 1, MissoesFeitas,FuncsOn)),
   operacaoInvalida(),
-  droneInstalarVirusSistema(DroneName).
+  droneInstalarVirusSistema(DroneName, MissoesFeitas,FuncsOn).
 
-droneVirusSistemaInstalado(DroneName):-
+droneVirusSistemaInstalado(DroneName, MissoesFeitas,FuncsOn):-
   getCabecalho('ninho2',X),
   getCabecalho(DroneName, X2),
   writeln(X),
@@ -1528,11 +1453,11 @@ droneVirusSistemaInstalado(DroneName):-
   writeln('\n1.Concluir e voltar.'),
   read_line_to_codes(user_input, Op),
   atom_codes(Option, Op),
-  Option == '1' -> ninho2(),
+  Option == '1' -> ninhoSeguranca(),
   operacaoInvalida(),
-  droneVirusSistemaInstalado(DroneName).
+  droneVirusSistemaInstalado(DroneName, MissoesFeitas,FuncsOn).
 
-droneSabotaAr(DroneName):-
+droneSabotaAr(DroneName, MissoesFeitas,FuncsOn):-
   getCabecalho('ninho2',X),
   getCabecalho(DroneName, X2),
   writeln(X),
@@ -1545,10 +1470,9 @@ droneSabotaAr(DroneName):-
   writeln('\n'),
   read_line_to_codes(user_input, Op),
   atom_codes(Option, Op),
-  (Option == '1' -> virusInstalado(DroneName, 1)),
+  (Option == '1' -> virusInstalado(DroneName, 1, MissoesFeitas,FuncsOn)),
   operacaoInvalida(),
-  droneSabotaAr(DroneName).
- */
+  droneSabotaAr(DroneName, MissoesFeitas,FuncsOn).
 
 
 /*FIM DA TELA DE "O NINHO DA ARANHA"*/
