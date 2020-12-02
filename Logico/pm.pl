@@ -40,13 +40,26 @@ getMenu('noticia 2 lida', ' \n \n \n \n \n \n ««««««««ABYSS»»»»»»�
 getMenu('noticia 1 e 2 lida', ' \n \n \n \n \n \n ««««««««ABYSS»»»»»»»» \n O ambiente de trabalho para aqueles que seguem suas próprias leis.\n  \n :::::::::::::MENU:::::::::::::\n 1. Mensagens(!)\n 2. Perfil\n 3. Contratos\n 4. Notícias\n 5. Desenvolvedores\n \n Digite o número da operação desejada: \n ').
 getMenu('inicio do contrato', ' \n \n \n \n \n \n ««««««««ABYSS»»»»»»»» \n O ambiente de trabalho para aqueles que seguem suas próprias leis.\n  \n :::::::::::::MENU:::::::::::::\n 1. Mensagens\n 2. Perfil\n 3. Contratos(!)\n 4. Notícias\n 5. Desenvolvedores\n \n Digite o número da operação desejada: \n ').
 getMenu('contrato finalizado', ' \n \n \n \n \n \n ««««««««ABYSS»»»»»»»» \n O ambiente de trabalho para aqueles que seguem suas próprias leis.\n  \n :::::::::::::MENU:::::::::::::\n 1. Mensagens(!)\n 2. Perfil\n 3. Contratos\n 4. Notícias\n 5. Desenvolvedores\n \n Digite o número da operação desejada: \n ').
-getMenu('ultima mensagem','MENU DA ULTIMA MENSAGEM AQUI VOU TERMINAR DPS PQ SAO 3 DA MANHA').
+getMenu('ultima noticia','\n \n \n \n \n \n ««««««««ABYSS»»»»»»»» \n O ambiente de trabalho para aqueles que seguem suas próprias leis.\n \n :::::::::::::MENU:::::::::::::\n 1. Mensagens\n 2. Perfil\n 3. Contratos\n 4. Notícias (1)\n 5. Crédito aos Desenvolvedores\n \n Digite o número da operação desejada: \n').
+
+
+
+
+
+
+
+
+
+
+
+
 
 getNoticia('evento 0', 'Você possui 0 novas notícias.\n (!)1.Tecnologia: Projeto Connected World É Um Sucesso!\n (!)2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n \n 3. Voltar ao Menu\n \nDigite o número da opção desejada').
 getNoticia('noticia 1 lida', 'Você possui 0 novas notícias.\n 1.Tecnologia: Projeto Connected World É Um Sucesso!\n (!)2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n \n 3. Voltar ao Menu\n \nDigite o número da opção desejada').
 getNoticia('noticia 2 lida', 'Você possui 0 novas notícias.\n (!)1.Tecnologia: Projeto Connected World É Um Sucesso!\n 2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n \n 3. Voltar ao Menu\n \nDigite o número da opção desejada').
 getNoticia('noticia 1 e 2 lida', 'Você possui 0 novas notícias.\n 1.Tecnologia: Projeto Connected World É Um Sucesso!\n 2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n \n 3. Voltar ao Menu\n \nDigite o número da opção desejada').
-getNoticia('ultima mensagem', 'Você possui 1 novas notícias.\n 1.Tecnologia: Projeto Connected World É Um Sucesso!\n 2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n 3. (!) URGENTE: Projeto Connected Word É Um Golpe de Nível Mundial! \n 4. Voltar ao Menu \nDigite o número da opção desejada').
+getNoticia('ultima noticia', 'Você possui 1 novas notícias.\n 1.Tecnologia: Projeto Connected World É Um Sucesso!\n 2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n 3.(!) URGENTE: Projeto Connected Word É Um Golpe de Nível Mundial! \n 4. Voltar ao Menu \nDigite o número da opção desejada').
+getNoticia('noticia 3 lida','Você possui 0 novas notícias.\n 1.Tecnologia: Projeto Connected World É Um Sucesso!\n 2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n 3.URGENTE: Projeto Connected Word É Um Golpe de Nível Mundial! \n 4. Voltar ao Menu \nDigite o número da opção desejada').
 
 getDesenvolvedores('dev','1. Caio José dos Santos Arruda\n2. Enock Bezerra Ferreira de Souza\n3. João Vitor Patrício Romão\n4. Jonatha Kennedy Monteiro da Costa\n5. Thiago Farias de Almeida\n\nDigite(1) para Voltar ao Menu:').
   
@@ -213,6 +226,23 @@ noticia('noticia 1 e 2 lida') :-
   read_line_to_codes(user_input, Op),
   atom_codes(Option, Op), 
   (Option = '1' -> getNoticia1, noticia('noticia 1 e 2 lida'); Option = '2' -> getNoticia2, noticia('noticia 1 e 2 lida'); Option = '3' -> menu('noticia 1 e 2 lida'); getOpcaoInvalida, noticia('noticia 1 e 2 lida')).
+
+noticia('noticia 3 lida') :-
+  writeln('\n \n \n'),
+  getNoticia('noticia 3 lida', Text),
+  writeln(Text),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option = '1' -> getNoticia1, noticia('noticia 3 lida');Option = '2' -> getNoticia2, noticia('noticia 3 lida');Option = '3' -> getNoticia3, noticia('noticia 3 lida');Option = '4' -> menu('evento 0'); getOpcaoInvalida, noticia('noticia 3 lida')).
+
+noticia('ultima noticia'):-
+writeln('\n \n \n'),
+  getNoticia('ultima noticia', Text),
+  writeln(Text),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op), 
+
+
 
 noticia('ultima mensagem'):-
   writeln('\n \n \n'),
@@ -381,10 +411,9 @@ mensagemMenu('contrato finalizado'):-
   writeln(Cabecalho),
   getMensagem('ultima mensagem', Text),
   writeln(Text),
-  writeln('\n2. Voltar ao Menu'),
   read_line_to_codes(user_input, Op),
   atom_codes(Option, Op),
-  (Option = '2' -> menu('ultima mensagem')).
+  (Option = '1' -> menu('ultima noticia')).
 
 
 /*INICIO DA TELA DE CONTRATOS*/
