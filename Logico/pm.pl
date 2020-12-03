@@ -46,7 +46,7 @@ getMenu('noticia 1 e 2 lida', ' \n \n \n \n \n \n ««««««««ABYSS»»»»�
 getMenu('inicio do contrato', ' \n \n \n \n \n \n ««««««««ABYSS»»»»»»»» \n O ambiente de trabalho para aqueles que seguem suas próprias leis.\n  \n :::::::::::::MENU:::::::::::::\n 1. Mensagens\n 2. Perfil\n 3. Contratos(!)\n 4. Notícias\n 5. Desenvolvedores\n \n Digite o número da operação desejada: \n ').
 getMenu('contrato finalizado', ' \n \n \n \n \n \n ««««««««ABYSS»»»»»»»» \n O ambiente de trabalho para aqueles que seguem suas próprias leis.\n  \n :::::::::::::MENU:::::::::::::\n 1. Mensagens(!)\n 2. Perfil\n 3. Contratos\n 4. Notícias\n 5. Desenvolvedores\n \n Digite o número da operação desejada: \n ').
 getMenu('ultima noticia','\n \n \n \n \n \n ««««««««ABYSS»»»»»»»» \n O ambiente de trabalho para aqueles que seguem suas próprias leis.\n \n :::::::::::::MENU:::::::::::::\n 1. Mensagens\n 2. Perfil\n 3. Contratos\n 4. Notícias (1)\n 5. Crédito aos Desenvolvedores\n \n Digite o número da operação desejada: \n').
-
+getMenu('fim de jogo','\n \n \n \n \n \n ««««««««ABYSS»»»»»»»» \n O ambiente de trabalho para aqueles que seguem suas próprias leis.\n  \n :::::::::::::MENU:::::::::::::\n 1. Mensagens\n 2. Perfil\n 3. Contratos\n 4. Notícias\n 5. Desenvolvedores\n \n Digite o número da operação desejada: \n').
 
 
 getNoticia('evento 0', 'Você possui 0 novas notícias.\n (!)1.Tecnologia: Projeto Connected World É Um Sucesso!\n (!)2.Cybercrime: Suspeitas de Nova Rede de Comunicações da Dark Web.\n \n 3. Voltar ao Menu\n \nDigite o número da opção desejada').
@@ -228,7 +228,7 @@ noticia('noticia 3 lida') :-
   writeln(Text),
   read_line_to_codes(user_input, Op),
   atom_codes(Option, Op),
-  (Option = '1' -> getNoticia1, noticia('noticia 3 lida');Option = '2' -> getNoticia2, noticia('noticia 3 lida');Option = '3' -> getNoticia3, noticia('noticia 3 lida');Option = '4' -> menu('evento 0'); getOpcaoInvalida, noticia('noticia 3 lida')).
+  (Option = '1' -> getNoticia1, noticia('noticia 3 lida');Option = '2' -> getNoticia2, noticia('noticia 3 lida');Option = '3' -> getNoticia3, noticia('noticia 3 lida');Option = '4' -> menu('fim de jogo'); getOpcaoInvalida, noticia('noticia 3 lida')).
 
 noticia('ultima noticia'):-
 writeln('\n \n \n'),
@@ -238,6 +238,13 @@ writeln('\n \n \n'),
   atom_codes(Option, Op), 
   (Option = '1' -> getNoticia1, noticia('ultima noticia');Option = '2' -> getNoticia2, noticia('ultima noticia');Option = '3' -> getNoticia3, noticia('noticia 3 lida');Option = '4' -> menu('ultima noticia');noticia('ultima noticia')).
 
+noticia('fim de jogo') :-
+  writeln('\n \n \n'),
+  getNoticia('noticia 3 lida', Text),
+  writeln(Text),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option = '1' -> getNoticia1, noticia('fim de jogo');Option = '2' -> getNoticia2, noticia('fim de jogo');Option = '3' -> getNoticia3, noticia('fim de jogo');Option = '4' -> menu('fim de jogo'); getOpcaoInvalida, noticia('fim de jogo')).
 
 
 noticia('ultima mensagem'):-
@@ -411,6 +418,15 @@ mensagemMenu('contrato finalizado'):-
   atom_codes(Option, Op),
   (Option = '1' -> menu('ultima noticia')).
 
+  mensagemMenu('fim de jogo'):-
+  getCabecalho('1', Cabecalho),
+  writeln(Cabecalho),
+  getMensagem('ultima mensagem', Text),
+  writeln(Text),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option = '1' -> menu('fim de jogo')).
+
 /*Inicio da tela de Perfil*/
 
 /*TODO -> Pegar dados do usuario atual*/
@@ -528,14 +544,81 @@ contratos('fim de jogo') :-
 /*FIM DA TELA DE CONTRATOS*/
 
 /*INICIO DA TELA DE DESENVOLVEDORES*/
-desenvolvedores() :-
+
+desenvolvedores('evento 0') :-
   getCabecalho('5',X),
   getDesenvolvedores('dev',Y),
   writeln(X),
   writeln(Y),
   read_line_to_codes(user_input, Op),
   atom_codes(Option, Op),
-  (Option = '1' -> menu('evento 0'); writeln('Operação inválida! Tente novamente'), desenvolvedores()).
+  (Option = '1' -> menu('evento 0'); writeln('Operação inválida! Tente novamente'), desenvolvedores('evento 0')).
+
+desenvolvedores('noticia 1 lida') :-
+getCabecalho('5',X),
+getDesenvolvedores('dev',Y),
+writeln(X),
+writeln(Y),
+read_line_to_codes(user_input, Op),
+atom_codes(Option, Op),
+(Option = '1' -> menu('noticia 1 lida'); writeln('Operação inválida! Tente novamente'), desenvolvedores('noticia 1 lida')).
+
+desenvolvedores('noticia 2 lida') :-
+getCabecalho('5',X),
+getDesenvolvedores('dev',Y),
+writeln(X),
+writeln(Y),
+read_line_to_codes(user_input, Op),
+atom_codes(Option, Op),
+(Option = '1' -> menu('noticia 2 lida'); writeln('Operação inválida! Tente novamente'), desenvolvedores('noticia 2 lida')).
+
+desenvolvedores('noticia 1 e 2 lida') :-
+getCabecalho('5',X),
+getDesenvolvedores('dev',Y),
+writeln(X),
+writeln(Y),
+read_line_to_codes(user_input, Op),
+atom_codes(Option, Op),
+(Option = '1' -> menu('noticia 1 e 2 lida'); writeln('Operação inválida! Tente novamente'), desenvolvedores('noticia 1 e 2 lida')).
+
+desenvolvedores('inicio do contrato') :-
+getCabecalho('5',X),
+getDesenvolvedores('dev',Y),
+writeln(X),
+writeln(Y),
+read_line_to_codes(user_input, Op),
+atom_codes(Option, Op),
+(Option = '1' -> menu('inicio do contrato'); writeln('Operação inválida! Tente novamente'), desenvolvedores('inicio do contrato')).
+
+desenvolvedores('contrato finalizado') :-
+getCabecalho('5',X),
+getDesenvolvedores('dev',Y),
+writeln(X),
+writeln(Y),
+read_line_to_codes(user_input, Op),
+atom_codes(Option, Op),
+(Option = '1' -> menu('contrato finalizado'); writeln('Operação inválida! Tente novamente'), desenvolvedores('contrato finalizado')).
+
+desenvolvedores('ultima mensagem') :-
+getCabecalho('5',X),
+getDesenvolvedores('dev',Y),
+writeln(X),
+writeln(Y),
+read_line_to_codes(user_input, Op),
+atom_codes(Option, Op),
+(Option = '1' -> menu('ultima mensagem'); writeln('Operação inválida! Tente novamente'), desenvolvedores('ultima mensagem')).
+
+desenvolvedores('fim de jogo') :-
+getCabecalho('5',X),
+getDesenvolvedores('dev',Y),
+writeln(X),
+writeln(Y),
+read_line_to_codes(user_input, Op),
+atom_codes(Option, Op),
+(Option = '1' -> menu('fim de jogo'); writeln('Operação inválida! Tente novamente'), desenvolvedores('fim de jogo')).
+
+
+
 
 /*FIM DA TELA DE DESENVOLVEDORES*/
 
@@ -1421,7 +1504,7 @@ getOption(Evento, '1') :- mensagemMenu(Evento).
 getOption(Evento, '2') :- perfil().
 getOption(Evento, '3') :- contratos(Evento).
 getOption(Evento, '4') :- noticia(Evento).
-getOption(Evento, '5') :- desenvolvedores().
+getOption(Evento, '5') :- desenvolvedores(Evento).
 getOption(Evento,_) :- writeln('Opção inválida'), menu(Evento).
 
 /*Obter User Atual Logado*/
