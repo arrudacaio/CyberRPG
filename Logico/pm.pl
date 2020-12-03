@@ -420,8 +420,8 @@ perfil() :-
   get_User_Atual(R),
   write('Nickname: '),
   write(R),
-  writeln('Senha: *********'),
-  writeln('\n*****HABILIDADES*****'),
+  writeln('\nSenha: *********'),
+  writeln('\n\n\n*****HABILIDADES*****'),
   writeln('\nAQUI VAI A LISTA DE HABILIDADES'),
   writeln('\n*****EXPERIÊNCIA*****'),
   writeln('Fama: Hacker Mediano'),
@@ -429,7 +429,7 @@ perfil() :-
   writeln('2. Voltar ao Menu'),
   read_line_to_codes(user_input, Op),
   atom_codes(Option, Op),
-  (Option = '1' -> writeln('Nao foi implementada! Tudo no seu tempo, jovem gafanhoto.');
+  (Option = '1' -> menu('evento 0');
   Option = '2' -> menu('evento 0'));
   writeln('Operacao invalida! Tente novamente.').
 
