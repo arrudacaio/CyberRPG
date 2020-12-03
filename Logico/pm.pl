@@ -429,10 +429,9 @@ perfil() :-
   writeln('2. Voltar ao Menu'),
   read_line_to_codes(user_input, Op),
   atom_codes(Option, Op),
-  Option = '1' -> writeln('Não foi implementada! Tudo no seu tempo, jovem gafanhoto.');
-  Option = '2' -> menu('evento 0');
-  writeln('Operacao invalida! Tente novamente.'),
-
+  (Option = '1' -> writeln('Nao foi implementada! Tudo no seu tempo, jovem gafanhoto.');
+  Option = '2' -> menu('evento 0'));
+  writeln('Operacao invalida! Tente novamente.').
 
 /*INICIO DA TELA DE CONTRATOS*/
 
