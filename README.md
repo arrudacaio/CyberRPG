@@ -36,3 +36,11 @@ stack install random
 Pronto agora você está apto para rodar o projeto! Faça: 
 stack ghci  .\pm.hs 
 ```
+
+## Para rodar o CyberRPG (Prolog): 
+```
+Navegue até a página /Logico no seu terminal e faça: 
+swipl -q -f ./pm.pl   
+main.
+
+```
