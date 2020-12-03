@@ -411,6 +411,27 @@ mensagemMenu('contrato finalizado'):-
   atom_codes(Option, Op),
   (Option = '1' -> menu('ultima noticia')).
 
+/*Inicio da tela de Perfil*/
+
+/*TODO -> Pegar dados do usuario atual*/
+perfil() :- 
+  getCabecalho('2', Cabecalho),
+  writeln('\n \n*********ID*********'),
+  get_User_Atual(R),
+  writeln('Nickname: ', R),
+  writeln('Senha: *********'),
+  writeln('\n*****HABILIDADES*****'),
+  writeln('\nAQUI VAI A LISTA DE HABILIDADES'),
+  writeln('\n*****EXPERIÊNCIA*****'),
+  writeln('Fama: Hacker Mediano'),
+  writeln('\n1. Melhoria de Habilidade'),
+  writeln('2. Voltar ao Menu'),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  Option = '1' -> writeln('Não foi implementada! Tudo no seu tempo, jovem gafanhoto.');
+  Option = '2' -> menu('evento 0');
+  writeln('Operacao invalida! Tente novamente.'),
+
 
 /*INICIO DA TELA DE CONTRATOS*/
 
@@ -1396,6 +1417,7 @@ droneSabotaAr(DroneName, MissoesFeitas,FuncsOn):-
 /*Opcoes do MENU*/
 
 getOption(Evento, '1') :- mensagemMenu(Evento).
+getOption(Evento, '2') :- perfil().
 getOption(Evento, '3') :- contratos(Evento).
 getOption(Evento, '4') :- noticia(Evento).
 getOption(Evento, '5') :- desenvolvedores().
@@ -1406,7 +1428,7 @@ get_User_Atual(R) :-
 	open("userAtual.txt",read,X),
 	read_line_to_codes(X, User),
 	atom_codes(UserAtual, User),
-    R = UserAtual.
+  R = UserAtual.
 	
 /*Funcionalidade de Login*/
   
