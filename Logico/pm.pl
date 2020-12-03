@@ -15,6 +15,10 @@ LISTA DE EVENTOS E SUAS DESCRICOES:
 
 'ultima mensagem': Ultimo dialogo finalizado. A ultima noticia eh liberada.
 
+'noticia 3 lida' : Momento em que o texto 3 da aba Noticias foi lido pelo jogador.
+
+'ultima noticia' : Momento da notificação da noticia final do jogo, após ultima mensagem.
+
 'fim de jogo': Nao ha mais eventos para ocorrer.
 */
 
@@ -427,6 +431,15 @@ mensagemMenu('contrato finalizado'):-
   atom_codes(Option, Op),
   (Option = '1' -> menu('fim de jogo')).
 
+  mensagemMenu('ultima noticia'):-
+  getCabecalho('1', Cabecalho),
+  writeln(Cabecalho),
+  getMensagem('ultima mensagem', Text),
+  writeln(Text),
+  read_line_to_codes(user_input, Op),
+  atom_codes(Option, Op),
+  (Option = '1' -> menu('ultima noticia')).
+
 /*Inicio da tela de Perfil*/
 
 /*TODO -> Pegar dados do usuario atual*/
@@ -529,6 +542,17 @@ contratos('ultima mensagem') :-
     writeln('Operacao invalida! Tente novamente.'),
     contratos('ultima mensagem').
 
+contratos('ultima noticia') :-
+    getCabecalho('3', Cabecalho),
+    writeln(Cabecalho),
+    getContrato('tela 3', Msg),
+    writeln(Msg),
+    read_line_to_codes(user_input, Op),
+    atom_codes(Option, Op),
+    Option = '1' -> menu('ultima noticia');
+    writeln('Operacao invalida! Tente novamente.'),
+    contratos('ultima mensagem').
+
 contratos('fim de jogo') :-
     getCabecalho('3', Cabecalho),
     writeln(Cabecalho),
@@ -616,6 +640,15 @@ read_line_to_codes(user_input, Op),
 atom_codes(Option, Op),
 (Option = '1' -> menu('fim de jogo'); writeln('Operação inválida! Tente novamente'), desenvolvedores('fim de jogo')).
 
+
+desenvolvedores('ultima noticia') :-
+getCabecalho('5',X),
+getDesenvolvedores('dev',Y),
+writeln(X),
+writeln(Y),
+read_line_to_codes(user_input, Op),
+atom_codes(Option, Op),
+(Option = '1' -> menu('ultima noticia'); writeln('Operação inválida! Tente novamente'), desenvolvedores('ultima noticia')).
 
 
 
